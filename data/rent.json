@@ -1,0 +1,1400 @@
+{
+  "source": "https://list-sir.jp/rent/  (List Sotheby's — 高級賃貸)",
+  "generatedBy": "masion-feed/tools/crawl-services.py",
+  "note": "Real rental listings; price is monthly rent. Photos carry their watermark.",
+  "count": 27,
+  "listings": [
+    {
+      "id": "rent-22063705",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-22063705-1.jpg",
+      "gallery": [
+        "data/images/rent-22063705-1.jpg",
+        "data/images/rent-22063705-2.jpg",
+        "data/images/rent-22063705-3.jpg",
+        "data/images/rent-22063705-4.jpg",
+        "data/images/rent-22063705-5.jpg"
+      ],
+      "titleEn": "千早ガレージレジデンス",
+      "titleJa": "千早ガレージレジデンス",
+      "titleZh": "千早ガレージレジデンス",
+      "city": {
+        "ja": "東京 · 豊島区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 豊島区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 207.11,
+      "year": 0,
+      "priceUsd": 9935,
+      "priceText": "154万円／月",
+      "specsText": "3LDK ・ 207.11㎡",
+      "facts": [
+        [
+          "賃料",
+          "154万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "207.11㎡"
+        ]
+      ],
+      "summary": "東京都豊島区千早２丁目に位置する賃貸邸宅「千早ガレージレジデンス」。",
+      "tags": [
+        "千川駅 徒歩9分",
+        "2016年5月",
+        "賃貸"
+      ],
+      "tagText": "千川駅 徒歩9分",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 154.0
+    },
+    {
+      "id": "rent-33790681",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-33790681-1.jpg",
+      "gallery": [
+        "data/images/rent-33790681-1.jpg",
+        "data/images/rent-33790681-2.jpg",
+        "data/images/rent-33790681-3.jpg",
+        "data/images/rent-33790681-4.jpg",
+        "data/images/rent-33790681-5.jpg"
+      ],
+      "titleEn": "麻布台ヒルズレジデンスB",
+      "titleJa": "麻布台ヒルズレジデンスB",
+      "titleZh": "麻布台ヒルズレジデンスB",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 105.0,
+      "year": 0,
+      "priceUsd": 15755,
+      "priceText": "244.2万円／月",
+      "specsText": "1ワンルーム ・ 105㎡",
+      "facts": [
+        [
+          "賃料",
+          "244.2万円／月"
+        ],
+        [
+          "間取り",
+          "1ワンルーム"
+        ],
+        [
+          "専有面積",
+          "105㎡"
+        ]
+      ],
+      "summary": "東京都港区麻布台１丁目に位置する賃貸邸宅「麻布台ヒルズレジデンスB」。",
+      "tags": [
+        "六本木一丁目駅 徒歩3分",
+        "2025年10月",
+        "賃貸"
+      ],
+      "tagText": "六本木一丁目駅 徒歩3分",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 244.2
+    },
+    {
+      "id": "rent-34224613",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34224613-1.jpg",
+      "gallery": [
+        "data/images/rent-34224613-1.jpg",
+        "data/images/rent-34224613-2.jpg",
+        "data/images/rent-34224613-3.jpg",
+        "data/images/rent-34224613-4.jpg",
+        "data/images/rent-34224613-5.jpg"
+      ],
+      "titleEn": "グラングリーン大阪THE NORTH RESISTANCE 3314号室",
+      "titleJa": "グラングリーン大阪THE NORTH RESISTANCE 3314号室",
+      "titleZh": "グラングリーン大阪THE NORTH RESISTANCE 3314号室",
+      "city": {
+        "ja": "大阪 · 北区",
+        "en": "OSAKA · JAPAN",
+        "zh": "大阪 · 北区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 83.03,
+      "year": 0,
+      "priceUsd": 5097,
+      "priceText": "79万円／月",
+      "specsText": "1LDK ・ 83.03㎡",
+      "facts": [
+        [
+          "賃料",
+          "79万円／月"
+        ],
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "83.03㎡"
+        ]
+      ],
+      "summary": "「グランクリーン大阪(うめきた2期)」エ",
+      "tags": [
+        "大阪駅 徒歩7分",
+        "2025年12月",
+        "賃貸"
+      ],
+      "tagText": "大阪駅 徒歩7分",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "rentMan": 79.0
+    },
+    {
+      "id": "rent-34389577",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34389577-1.jpg",
+      "gallery": [
+        "data/images/rent-34389577-1.jpg",
+        "data/images/rent-34389577-2.jpg",
+        "data/images/rent-34389577-3.jpg",
+        "data/images/rent-34389577-4.jpg",
+        "data/images/rent-34389577-5.jpg"
+      ],
+      "titleEn": "THE TOWER 湘南辻堂 1907号室",
+      "titleJa": "THE TOWER 湘南辻堂 1907号室",
+      "titleZh": "THE TOWER 湘南辻堂 1907号室",
+      "city": {
+        "ja": "神奈川 · 藤沢市",
+        "en": "KANAGAWA · JAPAN",
+        "zh": "神奈川 · 藤沢市"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 83.6,
+      "year": 0,
+      "priceUsd": 4839,
+      "priceText": "75万円／月",
+      "specsText": "3LDK ・ 83.6㎡",
+      "facts": [
+        [
+          "賃料",
+          "75万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "83.6㎡"
+        ]
+      ],
+      "summary": "神奈川県藤沢市辻堂１丁目に位置する賃貸邸宅「THE TOWER 湘南辻堂 1907号室」。",
+      "tags": [
+        "辻堂駅 徒歩2分",
+        "2025年9月",
+        "賃貸"
+      ],
+      "tagText": "辻堂駅 徒歩2分",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 75.0
+    },
+    {
+      "id": "rent-34132951",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34132951-1.jpg",
+      "gallery": [
+        "data/images/rent-34132951-1.jpg",
+        "data/images/rent-34132951-2.jpg",
+        "data/images/rent-34132951-3.jpg",
+        "data/images/rent-34132951-4.jpg",
+        "data/images/rent-34132951-5.jpg"
+      ],
+      "titleEn": "グランドメゾン恵比寿の杜 503号室",
+      "titleJa": "グランドメゾン恵比寿の杜 503号室",
+      "titleZh": "グランドメゾン恵比寿の杜 503号室",
+      "city": {
+        "ja": "東京 · 渋谷区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 渋谷区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 96.96,
+      "year": 0,
+      "priceUsd": 4774,
+      "priceText": "74万円／月",
+      "specsText": "3LDK ・ 96.96㎡",
+      "facts": [
+        [
+          "賃料",
+          "74万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "96.96㎡"
+        ]
+      ],
+      "summary": "東京都渋谷区恵比寿４丁目に位置する賃貸邸宅「グランドメゾン恵比寿の杜 503号室」。",
+      "tags": [
+        "恵比寿駅 徒歩7分",
+        "2003年11月",
+        "賃貸"
+      ],
+      "tagText": "恵比寿駅 徒歩7分",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 74.0
+    },
+    {
+      "id": "rent-34067132",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34067132-1.jpg",
+      "gallery": [
+        "data/images/rent-34067132-1.jpg",
+        "data/images/rent-34067132-2.jpg",
+        "data/images/rent-34067132-3.jpg",
+        "data/images/rent-34067132-4.jpg",
+        "data/images/rent-34067132-5.jpg"
+      ],
+      "titleEn": "プレミスト首里金城町",
+      "titleJa": "プレミスト首里金城町",
+      "titleZh": "プレミスト首里金城町",
+      "city": {
+        "ja": "沖縄 · 首里金城町",
+        "en": "OKINAWA · JAPAN",
+        "zh": "沖縄 · 首里金城町"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 75.05,
+      "year": 0,
+      "priceUsd": 2065,
+      "priceText": "32万円／月",
+      "specsText": "2LDK ・ 75.05㎡",
+      "facts": [
+        [
+          "賃料",
+          "32万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "75.05㎡"
+        ]
+      ],
+      "summary": "沖縄県那覇市首里金城町３丁目に位置する賃貸邸宅「プレミスト首里金城町」。",
+      "tags": [
+        "首里駅 徒歩19分",
+        "2023年2月",
+        "賃貸"
+      ],
+      "tagText": "首里駅 徒歩19分",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 32.0
+    },
+    {
+      "id": "rent-22063399",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-22063399-1.jpg",
+      "gallery": [
+        "data/images/rent-22063399-1.jpg",
+        "data/images/rent-22063399-2.jpg",
+        "data/images/rent-22063399-3.jpg",
+        "data/images/rent-22063399-4.jpg",
+        "data/images/rent-22063399-5.jpg"
+      ],
+      "titleEn": "千早ガレージレジデンス",
+      "titleJa": "千早ガレージレジデンス",
+      "titleZh": "千早ガレージレジデンス",
+      "city": {
+        "ja": "東京 · 豊島区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 豊島区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 207.11,
+      "year": 0,
+      "priceUsd": 9032,
+      "priceText": "140万円／月",
+      "specsText": "3LDK ・ 207.11㎡",
+      "facts": [
+        [
+          "賃料",
+          "140万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "207.11㎡"
+        ]
+      ],
+      "summary": "東京都豊島区千早２丁目に位置する賃貸邸宅「千早ガレージレジデンス」。",
+      "tags": [
+        "千川駅 徒歩9分",
+        "2016年5月",
+        "賃貸"
+      ],
+      "tagText": "千川駅 徒歩9分",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 140.0
+    },
+    {
+      "id": "rent-33170974",
+      "region": "rent",
+      "type": "villa",
+      "img": "data/images/rent-33170974-1.jpg",
+      "gallery": [
+        "data/images/rent-33170974-1.jpg",
+        "data/images/rent-33170974-2.jpg",
+        "data/images/rent-33170974-3.jpg",
+        "data/images/rent-33170974-4.jpg",
+        "data/images/rent-33170974-5.jpg"
+      ],
+      "titleEn": "Modern garage House 自由が丘",
+      "titleJa": "Modern garage House 自由が丘",
+      "titleZh": "Modern garage House 自由が丘",
+      "city": {
+        "ja": "東京 · 目黒区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 目黒区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 278.32,
+      "year": 0,
+      "priceUsd": 12903,
+      "priceText": "200万円／月",
+      "specsText": "3SLDK ・ 278.32㎡",
+      "facts": [
+        [
+          "賃料",
+          "200万円／月"
+        ],
+        [
+          "間取り",
+          "3SLDK"
+        ],
+        [
+          "専有面積",
+          "278.32㎡"
+        ]
+      ],
+      "summary": "東京都目黒区自由が丘２丁目に位置する賃貸邸宅「Modern garage House 自由が丘」。",
+      "tags": [
+        "自由が丘駅 徒歩7分",
+        "2025年12月",
+        "賃貸"
+      ],
+      "tagText": "自由が丘駅 徒歩7分",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 200.0
+    },
+    {
+      "id": "rent-33545887",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-33545887-1.jpg",
+      "gallery": [
+        "data/images/rent-33545887-1.jpg"
+      ],
+      "titleEn": "元麻布ヒルズフォレストタワー 104号室",
+      "titleJa": "元麻布ヒルズフォレストタワー 104号室",
+      "titleZh": "元麻布ヒルズフォレストタワー 104号室",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 90.59,
+      "year": 0,
+      "priceUsd": 7742,
+      "priceText": "120万円／月",
+      "specsText": "2LDK ・ 90.59㎡",
+      "facts": [
+        [
+          "賃料",
+          "120万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "90.59㎡"
+        ]
+      ],
+      "summary": "元麻布の高台に佇む敷地面積10000平米超の大規模開発。プールやジャグジーなどのヒルズSPA完備、充実した施設サービスを誇ります。",
+      "tags": [
+        "麻布十番駅 徒歩6分",
+        "2002年5月",
+        "賃貸"
+      ],
+      "tagText": "麻布十番駅 徒歩6分",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "rentMan": 120.0
+    },
+    {
+      "id": "rent-28956639",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-28956639-1.jpg",
+      "gallery": [
+        "data/images/rent-28956639-1.jpg",
+        "data/images/rent-28956639-2.jpg",
+        "data/images/rent-28956639-3.jpg",
+        "data/images/rent-28956639-4.jpg",
+        "data/images/rent-28956639-5.jpg"
+      ],
+      "titleEn": "三田ガーデンヒルズパークマンション 1209号室",
+      "titleJa": "三田ガーデンヒルズパークマンション 1209号室",
+      "titleZh": "三田ガーデンヒルズパークマンション 1209号室",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 158.15,
+      "year": 0,
+      "priceUsd": 22581,
+      "priceText": "350万円／月",
+      "specsText": "2LDK ・ 158.15㎡",
+      "facts": [
+        [
+          "賃料",
+          "350万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "158.15㎡"
+        ]
+      ],
+      "summary": "東京都港区三田１丁目に位置する賃貸邸宅「三田ガーデンヒルズパークマンション 1209号室」。",
+      "tags": [
+        "麻布十番駅 徒歩8分",
+        "2024年12月",
+        "賃貸"
+      ],
+      "tagText": "麻布十番駅 徒歩8分",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 350.0
+    },
+    {
+      "id": "rent-34550748",
+      "region": "rent",
+      "type": "estate",
+      "img": "data/images/rent-34550748-1.jpg",
+      "gallery": [
+        "data/images/rent-34550748-1.jpg",
+        "data/images/rent-34550748-2.jpg"
+      ],
+      "titleEn": "軽井沢町追分貸地",
+      "titleJa": "軽井沢町追分貸地",
+      "titleZh": "軽井沢町追分貸地",
+      "city": {
+        "ja": "長野 · 軽井沢町",
+        "en": "NAGANO · JAPAN",
+        "zh": "長野 · 軽井沢町"
+      },
+      "beds": 0,
+      "baths": 1,
+      "area": 12867.73,
+      "year": 0,
+      "priceUsd": 16774,
+      "priceText": "260万円／月",
+      "specsText": "12867.73㎡",
+      "facts": [
+        [
+          "賃料",
+          "260万円／月"
+        ],
+        [
+          "土地面積",
+          "12867.73㎡"
+        ]
+      ],
+      "summary": "長野県北佐久郡軽井沢町大字追分に位置する賃貸邸宅「軽井沢町追分貸地」。",
+      "tags": [
+        "軽井沢駅",
+        "賃貸"
+      ],
+      "tagText": "軽井沢駅",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 260.0
+    },
+    {
+      "id": "rent-17014294",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-17014294-1.jpg",
+      "gallery": [
+        "data/images/rent-17014294-1.jpg",
+        "data/images/rent-17014294-2.jpg",
+        "data/images/rent-17014294-3.jpg",
+        "data/images/rent-17014294-4.jpg",
+        "data/images/rent-17014294-5.jpg"
+      ],
+      "titleEn": "シティタワー高輪 3504号室",
+      "titleJa": "シティタワー高輪 3504号室",
+      "titleZh": "シティタワー高輪 3504号室",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 213.95,
+      "year": 0,
+      "priceUsd": 10323,
+      "priceText": "160万円／月",
+      "specsText": "3LDK ・ 213.95㎡",
+      "facts": [
+        [
+          "賃料",
+          "160万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "213.95㎡"
+        ]
+      ],
+      "summary": "「白金高輪」駅徒歩6分の好立地。",
+      "tags": [
+        "白金高輪駅 徒歩6分",
+        "2004年1月",
+        "賃貸"
+      ],
+      "tagText": "白金高輪駅 徒歩6分",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 160.0
+    },
+    {
+      "id": "rent-17928246",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-17928246-1.jpg",
+      "gallery": [
+        "data/images/rent-17928246-1.jpg",
+        "data/images/rent-17928246-2.jpg",
+        "data/images/rent-17928246-3.jpg",
+        "data/images/rent-17928246-4.jpg",
+        "data/images/rent-17928246-5.jpg"
+      ],
+      "titleEn": "ブランズタワー芝浦 314号室",
+      "titleJa": "ブランズタワー芝浦 314号室",
+      "titleZh": "ブランズタワー芝浦 314号室",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 41.24,
+      "year": 0,
+      "priceUsd": 1613,
+      "priceText": "25万円／月",
+      "specsText": "1LDK ・ 41.24㎡",
+      "facts": [
+        [
+          "賃料",
+          "25万円／月"
+        ],
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "41.24㎡"
+        ]
+      ],
+      "summary": "複数のラウンジやフィットネススタジオなど充実した共用施設サービス。",
+      "tags": [
+        "田町駅 徒歩8分",
+        "2021年8月",
+        "賃貸"
+      ],
+      "tagText": "田町駅 徒歩8分",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 25.0
+    },
+    {
+      "id": "rent-32179524",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-32179524-1.jpg",
+      "gallery": [
+        "data/images/rent-32179524-1.jpg",
+        "data/images/rent-32179524-2.jpg",
+        "data/images/rent-32179524-3.jpg",
+        "data/images/rent-32179524-4.jpg",
+        "data/images/rent-32179524-5.jpg"
+      ],
+      "titleEn": "THE TOWER 湘南辻堂 2702号室",
+      "titleJa": "THE TOWER 湘南辻堂 2702号室",
+      "titleZh": "THE TOWER 湘南辻堂 2702号室",
+      "city": {
+        "ja": "神奈川 · 藤沢市",
+        "en": "KANAGAWA · JAPAN",
+        "zh": "神奈川 · 藤沢市"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 162.11,
+      "year": 0,
+      "priceUsd": 8387,
+      "priceText": "130万円／月",
+      "specsText": "2LDK ・ 162.11㎡",
+      "facts": [
+        [
+          "賃料",
+          "130万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "162.11㎡"
+        ]
+      ],
+      "summary": "神奈川県藤沢市辻堂１丁目に位置する賃貸邸宅「THE TOWER 湘南辻堂 2702号室」。",
+      "tags": [
+        "辻堂駅 徒歩2分",
+        "2025年8月",
+        "賃貸"
+      ],
+      "tagText": "辻堂駅 徒歩2分",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 130.0
+    },
+    {
+      "id": "rent-16125112",
+      "region": "rent",
+      "type": "villa",
+      "img": "data/images/rent-16125112-1.jpg",
+      "gallery": [
+        "data/images/rent-16125112-1.jpg",
+        "data/images/rent-16125112-2.jpg",
+        "data/images/rent-16125112-3.jpg",
+        "data/images/rent-16125112-4.jpg",
+        "data/images/rent-16125112-5.jpg"
+      ],
+      "titleEn": "パークシティ浜田山戸建",
+      "titleJa": "パークシティ浜田山戸建",
+      "titleZh": "パークシティ浜田山戸建",
+      "city": {
+        "ja": "東京 · 杉並区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 杉並区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 153.17,
+      "year": 0,
+      "priceUsd": 5677,
+      "priceText": "88万円／月",
+      "specsText": "3SLDK ・ 153.17㎡",
+      "facts": [
+        [
+          "賃料",
+          "88万円／月"
+        ],
+        [
+          "間取り",
+          "3SLDK"
+        ],
+        [
+          "専有面積",
+          "153.17㎡"
+        ]
+      ],
+      "summary": "東京都杉並区高井戸東１丁目に位置する賃貸邸宅「パークシティ浜田山戸建」。",
+      "tags": [
+        "浜田山駅 徒歩8分",
+        "2010年6月",
+        "賃貸"
+      ],
+      "tagText": "浜田山駅 徒歩8分",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "rentMan": 88.0
+    },
+    {
+      "id": "rent-33791009",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-33791009-1.jpg",
+      "gallery": [
+        "data/images/rent-33791009-1.jpg",
+        "data/images/rent-33791009-2.jpg",
+        "data/images/rent-33791009-3.jpg",
+        "data/images/rent-33791009-4.jpg",
+        "data/images/rent-33791009-5.jpg"
+      ],
+      "titleEn": "クラッシィタワー新宿御苑 1608号室",
+      "titleJa": "クラッシィタワー新宿御苑 1608号室",
+      "titleZh": "クラッシィタワー新宿御苑 1608号室",
+      "city": {
+        "ja": "東京 · 新宿区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 新宿区"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 65.61,
+      "year": 0,
+      "priceUsd": 3213,
+      "priceText": "49.8万円／月",
+      "specsText": "2LDK ・ 65.61㎡",
+      "facts": [
+        [
+          "賃料",
+          "49.8万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "65.61㎡"
+        ]
+      ],
+      "summary": "東京都新宿区四谷４丁目に位置する賃貸邸宅「クラッシィタワー新宿御苑 1608号室」。",
+      "tags": [
+        "新宿御苑前駅 徒歩4分",
+        "2024年10月",
+        "賃貸"
+      ],
+      "tagText": "新宿御苑前駅 徒歩4分",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 49.8
+    },
+    {
+      "id": "rent-4921885",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-4921885-1.jpg",
+      "gallery": [
+        "data/images/rent-4921885-1.jpg",
+        "data/images/rent-4921885-2.jpg",
+        "data/images/rent-4921885-3.jpg",
+        "data/images/rent-4921885-4.jpg",
+        "data/images/rent-4921885-5.jpg"
+      ],
+      "titleEn": "ハイレーゼ六本木三河台",
+      "titleJa": "ハイレーゼ六本木三河台",
+      "titleZh": "ハイレーゼ六本木三河台",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 72.48,
+      "year": 0,
+      "priceUsd": 3213,
+      "priceText": "49.8万円／月",
+      "specsText": "1LDK ・ 72.48㎡",
+      "facts": [
+        [
+          "賃料",
+          "49.8万円／月"
+        ],
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "72.48㎡"
+        ]
+      ],
+      "summary": "東京都港区六本木４丁目に位置する賃貸邸宅「ハイレーゼ六本木三河台」。",
+      "tags": [
+        "六本木駅 徒歩3分",
+        "2000年1月",
+        "賃貸"
+      ],
+      "tagText": "六本木駅 徒歩3分",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 49.8
+    },
+    {
+      "id": "rent-5068081",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-5068081-1.jpg",
+      "gallery": [
+        "data/images/rent-5068081-1.jpg",
+        "data/images/rent-5068081-2.jpg",
+        "data/images/rent-5068081-3.jpg",
+        "data/images/rent-5068081-4.jpg",
+        "data/images/rent-5068081-5.jpg"
+      ],
+      "titleEn": "シティタワー有明",
+      "titleJa": "シティタワー有明",
+      "titleZh": "シティタワー有明",
+      "city": {
+        "ja": "東京 · 江東区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 江東区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 48.86,
+      "year": 0,
+      "priceUsd": 1323,
+      "priceText": "20.5万円／月",
+      "specsText": "1LDK ・ 48.86㎡",
+      "facts": [
+        [
+          "賃料",
+          "20.5万円／月"
+        ],
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "48.86㎡"
+        ]
+      ],
+      "summary": "東京都江東区有明１丁目に位置する賃貸邸宅「シティタワー有明」。",
+      "tags": [
+        "有明テニスの森駅 徒歩10分",
+        "2010年4月",
+        "賃貸"
+      ],
+      "tagText": "有明テニスの森駅 徒歩10分",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 20.5
+    },
+    {
+      "id": "rent-34718509",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34718509-1.jpg",
+      "gallery": [
+        "data/images/rent-34718509-1.jpg",
+        "data/images/rent-34718509-2.jpg",
+        "data/images/rent-34718509-3.jpg",
+        "data/images/rent-34718509-4.jpg",
+        "data/images/rent-34718509-5.jpg"
+      ],
+      "titleEn": "THE KITA 301号室",
+      "titleJa": "THE KITA 301号室",
+      "titleZh": "THE KITA 301号室",
+      "city": {
+        "ja": "東京 · 渋谷区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 渋谷区"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 123.96,
+      "year": 0,
+      "priceUsd": 9677,
+      "priceText": "150万円／月",
+      "specsText": "2LDK ・ 123.96㎡",
+      "facts": [
+        [
+          "賃料",
+          "150万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "123.96㎡"
+        ]
+      ],
+      "summary": "東京都渋谷区千駄ヶ谷３丁目に位置する賃貸邸宅「THE KITA 301号室」。",
+      "tags": [
+        "北参道駅 徒歩6分",
+        "2020年7月",
+        "賃貸"
+      ],
+      "tagText": "北参道駅 徒歩6分",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 150.0
+    },
+    {
+      "id": "rent-4787133",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-4787133-1.jpg",
+      "gallery": [
+        "data/images/rent-4787133-1.jpg",
+        "data/images/rent-4787133-2.jpg",
+        "data/images/rent-4787133-3.jpg",
+        "data/images/rent-4787133-4.jpg",
+        "data/images/rent-4787133-5.jpg"
+      ],
+      "titleEn": "BRIX",
+      "titleJa": "BRIX",
+      "titleZh": "BRIX",
+      "city": {
+        "ja": "東京 · 江東区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 江東区"
+      },
+      "beds": 0,
+      "baths": 1,
+      "area": 21.43,
+      "year": 0,
+      "priceUsd": 516,
+      "priceText": "8万円／月",
+      "specsText": "ワンルーム ・ 21.43㎡",
+      "facts": [
+        [
+          "賃料",
+          "8万円／月"
+        ],
+        [
+          "間取り",
+          "ワンルーム"
+        ],
+        [
+          "専有面積",
+          "21.43㎡"
+        ]
+      ],
+      "summary": "反転タイプの室内写真です。",
+      "tags": [
+        "南砂町駅 徒歩7分",
+        "2018年9月",
+        "賃貸"
+      ],
+      "tagText": "南砂町駅 徒歩7分",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 8.0
+    },
+    {
+      "id": "rent-34389423",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34389423-1.jpg",
+      "gallery": [
+        "data/images/rent-34389423-1.jpg",
+        "data/images/rent-34389423-2.jpg",
+        "data/images/rent-34389423-3.jpg",
+        "data/images/rent-34389423-4.jpg",
+        "data/images/rent-34389423-5.jpg"
+      ],
+      "titleEn": "三田ガーデンヒルズ　ノースヒル 915号室",
+      "titleJa": "三田ガーデンヒルズ　ノースヒル 915号室",
+      "titleZh": "三田ガーデンヒルズ　ノースヒル 915号室",
+      "city": {
+        "ja": "東京 · 港区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 港区"
+      },
+      "beds": 0,
+      "baths": 1,
+      "area": 29.34,
+      "year": 0,
+      "priceUsd": 2581,
+      "priceText": "40万円／月",
+      "specsText": "ワンルーム ・ 29.34㎡",
+      "facts": [
+        [
+          "賃料",
+          "40万円／月"
+        ],
+        [
+          "間取り",
+          "ワンルーム"
+        ],
+        [
+          "専有面積",
+          "29.34㎡"
+        ]
+      ],
+      "summary": "全1002戸の象徴的なプロジェクト。帝国ホテルと提携したコンシェルジュサービスなど多彩な共用施設・サービスを完備。",
+      "tags": [
+        "赤羽橋駅 徒歩6分",
+        "2025年3月",
+        "賃貸"
+      ],
+      "tagText": "赤羽橋駅 徒歩6分",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "rentMan": 40.0
+    },
+    {
+      "id": "rent-15955961",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-15955961-1.jpg",
+      "gallery": [
+        "data/images/rent-15955961-1.jpg",
+        "data/images/rent-15955961-2.jpg",
+        "data/images/rent-15955961-3.jpg",
+        "data/images/rent-15955961-4.jpg",
+        "data/images/rent-15955961-5.jpg"
+      ],
+      "titleEn": "アールケープラザ横濱Ⅶ 202号室",
+      "titleJa": "アールケープラザ横濱Ⅶ 202号室",
+      "titleZh": "アールケープラザ横濱Ⅶ 202号室",
+      "city": {
+        "ja": "神奈川 · 西区",
+        "en": "KANAGAWA · JAPAN",
+        "zh": "神奈川 · 西区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 30.98,
+      "year": 0,
+      "priceUsd": 761,
+      "priceText": "11.8万円／月",
+      "specsText": "1DK ・ 30.98㎡",
+      "facts": [
+        [
+          "賃料",
+          "11.8万円／月"
+        ],
+        [
+          "間取り",
+          "1DK"
+        ],
+        [
+          "専有面積",
+          "30.98㎡"
+        ]
+      ],
+      "summary": "神奈川県横浜市西区花咲町５丁目に位置する賃貸邸宅「アールケープラザ横濱Ⅶ 202号室」。",
+      "tags": [
+        "桜木町駅 徒歩8分",
+        "2015年11月",
+        "賃貸"
+      ],
+      "tagText": "桜木町駅 徒歩8分",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 11.8
+    },
+    {
+      "id": "rent-6241287",
+      "region": "rent",
+      "type": "resort",
+      "img": "data/images/rent-6241287-1.jpg",
+      "gallery": [
+        "data/images/rent-6241287-1.jpg",
+        "data/images/rent-6241287-2.jpg",
+        "data/images/rent-6241287-3.jpg",
+        "data/images/rent-6241287-4.jpg",
+        "data/images/rent-6241287-5.jpg"
+      ],
+      "titleEn": "ザ・ナハテラスクラブレジデンス",
+      "titleJa": "ザ・ナハテラスクラブレジデンス",
+      "titleZh": "ザ・ナハテラスクラブレジデンス",
+      "city": {
+        "ja": "沖縄 · 那覇市",
+        "en": "OKINAWA · JAPAN",
+        "zh": "沖縄 · 那覇市"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 130.43,
+      "year": 0,
+      "priceUsd": 5484,
+      "priceText": "85万円／月",
+      "specsText": "2LDK ・ 130.43㎡",
+      "facts": [
+        [
+          "賃料",
+          "85万円／月"
+        ],
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "130.43㎡"
+        ]
+      ],
+      "summary": "間取2LDK（130.43㎡）",
+      "tags": [
+        "おもろまち駅 徒歩12分",
+        "2020年1月",
+        "賃貸"
+      ],
+      "tagText": "おもろまち駅 徒歩12分",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 85.0
+    },
+    {
+      "id": "rent-33789441",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-33789441-1.jpg",
+      "gallery": [
+        "data/images/rent-33789441-1.jpg",
+        "data/images/rent-33789441-2.jpg",
+        "data/images/rent-33789441-3.jpg",
+        "data/images/rent-33789441-4.jpg",
+        "data/images/rent-33789441-5.jpg"
+      ],
+      "titleEn": "Embassy Suite 102号室",
+      "titleJa": "Embassy Suite 102号室",
+      "titleZh": "Embassy Suite 102号室",
+      "city": {
+        "ja": "東京 · 杉並区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 杉並区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 104.6,
+      "year": 0,
+      "priceUsd": 4774,
+      "priceText": "74万円／月",
+      "specsText": "3LDK ・ 104.6㎡",
+      "facts": [
+        [
+          "賃料",
+          "74万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "104.6㎡"
+        ]
+      ],
+      "summary": "閑静な住宅街に凛とした外観で存在感を示す低層マンションになります。",
+      "tags": [
+        "西荻窪駅 徒歩11分",
+        "2025年12月",
+        "賃貸"
+      ],
+      "tagText": "西荻窪駅 徒歩11分",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 74.0
+    },
+    {
+      "id": "rent-33789442",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-33789442-1.jpg",
+      "gallery": [
+        "data/images/rent-33789442-1.jpg",
+        "data/images/rent-33789442-2.jpg",
+        "data/images/rent-33789442-3.jpg",
+        "data/images/rent-33789442-4.jpg",
+        "data/images/rent-33789442-5.jpg"
+      ],
+      "titleEn": "Embassy Suite 103号室",
+      "titleJa": "Embassy Suite 103号室",
+      "titleZh": "Embassy Suite 103号室",
+      "city": {
+        "ja": "東京 · 杉並区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 杉並区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 104.15,
+      "year": 0,
+      "priceUsd": 4774,
+      "priceText": "74万円／月",
+      "specsText": "3LDK ・ 104.15㎡",
+      "facts": [
+        [
+          "賃料",
+          "74万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "104.15㎡"
+        ]
+      ],
+      "summary": "3人以上のご家族でも1人～2人で用途によって使い分けても良しの人気の間取りです。",
+      "tags": [
+        "西荻窪駅 徒歩11分",
+        "2025年12月",
+        "賃貸"
+      ],
+      "tagText": "西荻窪駅 徒歩11分",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "rentMan": 74.0
+    },
+    {
+      "id": "rent-33330569",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-33330569-1.jpg",
+      "gallery": [
+        "data/images/rent-33330569-1.jpg",
+        "data/images/rent-33330569-2.jpg",
+        "data/images/rent-33330569-3.jpg",
+        "data/images/rent-33330569-4.jpg",
+        "data/images/rent-33330569-5.jpg"
+      ],
+      "titleEn": "Embassy Suite 101号室",
+      "titleJa": "Embassy Suite 101号室",
+      "titleZh": "Embassy Suite 101号室",
+      "city": {
+        "ja": "東京 · 杉並区",
+        "en": "TOKYO · JAPAN",
+        "zh": "東京 · 杉並区"
+      },
+      "beds": 3,
+      "baths": 2,
+      "area": 100.67,
+      "year": 0,
+      "priceUsd": 4452,
+      "priceText": "69万円／月",
+      "specsText": "3LDK ・ 100.67㎡",
+      "facts": [
+        [
+          "賃料",
+          "69万円／月"
+        ],
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "100.67㎡"
+        ]
+      ],
+      "summary": "3人以上のご家族でも1人～2人で用途によって使い分けても良しの人気の間取りです。",
+      "tags": [
+        "西荻窪駅 徒歩11分",
+        "2025年12月",
+        "賃貸"
+      ],
+      "tagText": "西荻窪駅 徒歩11分",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "rentMan": 69.0
+    },
+    {
+      "id": "rent-34773414",
+      "region": "rent",
+      "type": "residence",
+      "img": "data/images/rent-34773414-1.jpg",
+      "gallery": [
+        "data/images/rent-34773414-1.jpg",
+        "data/images/rent-34773414-2.jpg",
+        "data/images/rent-34773414-3.jpg",
+        "data/images/rent-34773414-4.jpg",
+        "data/images/rent-34773414-5.jpg"
+      ],
+      "titleEn": "Brillia Tower 堂島",
+      "titleJa": "Brillia Tower 堂島",
+      "titleZh": "Brillia Tower 堂島",
+      "city": {
+        "ja": "大阪 · 北区",
+        "en": "OSAKA · JAPAN",
+        "zh": "大阪 · 北区"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 38.71,
+      "year": 0,
+      "priceUsd": 1661,
+      "priceText": "25.74万円／月",
+      "specsText": "1LDK ・ 38.71㎡",
+      "facts": [
+        [
+          "賃料",
+          "25.74万円／月"
+        ],
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "38.71㎡"
+        ]
+      ],
+      "summary": "自由にたくさん収納できるウォークインクローゼット",
+      "tags": [
+        "大阪駅 徒歩11分",
+        "2024年2月",
+        "賃貸"
+      ],
+      "tagText": "大阪駅 徒歩11分",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "rentMan": 25.74
+    }
+  ]
+}

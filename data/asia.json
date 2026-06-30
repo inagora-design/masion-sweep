@@ -1,0 +1,600 @@
+{
+  "source": "https://list-sir.jp/asia/properties/",
+  "count": 12,
+  "region": "sea",
+  "listings": [
+    {
+      "id": "asia-4163",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4163-1.jpg",
+      "gallery": [
+        "data/images/asia-4163-1.jpg",
+        "data/images/asia-4163-2.jpg",
+        "data/images/asia-4163-3.jpg"
+      ],
+      "titleEn": "The Standard Residences, Phuket Bang Tao #F0703",
+      "titleJa": "ザ スタンダード レジデンス プーケット バンタオ",
+      "titleZh": "ザ スタンダード レジデンス プーケット バンタオ",
+      "city": {
+        "ja": "プーケット · タイ",
+        "en": "PHUKET · THAILAND",
+        "zh": "プーケット · タイ"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 75.0,
+      "year": 2026,
+      "priceUsd": 404129,
+      "priceText": "6,264万円",
+      "specsText": "1LDK ・ 75.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "1"
+        ],
+        [
+          "専有面積",
+          "75.00㎡"
+        ],
+        [
+          "建築年",
+          "2026年"
+        ]
+      ],
+      "tags": [
+        "プーケット",
+        "1",
+        "2026年築"
+      ],
+      "summary": "世界有数のリゾートエリアの一つ「プーケット」、バンタオエリアに2026年誕生のThe Standardホテルのブランデッドレジデンスです。 1か月単位からの賃貸運用が可能。新築販売分は完売済みの人気間取りです。 ※写真はイメージパースです。",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "tagText": "プーケット · タイ"
+    },
+    {
+      "id": "asia-4159",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4159-1.jpg",
+      "gallery": [
+        "data/images/asia-4159-1.jpg",
+        "data/images/asia-4159-2.jpg",
+        "data/images/asia-4159-3.jpg"
+      ],
+      "titleEn": "The Standard Residences, Phuket Bang Tao #D0501",
+      "titleJa": "ザ スタンダード レジデンス プーケット バンタオ",
+      "titleZh": "ザ スタンダード レジデンス プーケット バンタオ",
+      "city": {
+        "ja": "プーケット · タイ",
+        "en": "PHUKET · THAILAND",
+        "zh": "プーケット · タイ"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 117.0,
+      "year": 2026,
+      "priceUsd": 778323,
+      "priceText": "1億2,064万円",
+      "specsText": "2LDK ・ 117.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "2Bed Type"
+        ],
+        [
+          "専有面積",
+          "117.00㎡"
+        ],
+        [
+          "建築年",
+          "2026年"
+        ]
+      ],
+      "tags": [
+        "プーケット",
+        "2Bed Type",
+        "2026年築"
+      ],
+      "summary": "世界有数のリゾートエリアの一つ「プーケット」、バンタオエリアに2026年誕生のThe Standardホテルのブランデッドレジデンスです。 1か月単位からの賃貸運用が可能。 ※写真はイメージパースです。",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "tagText": "プーケット · タイ"
+    },
+    {
+      "id": "asia-4153",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4153-1.jpg",
+      "gallery": [
+        "data/images/asia-4153-1.jpg",
+        "data/images/asia-4153-2.jpg",
+        "data/images/asia-4153-3.jpg"
+      ],
+      "titleEn": "One89 Wireless #2902",
+      "titleJa": "ワン 89 ワイヤレス",
+      "titleZh": "ワン 89 ワイヤレス",
+      "city": {
+        "ja": "バンコク · タイ",
+        "en": "BANGKOK · THAILAND",
+        "zh": "バンコク · タイ"
+      },
+      "beds": 3,
+      "baths": 1,
+      "area": 226.0,
+      "year": 2025,
+      "priceUsd": 4041290,
+      "priceText": "6億2,640万円",
+      "specsText": "3LDK ・ 226.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "3Bed Type"
+        ],
+        [
+          "専有面積",
+          "226.00㎡"
+        ],
+        [
+          "建築年",
+          "2025年"
+        ]
+      ],
+      "tags": [
+        "バンコク",
+        "3Bed Type",
+        "2025年築"
+      ],
+      "summary": "バンコク市街地最大規模の再開発プロジェクト「One Bangkok」内完成の第一弾ウルトララグジュアリーレジデンス。The Ritz-Carltonホテルのサービス付帯。 ※TOP画像の内装はイメージです",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "tagText": "バンコク · タイ"
+    },
+    {
+      "id": "asia-4145",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4145-1.jpg",
+      "gallery": [
+        "data/images/asia-4145-1.jpg",
+        "data/images/asia-4145-2.jpg",
+        "data/images/asia-4145-3.jpg",
+        "data/images/asia-4145-4.jpg",
+        "data/images/asia-4145-5.jpg"
+      ],
+      "titleEn": "【Office】The Stiles Enterprise Plaza West Tower",
+      "titleJa": "ザ スタイルズ エンタープライズ プラザ ウエストタワー",
+      "titleZh": "ザ スタイルズ エンタープライズ プラザ ウエストタワー",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 0,
+      "baths": 1,
+      "area": 173.0,
+      "year": 0,
+      "priceUsd": 657509,
+      "priceText": "1億191万円",
+      "specsText": "173.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "N/A"
+        ],
+        [
+          "専有面積",
+          "173.00㎡"
+        ],
+        [
+          "建築年",
+          "No deta年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "N/A"
+      ],
+      "summary": "オーナー様資産整理により売却価格大幅改定 従前）43,100,000PHP ⇒ 改定後）36,792,000 新規入居の商業・オフィススペース 10階に2つの空きユニット 下記の価格で個別に販売可能です： ユニット1002 - 92平方メートル - 21,800,000フィリピンペソ（角部屋） ユニット1003 - 8",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    },
+    {
+      "id": "asia-4137",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4137-1.jpg",
+      "gallery": [
+        "data/images/asia-4137-1.jpg",
+        "data/images/asia-4137-2.jpg",
+        "data/images/asia-4137-3.jpg",
+        "data/images/asia-4137-4.jpg",
+        "data/images/asia-4137-5.jpg"
+      ],
+      "titleEn": "The Grand Midori Ortigas Tower 1 #30F",
+      "titleJa": "ザ グランド ミドリ オルティガス",
+      "titleZh": "ザ グランド ミドリ オルティガス",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 0,
+      "baths": 1,
+      "area": 35.5,
+      "year": 2025,
+      "priceUsd": 178517,
+      "priceText": "2,767万円",
+      "specsText": "35.50㎡",
+      "facts": [
+        [
+          "間取り",
+          "Studio"
+        ],
+        [
+          "専有面積",
+          "35.50㎡"
+        ],
+        [
+          "建築年",
+          "2025年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "Studio",
+        "2025年築"
+      ],
+      "summary": "2026年引き渡し予定の30階高層ユニットです。賃貸運用におすすめ。※写真は現地モックアップユニット（studio）のものです。",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    },
+    {
+      "id": "asia-4099",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4099-1.jpg",
+      "gallery": [
+        "data/images/asia-4099-1.jpg",
+        "data/images/asia-4099-2.jpg",
+        "data/images/asia-4099-3.jpg",
+        "data/images/asia-4099-4.jpg",
+        "data/images/asia-4099-5.jpg"
+      ],
+      "titleEn": "The Seasons Residences AKI Tower #25E",
+      "titleJa": "ザ シーズンズ レジデンス アキタワー",
+      "titleZh": "ザ シーズンズ レジデンス アキタワー",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 56.0,
+      "year": 2026,
+      "priceUsd": 518258,
+      "priceText": "8,033万円",
+      "specsText": "1LDK ・ 56.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "1BR"
+        ],
+        [
+          "専有面積",
+          "56.00㎡"
+        ],
+        [
+          "建築年",
+          "2026年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "1BR",
+        "2026年築"
+      ],
+      "summary": "1Bed type 最上階でコーナーユニットです。お部屋からはファシリティ（共有部分）が望めるお部屋です。※画像写真はイメージです",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    },
+    {
+      "id": "asia-4096",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4096-1.jpg",
+      "gallery": [
+        "data/images/asia-4096-1.jpg",
+        "data/images/asia-4096-2.jpg"
+      ],
+      "titleEn": "【表面約6.5%】EATON TOWER MAKATI",
+      "titleJa": "イートン タワー マカティ",
+      "titleZh": "イートン タワー マカティ",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 40.08,
+      "year": 2025,
+      "priceUsd": 125097,
+      "priceText": "1,939万円",
+      "specsText": "1LDK ・ 40.08㎡",
+      "facts": [
+        [
+          "間取り",
+          "1BR"
+        ],
+        [
+          "専有面積",
+          "40.08㎡"
+        ],
+        [
+          "建築年",
+          "2025年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "1BR",
+        "2025年築"
+      ],
+      "summary": "オーナーチェンジ物件（テナント入居中 2025年9月15日迄の普通貸借）※写真はイメージです",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    },
+    {
+      "id": "asia-4086",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4086-1.jpg",
+      "gallery": [
+        "data/images/asia-4086-1.jpg",
+        "data/images/asia-4086-2.jpg",
+        "data/images/asia-4086-3.jpg",
+        "data/images/asia-4086-4.jpg",
+        "data/images/asia-4086-5.jpg"
+      ],
+      "titleEn": "The Seasons Rresidences AKI Tower #9C",
+      "titleJa": "ザ シーズンズ レジデンス アキタワー",
+      "titleZh": "ザ シーズンズ レジデンス アキタワー",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 46.0,
+      "year": 2025,
+      "priceUsd": 446774,
+      "priceText": "6,925万円",
+      "specsText": "1LDK ・ 46.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "1BR"
+        ],
+        [
+          "専有面積",
+          "46.00㎡"
+        ],
+        [
+          "建築年",
+          "2025年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "1BR",
+        "2025年築"
+      ],
+      "summary": "お部屋からは中庭（共有部分）が望めるお部屋です。※画像写真はイメージです",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    },
+    {
+      "id": "asia-4080",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4080-1.jpg",
+      "gallery": [
+        "data/images/asia-4080-1.jpg",
+        "data/images/asia-4080-2.jpg",
+        "data/images/asia-4080-3.jpg",
+        "data/images/asia-4080-4.jpg",
+        "data/images/asia-4080-5.jpg"
+      ],
+      "titleEn": "The Grand Midori Ortigas Tower 1 #40M",
+      "titleJa": "ザ グランド ミドリ オルティガス",
+      "titleZh": "ザ グランド ミドリ オルティガス",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 1,
+      "baths": 1,
+      "area": 64.0,
+      "year": 2025,
+      "priceUsd": 393161,
+      "priceText": "6,094万円",
+      "specsText": "1LDK ・ 64.00㎡",
+      "facts": [
+        [
+          "間取り",
+          "1B"
+        ],
+        [
+          "専有面積",
+          "64.00㎡"
+        ],
+        [
+          "建築年",
+          "2025年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "1B",
+        "2025年築"
+      ],
+      "summary": "本ユニットは、1ベッドタイプの中でも、特に人気のあるMタイプであり、1ベッドタイプの中で最上階ユニットです。※写真はイメージです",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    },
+    {
+      "id": "asia-4066",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4066-1.jpg",
+      "gallery": [
+        "data/images/asia-4066-1.jpg"
+      ],
+      "titleEn": "Unique Loft Chocolate Factory",
+      "titleJa": "ユニーク ロフト チョコレート ファクトリー",
+      "titleZh": "ユニーク ロフト チョコレート ファクトリー",
+      "city": {
+        "ja": "バンコク · タイ",
+        "en": "BANGKOK · THAILAND",
+        "zh": "バンコク · タイ"
+      },
+      "beds": 3,
+      "baths": 1,
+      "area": 326.0,
+      "year": 0,
+      "priceUsd": 2305032,
+      "priceText": "3億5,728万円",
+      "specsText": "3LDK ・ 326㎡",
+      "facts": [
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "326㎡"
+        ],
+        [
+          "建築年",
+          "-年"
+        ]
+      ],
+      "tags": [
+        "バンコク",
+        "3LDK"
+      ],
+      "summary": "バンコクの賑やかなプロンポン地区に位置。元チョコレート工場をリノベーションしたユニークなレジデンスです。工場跡が各所に残されたノスタルジックな空間に、モダンな家具が配置され、自分だけのプライベート空間を堪能できます。",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "tagText": "バンコク · タイ"
+    },
+    {
+      "id": "asia-4040",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4040-1.jpg",
+      "gallery": [
+        "data/images/asia-4040-1.jpg",
+        "data/images/asia-4040-2.jpg",
+        "data/images/asia-4040-3.jpg"
+      ],
+      "titleEn": "Marco Polo Parkview Tower 3",
+      "titleJa": "マルコ ポーロ パークビュー タワー3",
+      "titleZh": "マルコ ポーロ パークビュー タワー3",
+      "city": {
+        "ja": "セブ島 · フィリピン",
+        "en": "CEBU · PHILIPPINES",
+        "zh": "セブ島 · フィリピン"
+      },
+      "beds": 2,
+      "baths": 1,
+      "area": 110.0,
+      "year": 2019,
+      "priceUsd": 250194,
+      "priceText": "3,878万円",
+      "specsText": "2LDK ・ 110㎡",
+      "facts": [
+        [
+          "間取り",
+          "2BR"
+        ],
+        [
+          "専有面積",
+          "110㎡"
+        ],
+        [
+          "建築年",
+          "2019年"
+        ]
+      ],
+      "tags": [
+        "セブ島",
+        "2BR",
+        "2019年築"
+      ],
+      "summary": "マルコ ポーロ パークビューは、マルコ ポーロ レジデンスに建つ3番目の高級コンドミニアムです。ニベルヒルズの高級地区内、セブ市で最も人気のある住所の一つに位置しています。この物件は、セブの風景、海、そして夜のセブのスカイラインのきらめく光のパノラマビューを楽しめます。",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "tagText": "セブ島 · フィリピン"
+    },
+    {
+      "id": "asia-4035",
+      "region": "sea",
+      "type": "residence",
+      "img": "data/images/asia-4035-1.jpg",
+      "gallery": [
+        "data/images/asia-4035-1.jpg",
+        "data/images/asia-4035-2.jpg",
+        "data/images/asia-4035-3.jpg"
+      ],
+      "titleEn": "One Shangri-La Place",
+      "titleJa": "ワン シャングリラ プレイス",
+      "titleZh": "ワン シャングリラ プレイス",
+      "city": {
+        "ja": "マニラ · フィリピン",
+        "en": "MANILA · PHILIPPINES",
+        "zh": "マニラ · フィリピン"
+      },
+      "beds": 0,
+      "baths": 1,
+      "area": 45.0,
+      "year": 2014,
+      "priceUsd": 175135,
+      "priceText": "2,714万円",
+      "specsText": "45㎡",
+      "facts": [
+        [
+          "間取り",
+          "Studio"
+        ],
+        [
+          "専有面積",
+          "45㎡"
+        ],
+        [
+          "建築年",
+          "2014年"
+        ]
+      ],
+      "tags": [
+        "マニラ",
+        "Studio",
+        "2014年築"
+      ],
+      "summary": "地上64階建てのツインタワーレジデンス。プールやジム等、ホテルのような共用施設は圧巻です。コンシェルジュサービスもあり充実したサービスも魅力。また、フィリピン第3位のビジネス都市「オルティガス」に位置し、「シャングリラモール」直結と利便性の高さも特徴です。フィリピン最大級ショッピングモール「SMメガモール」も徒歩圏にあ",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "tagText": "マニラ · フィリピン"
+    }
+  ]
+}
