@@ -1,0 +1,13 @@
+{
+  "name": "sweep-sothebys",
+  "version": "1.0.0",
+  "private": true,
+  "description": "List Sotheby's luxury real-estate prototype (Claude Design import)",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Shippori+Mincho:wght@500;600&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body{ margin:0; }
+  .rv-scroll::-webkit-scrollbar{ width:0; height:0; }
+  @keyframes rvBadgeIn{ 0%{ opacity:0; transform:translate(-50%,-50%) scale(.6);} 18%{ opacity:1; transform:translate(-50%,-50%) scale(1.08);} 32%{ transform:translate(-50%,-50%) scale(1);} 78%{ opacity:1; transform:translate(-50%,-50%) scale(1);} 100%{ opacity:0; transform:translate(-50%,-50%) scale(.96);} }
+  @keyframes rvPop{ 0%{ transform:scale(1);} 35%{ transform:scale(1.32);} 60%{ transform:scale(.92);} 100%{ transform:scale(1);} }
+  @keyframes rvSheetUp{ from{ transform:translateY(101%);} to{ transform:translateY(0);} }
+  @keyframes rvFadeIn{ from{ opacity:0;} to{ opacity:1;} }
+  @keyframes rvDropIn{ from{ opacity:0; transform:translateY(-8px);} to{ opacity:1; transform:translateY(0);} }
+  @keyframes rvScreenIn{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:translateY(0);} }
+  @keyframes rvPulse{ 0%{ transform:scale(.85); opacity:.65;} 100%{ transform:scale(1.7); opacity:0;} }
+  @keyframes rvBar{ 0%,100%{ transform:scaleY(.28);} 50%{ transform:scaleY(1);} }
+  @keyframes rvMsgIn{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:translateY(0);} }
+</style>
+</helmet>
+<div style="min-height:100vh; width:100%; display:flex; align-items:center; justify-content:center; background:radial-gradient(120% 90% at 50% 0%, #efece6 0%, #e4e0d8 55%, #d9d4ca 100%); font-family:'Noto Sans JP','Noto Sans Thai',-apple-system,system-ui,sans-serif; padding:32px 16px;">
+
+    <div style="position:relative; width:404px; height:856px; background:#ffffff; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 70px -30px rgba(20,20,20,.45), 0 6px 20px rgba(0,0,0,.08); flex:none;">
+
+      <div style="height:22px; flex:none;"></div>
+
+      <!-- ================= HOME ================= -->
+      <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; animation:rvScreenIn .3s ease;">
+          <header style="flex:none; display:flex; align-items:center; justify-content:space-between; padding:6px 18px 12px;">
+            <button onClick="{{ toggleLang }}" aria-label="言語" style="display:flex; align-items:center; gap:5px; background:none; border:1px solid rgba(20,20,20,.14); border-radius:999px; padding:6px 10px; cursor:pointer;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+              <span style="font-size:11px; font-weight:700; color:#141414; letter-spacing:.5px;">{{ langCode }}</span>
+            </button>
+            <div style="display:flex; flex-direction:column; align-items:center; gap:3px;">
+              <div style="font-family:'Cormorant Garamond',serif; font-size:23px; font-weight:600; letter-spacing:1.5px; color:#141414; line-height:1;">List Sotheby's</div>
+              <div style="font-size:8px; letter-spacing:4px; color:#a39a88; text-indent:4px;">LUXURY ESTATES</div>
+            </div>
+            <button onClick="{{ toggleMenu }}" aria-label="メニュー" style="display:flex; align-items:center; justify-content:center; width:40px; height:34px; background:none; border:1px solid rgba(20,20,20,.14); border-radius:999px; cursor:pointer;">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.8" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            </button>
+          </header>
+
+          <sc-if value="{{ isBuy }}" hint-placeholder-val="{{ true }}">
+          <main style="flex:1; position:relative; padding:4px 22px 0; min-height:0;">
+            <div style="position:absolute; inset:4px 22px 0;">
+              <div ref="{{ peek2Ref }}" style="position:absolute; left:0; right:0; top:0; bottom:0; transform:scale(.88) translateY(26px); border-radius:{{ cardRadius }}px; background:{{ peek2bg }}; background-size:cover; background-position:center; box-shadow:0 12px 28px -12px rgba(20,20,20,.3); opacity:.5;"></div>
+              <div ref="{{ peek1Ref }}" style="position:absolute; left:0; right:0; top:0; bottom:0; transform:scale(.94) translateY(13px); border-radius:{{ cardRadius }}px; overflow:hidden; background:{{ peek1bg }}; background-size:cover; background-position:center; box-shadow:0 16px 34px -14px rgba(20,20,20,.35); opacity:.78;">
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,12,16,.82) 0%, rgba(10,12,16,.42) 26%, rgba(10,12,16,0) 50%);"></div>
+                <div style="position:absolute; left:0; right:0; bottom:0; padding:26px 24px 28px;">
+                  <div style="font-size:10.5px; letter-spacing:3px; color:rgba(255,255,255,.78); margin-bottom:9px;">{{ peek1.areaUp }}</div>
+                  <div style="font-size:23px; line-height:1.32; font-weight:500; color:#fff; letter-spacing:.4px; text-wrap:pretty; margin-bottom:14px;">{{ peek1.name }}</div>
+                  <div style="display:flex; align-items:baseline; gap:10px;">
+                    <span style="font-family:'Shippori Mincho',serif; font-size:27px; font-weight:600; color:#fff; letter-spacing:.5px;">{{ peek1.price }}</span>
+                    <span style="font-size:11px; color:rgba(255,255,255,.62);">{{ peek1.layout }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div ref="{{ cardRef }}" style="position:absolute; left:0; right:0; top:0; bottom:0; border-radius:{{ cardRadius }}px; overflow:hidden; background:#1c2d52; box-shadow:0 24px 50px -18px rgba(20,20,20,.45); cursor:grab; touch-action:pan-y; will-change:transform; user-select:none;">
+                <div style="position:absolute; inset:0; background:{{ currBg }}; background-size:cover; background-position:center; pointer-events:none;"></div>
+                <sc-if value="{{ curr.brand }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:11px;">
+                    <div style="font-family:'Cormorant Garamond',serif; font-size:30px; letter-spacing:2px; color:rgba(255,255,255,.9);">List Sotheby's</div>
+                    <div style="width:42px; height:1px; background:rgba(196,168,120,.7);"></div>
+                    <div style="font-size:10px; letter-spacing:5px; color:rgba(196,168,120,.85); text-indent:5px;">LUXURY ESTATES</div>
+                  </div>
+                </sc-if>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,12,16,.82) 0%, rgba(10,12,16,.42) 26%, rgba(10,12,16,0) 50%); pointer-events:none;"></div>
+
+                <div style="position:absolute; top:16px; left:16px; display:flex; align-items:center; gap:7px; padding:6px 12px; background:rgba(12,14,18,.42); backdrop-filter:blur(8px); border-radius:999px; pointer-events:none;">
+                  <span style="font-size:11px; font-weight:700; letter-spacing:1px; color:#fff;">{{ idxLabel }}</span>
+                  <span style="font-size:10px; color:rgba(255,255,255,.6);">/ {{ total }}</span>
+                </div>
+                <sc-if value="{{ isSaved }}" hint-placeholder-val="{{ false }}">
+                  <div style="position:absolute; top:14px; right:14px; width:34px; height:34px; border-radius:50%; background:rgba(12,14,18,.42); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; pointer-events:none;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                  </div>
+                </sc-if>
+
+                <div style="position:absolute; left:0; right:0; bottom:0; padding:26px 24px 28px; pointer-events:none;">
+                  <div style="font-size:10.5px; letter-spacing:3px; color:rgba(255,255,255,.78); margin-bottom:9px;">{{ curr.areaUp }}</div>
+                  <div style="font-size:23px; line-height:1.32; font-weight:500; color:#fff; letter-spacing:.4px; text-wrap:pretty; margin-bottom:14px;">{{ curr.name }}</div>
+                  <div style="display:flex; align-items:baseline; gap:10px;">
+                    <span style="font-family:'Shippori Mincho',serif; font-size:27px; font-weight:600; color:#fff; letter-spacing:.5px;">{{ curr.price }}</span>
+                    <span style="font-size:11px; color:rgba(255,255,255,.62);">{{ curr.layout }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <sc-if value="{{ showHints }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:-4px; top:50%; transform:translateY(-50%); color:rgba(20,20,20,.22); pointer-events:none; animation:rvFadeIn .6s;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div>
+                <div style="position:absolute; right:-4px; top:50%; transform:translateY(-50%); color:rgba(20,20,20,.22); pointer-events:none; animation:rvFadeIn .6s;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+              </sc-if>
+
+              <sc-if value="{{ savedPulse }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:12px; pointer-events:none; animation:rvBadgeIn 1.1s ease forwards; z-index:30;">
+                  <div style="width:84px; height:84px; border-radius:50%; background:rgba(255,255,255,.94); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center; box-shadow:0 14px 36px -10px rgba(20,20,20,.45);">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="{{ accent }}"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                  </div>
+                  <div style="padding:7px 16px; background:rgba(12,14,18,.82); backdrop-filter:blur(6px); border-radius:999px; font-size:12px; font-weight:500; letter-spacing:2px; color:#fff;">{{ t.saved }}</div>
+                </div>
+              </sc-if>
+            </div>
+          </main>
+
+          <div style="flex:none; display:flex; align-items:center; justify-content:center; gap:26px; padding:16px 0 14px;">
+            <button onClick="{{ onSkip }}" aria-label="次へ" style="width:54px; height:54px; border-radius:50%; border:1px solid rgba(20,20,20,.16); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px -8px rgba(20,20,20,.35);" style-active="transform:scale(.92);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a8170" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+            </button>
+            <button ref="{{ saveRef }}" onClick="{{ onSaveTap }}" aria-label="保存" style="width:70px; height:70px; border-radius:50%; border:none; background:{{ accent }}; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 12px 26px -8px rgba(20,20,20,.5);" style-active="transform:scale(.93);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="{{ saveFill }}" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+            <button onClick="{{ onPrev }}" aria-label="前へ戻る" style="width:54px; height:54px; border-radius:50%; border:1px solid rgba(20,20,20,.16); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 6px 16px -8px rgba(20,20,20,.35);" style-active="transform:scale(.92);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v1a5 5 0 0 1-5 5H8"/></svg>
+            </button>
+          </div>
+          </sc-if>
+
+          <!-- SELL mode: property submission form -->
+          <sc-if value="{{ isSell }}" hint-placeholder-val="{{ false }}">
+            <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:10px 24px 28px;">
+              <div style="margin-bottom:22px;">
+                <div style="font-family:'Shippori Mincho',serif; font-size:24px; font-weight:600; color:#141414; letter-spacing:1px; margin-bottom:8px;">{{ sellTitle }}</div>
+                <div style="font-size:12.5px; color:#7c766b; line-height:1.7; text-wrap:pretty;">{{ sellSub }}</div>
+              </div>
+              <sc-if value="{{ sellDone }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex; align-items:center; gap:10px; padding:14px 16px; background:#eef3ea; border:1px solid rgba(111,138,99,.3); margin-bottom:22px; animation:rvMsgIn .3s ease;">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5f7a53" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span style="font-size:12.5px; color:#46603a; line-height:1.6;">{{ sellDoneText }}</span>
+                </div>
+              </sc-if>
+              <div style="display:flex; flex-direction:column; gap:18px;">
+                <div><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fType }}</label><input placeholder="マンション / 戸建 / 土地" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                <div><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fLoc }}</label><input placeholder="東京都 港区 / 軽井沢 …" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                <div style="display:flex; gap:16px;">
+                  <div style="flex:1;"><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fLayout }}</label><input placeholder="3LDK" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                  <div style="flex:1;"><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fSize }}</label><input placeholder="120㎡" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                </div>
+                <div><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fPrice }}</label><input placeholder="¥ —" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                <div style="height:1px; background:rgba(20,20,20,.08); margin:2px 0;"></div>
+                <div><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fName }}</label><input placeholder="—" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                <div><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fContact }}</label><input placeholder="—" style="width:100%; border:none; border-bottom:1px solid rgba(20,20,20,.18); background:none; padding:9px 2px; font-size:14px; color:#141414; outline:none; font-family:inherit;"/></div>
+                <div><label style="display:block; font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:5px;">{{ fNote }}</label><textarea rows="3" placeholder="—" style="width:100%; border:1px solid rgba(20,20,20,.14); background:none; padding:10px; font-size:14px; color:#141414; outline:none; font-family:inherit; resize:none;"></textarea></div>
+              </div>
+              <button onClick="{{ sellSubmit }}" style="margin-top:24px; width:100%; height:52px; border:none; background:#141414; color:#fff; font-size:14px; font-weight:500; letter-spacing:3px; cursor:pointer; font-family:inherit;">{{ sellSubmitL }}</button>
+            </div>
+          </sc-if>
+
+          <!-- RENT mode: two-column rental grid -->
+          <sc-if value="{{ isRent }}" hint-placeholder-val="{{ false }}">
+            <div style="flex:none; padding:4px 24px 12px;">
+              <div style="font-family:'Shippori Mincho',serif; font-size:24px; font-weight:600; color:#141414; letter-spacing:1px;">{{ rentTitle }}</div>
+            </div>
+            <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:2px 24px 24px;">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <sc-for list="{{ rentList }}" as="it" hint-placeholder-count="6">
+                  <div onClick="{{ it.open }}" style="cursor:pointer; border:1px solid rgba(20,20,20,.12);">
+                    <div style="position:relative; width:100%; height:120px; background:{{ it.bg }}; background-size:cover; background-position:center; border-bottom:1px solid rgba(20,20,20,.12);">
+                      <sc-if value="{{ it.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(255,255,255,.88);">List Sotheby's</div></sc-if>
+                    </div>
+                    <div style="padding:10px 11px 12px;">
+                      <div style="font-size:8.5px; letter-spacing:2px; color:#a39a88; margin-bottom:5px;">{{ it.areaUp }}</div>
+                      <div style="font-size:12px; font-weight:500; color:#141414; line-height:1.35; margin-bottom:7px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ it.name }}</div>
+                      <div style="font-family:'Shippori Mincho',serif; font-size:14px; font-weight:600; color:#141414;">{{ it.rent }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+
+          <!-- dropdowns -->
+          <sc-if value="{{ anyMenuOpen }}" hint-placeholder-val="{{ false }}">
+            <div onClick="{{ closeMenus }}" style="position:absolute; inset:0; z-index:70;"></div>
+          </sc-if>
+          <sc-if value="{{ langOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:62px; left:18px; z-index:75; background:#fff; border:1px solid rgba(20,20,20,.1); box-shadow:0 16px 40px -14px rgba(20,20,20,.35); min-width:170px; animation:rvDropIn .18s ease; overflow:hidden;">
+              <sc-for list="{{ langs }}" as="l" hint-placeholder-count="4">
+                <div onClick="{{ l.pick }}" style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:13px 16px; cursor:pointer; border-bottom:1px solid rgba(20,20,20,.05); background:{{ l.bg }};">
+                  <span style="font-size:13px; color:#141414;">{{ l.name }}</span>
+                  <sc-if value="{{ l.active }}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+          <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:62px; right:18px; z-index:75; background:#fff; border:1px solid rgba(20,20,20,.1); box-shadow:0 16px 40px -14px rgba(20,20,20,.35); min-width:160px; animation:rvDropIn .18s ease; overflow:hidden;">
+              <sc-for list="{{ modeItems }}" as="m" hint-placeholder-count="3">
+                <div onClick="{{ m.pick }}" style="display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 16px; cursor:pointer; border-bottom:1px solid rgba(20,20,20,.05); background:{{ m.bg }};">
+                  <span style="font-size:14px; font-weight:500; color:#141414;">{{ m.label }}</span>
+                  <sc-if value="{{ m.active }}" hint-placeholder-val="{{ false }}"><span style="width:6px; height:6px; border-radius:50%; background:#141414;"></span></sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- ================= SEARCH ================= -->
+      <sc-if value="{{ isSearch }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; animation:rvScreenIn .3s ease;">
+          <div style="flex:none; padding:8px 24px 14px;">
+            <div style="font-family:'Shippori Mincho',serif; font-size:26px; font-weight:600; color:#141414; letter-spacing:1px;">{{ t.searchTitle }}</div>
+            <div style="display:flex; align-items:center; gap:10px; margin-top:14px; padding:13px 15px; background:#f4f2ee; border:1px solid rgba(20,20,20,.08);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9b968c" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+              <span style="font-size:13px; color:#9b968c;">{{ t.searchPh }}</span>
+            </div>
+            <div style="margin-top:14px;">
+              <div style="font-size:10px; letter-spacing:2px; color:#a39a88; margin-bottom:9px;">{{ t.popular }}</div>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <sc-for list="{{ popular }}" as="p" hint-placeholder-count="5">
+                  <span style="font-size:12px; color:#141414; padding:7px 13px; border:1px solid rgba(20,20,20,.16);">{{ p }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:6px 24px 20px;">
+            <div style="font-size:10px; letter-spacing:2px; color:#a39a88; margin:8px 0 12px;">{{ listLabel }}</div>
+            <div style="display:flex; flex-direction:column; gap:22px;">
+              <sc-for list="{{ searchList }}" as="it" hint-placeholder-count="4">
+                <div onClick="{{ it.open }}" style="cursor:pointer; border:1px solid rgba(20,20,20,.13);">
+                  <div style="position:relative; width:100%; height:184px; background:{{ it.bg }}; background-size:cover; background-position:center; border-bottom:1px solid rgba(20,20,20,.13);">
+                    <sc-if value="{{ it.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:1px; color:rgba(255,255,255,.88);">List Sotheby's</div></sc-if>
+                    <sc-if value="{{ it.saved }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; top:12px; right:12px; width:30px; height:30px; background:rgba(12,14,18,.45); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div></sc-if>
+                  </div>
+                  <div style="padding:14px 15px 16px;">
+                    <div style="font-size:9.5px; letter-spacing:2.5px; color:#a39a88; margin-bottom:6px;">{{ it.areaUp }}</div>
+                    <div style="font-size:15px; font-weight:500; color:#141414; line-height:1.4; margin-bottom:8px; text-wrap:pretty;">{{ it.name }}</div>
+                    <div style="display:flex; align-items:baseline; justify-content:space-between;">
+                      <span style="font-family:'Shippori Mincho',serif; font-size:19px; font-weight:600; color:#141414;">{{ it.price }}</span>
+                      <span style="font-size:11px; color:#9b968c;">{{ it.layout }}</span>
+                    </div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ================= MESSAGES ================= -->
+      <sc-if value="{{ isMsg }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; animation:rvScreenIn .3s ease;">
+        <sc-if value="{{ aiListShown }}" hint-placeholder-val="{{ true }}">
+          <div style="flex:1; display:flex; flex-direction:column; min-height:0;">
+          <div style="flex:none; padding:8px 24px 12px; border-bottom:1px solid rgba(20,20,20,.07);">
+            <div style="font-family:'Shippori Mincho',serif; font-size:26px; font-weight:600; color:#141414; letter-spacing:1px;">{{ t.msgTitle }}</div>
+          </div>
+          <div class="rv-scroll" style="flex:1; overflow-y:auto;">
+            <div onClick="{{ openAi }}" style="display:flex; gap:13px; align-items:center; padding:18px 24px; border-bottom:1px solid rgba(20,20,20,.06); cursor:pointer;">
+              <div style="flex:none; width:50px; height:50px; border-radius:50%; background:linear-gradient(140deg,#3a3a3a,#0e0e0e); display:flex; align-items:center; justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.6l1.5 4.2 4.2 1.5-4.2 1.5L12 14l-1.5-4.2L6.3 8.3l4.2-1.5z"/><circle cx="18.2" cy="16.4" r="1.5"/><circle cx="6.2" cy="15.6" r="1"/></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:center; gap:7px; margin-bottom:4px;">
+                  <span style="font-size:14px; font-weight:700; color:#141414;">{{ aiName }}</span>
+                  <span style="font-size:8px; font-weight:700; letter-spacing:1.5px; color:#fff; background:#141414; padding:2px 6px; border-radius:3px;">AI</span>
+                </div>
+                <div style="font-size:12.5px; color:#7c766b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ aiSub }}</div>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2beb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+            <sc-for list="{{ threads }}" as="th" hint-placeholder-count="3">
+              <div onClick="{{ th.open }}" style="display:flex; gap:13px; align-items:center; padding:18px 24px; border-bottom:1px solid rgba(20,20,20,.06); cursor:pointer;">
+                <div style="position:relative; flex:none;">
+                  <div style="width:50px; height:50px; border-radius:50%; background:{{ th.bg }}; background-size:cover; background-position:center;"></div>
+                  <sc-if value="{{ th.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:50%; background:linear-gradient(140deg,#26375f,#16243f); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; color:#fff; font-size:18px;">L</div></sc-if>
+                </div>
+                <div style="flex:1; min-width:0;">
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:4px;">
+                    <span style="font-size:14px; font-weight:700; color:#141414; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ th.name }}</span>
+                    <span style="font-size:11px; color:#a39a88; flex:none;">{{ th.time }}</span>
+                  </div>
+                  <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+                    <span style="font-size:12.5px; color:#7c766b; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ th.last }}</span>
+                    <sc-if value="{{ th.unread }}" hint-placeholder-val="{{ false }}"><span style="width:8px; height:8px; border-radius:50%; background:#c0392b; flex:none;"></span></sc-if>
+                  </div>
+                </div>
+              </div>
+            </sc-for>
+            <div style="padding:26px 24px; text-align:center; font-size:11px; color:#c2beb4; letter-spacing:1px;">{{ t.msgFooter }}</div>
+          </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ aiOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1; display:flex; flex-direction:column; min-height:0; position:relative;">
+            <div style="flex:none; display:flex; align-items:center; gap:11px; padding:8px 16px 12px; border-bottom:1px solid rgba(20,20,20,.07);">
+              <button onClick="{{ closeAi }}" aria-label="戻る" style="width:34px; height:34px; border-radius:50%; border:none; background:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div style="width:38px; height:38px; border-radius:50%; background:linear-gradient(140deg,#3a3a3a,#0e0e0e); display:flex; align-items:center; justify-content:center; flex:none;">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.6l1.5 4.2 4.2 1.5-4.2 1.5L12 14l-1.5-4.2L6.3 8.3l4.2-1.5z"/><circle cx="18.2" cy="16.4" r="1.5"/><circle cx="6.2" cy="15.6" r="1"/></svg>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="display:flex; align-items:center; gap:7px;"><span style="font-size:15px; font-weight:700; color:#141414;">{{ aiName }}</span><span style="font-size:8px; font-weight:700; letter-spacing:1.5px; color:#fff; background:#141414; padding:2px 6px; border-radius:3px;">AI</span></div>
+                <div style="font-size:10.5px; color:#7a9a6e; display:flex; align-items:center; gap:4px; margin-top:2px;"><span style="width:6px; height:6px; border-radius:50%; background:#7a9a6e;"></span>オンライン</div>
+              </div>
+            </div>
+
+            <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:18px 16px 8px; display:flex; flex-direction:column; gap:16px;">
+              <sc-for list="{{ aiMsgs }}" as="m" hint-placeholder-count="1">
+                <div style="display:flex; flex-direction:column; gap:9px; animation:rvMsgIn .28s ease;">
+                  <sc-if value="{{ m.isAi }}" hint-placeholder-val="{{ true }}">
+                    <div style="align-self:flex-start; max-width:82%; background:#f4f2ee; padding:11px 14px; border-radius:3px 14px 14px 14px; font-size:13px; line-height:1.65; color:#2c2a26; text-wrap:pretty;">{{ m.text }}</div>
+                  </sc-if>
+                  <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+                    <div style="align-self:flex-end; max-width:82%; background:#141414; color:#fff; padding:11px 14px; border-radius:14px 3px 14px 14px; font-size:13px; line-height:1.65;">{{ m.text }}</div>
+                  </sc-if>
+                  <sc-if value="{{ m.hasRecos }}" hint-placeholder-val="{{ false }}">
+                    <div class="rv-scroll" style="display:flex; gap:11px; overflow-x:auto; padding:2px 0 4px;">
+                      <sc-for list="{{ m.recos }}" as="r" hint-placeholder-count="2">
+                        <div onClick="{{ r.open }}" style="flex:none; width:174px; border:1px solid rgba(20,20,20,.12); cursor:pointer; background:#fff;">
+                          <div style="position:relative; width:100%; height:106px; background:{{ r.bg }}; background-size:cover; background-position:center; border-bottom:1px solid rgba(20,20,20,.12);">
+                            <sc-if value="{{ r.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:14px; color:rgba(255,255,255,.88);">List Sotheby's</div></sc-if>
+                          </div>
+                          <div style="padding:9px 11px 11px;">
+                            <div style="font-size:8.5px; letter-spacing:2px; color:#a39a88; margin-bottom:5px;">{{ r.areaUp }}</div>
+                            <div style="font-size:12px; font-weight:500; color:#141414; line-height:1.35; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ r.name }}</div>
+                            <div style="font-family:'Shippori Mincho',serif; font-size:14px; font-weight:600; color:#141414;">{{ r.price }}</div>
+                          </div>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+
+            <div class="rv-scroll" style="flex:none; display:flex; gap:8px; overflow-x:auto; padding:6px 16px 8px;">
+              <sc-for list="{{ aiChips }}" as="c" hint-placeholder-count="4">
+                <button onClick="{{ c.pick }}" style="flex:none; white-space:nowrap; font-size:12px; color:#141414; background:#fff; border:1px solid rgba(20,20,20,.18); border-radius:999px; padding:7px 13px; cursor:pointer; font-family:inherit;">{{ c.label }}</button>
+              </sc-for>
+            </div>
+
+            <div style="flex:none; display:flex; align-items:center; gap:10px; padding:6px 14px 16px; border-top:1px solid rgba(20,20,20,.07);">
+              <div style="flex:1; display:flex; align-items:center; background:#f4f2ee; border:1px solid rgba(20,20,20,.08); border-radius:999px; padding:0 5px 0 16px;">
+                <input value="{{ aiInput }}" onChange="{{ onAiInput }}" placeholder="{{ aiPh }}" style="flex:1; min-width:0; border:none; background:none; outline:none; font-size:13px; color:#141414; padding:11px 0; font-family:inherit;"/>
+                <button onClick="{{ sendAi }}" aria-label="送信" style="width:34px; height:34px; border-radius:50%; border:none; background:#141414; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg>
+                </button>
+              </div>
+              <button onClick="{{ startVoice }}" aria-label="音声入力" style="width:48px; height:48px; border-radius:50%; border:none; background:#141414; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none; box-shadow:0 8px 20px -8px rgba(20,20,20,.6);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21"/></svg>
+              </button>
+            </div>
+
+            <sc-if value="{{ aiListening }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute; inset:0; z-index:95; background:rgba(255,255,255,.97); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; animation:rvFadeIn .2s;">
+                <div style="position:relative; width:108px; height:108px; display:flex; align-items:center; justify-content:center;">
+                  <span style="position:absolute; inset:0; border-radius:50%; background:rgba(20,20,20,.1); animation:rvPulse 1.5s ease-out infinite;"></span>
+                  <span style="position:absolute; inset:0; border-radius:50%; background:rgba(20,20,20,.1); animation:rvPulse 1.5s ease-out infinite .5s;"></span>
+                  <div style="width:76px; height:76px; border-radius:50%; background:#141414; display:flex; align-items:center; justify-content:center;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="21"/></svg>
+                  </div>
+                </div>
+                <div style="display:flex; gap:5px; align-items:center; height:32px;">
+                  <span style="width:4px; height:32px; background:#141414; border-radius:2px; transform-origin:center; animation:rvBar .9s ease-in-out infinite 0s;"></span>
+                  <span style="width:4px; height:32px; background:#141414; border-radius:2px; transform-origin:center; animation:rvBar .9s ease-in-out infinite .15s;"></span>
+                  <span style="width:4px; height:32px; background:#141414; border-radius:2px; transform-origin:center; animation:rvBar .9s ease-in-out infinite .3s;"></span>
+                  <span style="width:4px; height:32px; background:#141414; border-radius:2px; transform-origin:center; animation:rvBar .9s ease-in-out infinite .45s;"></span>
+                  <span style="width:4px; height:32px; background:#141414; border-radius:2px; transform-origin:center; animation:rvBar .9s ease-in-out infinite .6s;"></span>
+                </div>
+                <div style="font-size:13px; color:#7c766b; letter-spacing:1px;">{{ aiListen }}</div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- ================= FAVORITES ================= -->
+      <sc-if value="{{ isFav }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; animation:rvScreenIn .3s ease;">
+          <div style="flex:none; padding:8px 24px 12px; border-bottom:1px solid rgba(20,20,20,.07);">
+            <div style="font-family:'Shippori Mincho',serif; font-size:26px; font-weight:600; color:#141414; letter-spacing:1px;">{{ t.favTitle }}</div>
+          </div>
+          <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:20px 0 24px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; padding:0 24px; margin-bottom:14px;">
+              <span style="font-size:14px; font-weight:700; color:#141414; letter-spacing:.5px;">{{ t.favSaved }}</span>
+              <span style="font-size:11px; color:#a39a88;">{{ savedLabel }}</span>
+            </div>
+            <sc-if value="{{ savedEmpty }}" hint-placeholder-val="{{ true }}">
+              <div style="margin:0 24px 30px; padding:34px 20px; background:#f6f4f0; display:flex; flex-direction:column; align-items:center; gap:12px; text-align:center;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#cfcabf" stroke-width="1.5" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                <div style="font-size:12.5px; color:#9b968c; line-height:1.8;">{{ t.emptyText }}</div>
+                <button onClick="{{ goHome }}" style="margin-top:4px; padding:9px 20px; background:#141414; color:#fff; border:none; font-size:12px; letter-spacing:2px; cursor:pointer; font-family:inherit;">{{ t.emptyBtn }}</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ savedHas }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:0 24px; margin-bottom:32px;">
+                <sc-for list="{{ savedList }}" as="it" hint-placeholder-count="2">
+                  <div onClick="{{ it.open }}" style="cursor:pointer;">
+                    <div style="position:relative; width:100%; height:118px; background:{{ it.bg }}; background-size:cover; background-position:center;">
+                      <sc-if value="{{ it.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:15px; color:rgba(255,255,255,.88);">List Sotheby's</div></sc-if>
+                      <div style="position:absolute; top:9px; right:9px; width:26px; height:26px; background:rgba(12,14,18,.45); backdrop-filter:blur(6px); display:flex; align-items:center; justify-content:center;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+                    </div>
+                    <div style="padding:9px 1px 0;">
+                      <div style="font-size:12.5px; font-weight:500; color:#141414; line-height:1.35; margin-bottom:5px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ it.name }}</div>
+                      <div style="font-family:'Shippori Mincho',serif; font-size:14px; font-weight:600; color:#141414;">{{ it.price }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <div style="padding:0 24px; margin-bottom:14px;"><span style="font-size:14px; font-weight:700; color:#141414; letter-spacing:.5px;">{{ t.favViewed }}</span></div>
+            <div class="rv-scroll" style="display:flex; gap:13px; overflow-x:auto; padding:0 24px 4px; margin-bottom:32px;">
+              <sc-for list="{{ viewedList }}" as="it" hint-placeholder-count="3">
+                <div onClick="{{ it.open }}" style="flex:none; width:150px; cursor:pointer;">
+                  <div style="position:relative; width:150px; height:104px; background:{{ it.bg }}; background-size:cover; background-position:center;">
+                    <sc-if value="{{ it.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:13px; color:rgba(255,255,255,.88);">List Sotheby's</div></sc-if>
+                  </div>
+                  <div style="padding:8px 1px 0;">
+                    <div style="font-size:11.5px; color:#141414; line-height:1.35; margin-bottom:4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ it.name }}</div>
+                    <div style="font-family:'Shippori Mincho',serif; font-size:13px; font-weight:600; color:#141414;">{{ it.price }}</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="padding:0 24px; margin-bottom:14px;"><span style="font-size:14px; font-weight:700; color:#141414; letter-spacing:.5px;">{{ t.favReco }}</span><span style="font-size:11px; color:#a39a88; margin-left:8px;">{{ t.favRecoSub }}</span></div>
+            <div style="display:flex; flex-direction:column; gap:12px; padding:0 24px;">
+              <sc-for list="{{ recoList }}" as="it" hint-placeholder-count="3">
+                <div onClick="{{ it.open }}" style="display:flex; gap:14px; align-items:center; cursor:pointer;">
+                  <div style="position:relative; width:104px; height:78px; flex:none; background:{{ it.bg }}; background-size:cover; background-position:center;">
+                    <sc-if value="{{ it.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:11px; color:rgba(255,255,255,.88);">List Sotheby's</div></sc-if>
+                  </div>
+                  <div style="flex:1; min-width:0;">
+                    <div style="font-size:9px; letter-spacing:2px; color:#a39a88; margin-bottom:5px;">{{ it.areaUp }}</div>
+                    <div style="font-size:13px; font-weight:500; color:#141414; line-height:1.35; margin-bottom:6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ it.name }}</div>
+                    <div style="font-family:'Shippori Mincho',serif; font-size:15px; font-weight:600; color:#141414;">{{ it.price }}</div>
+                  </div>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2beb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ================= PROFILE ================= -->
+      <sc-if value="{{ isMe }}" hint-placeholder-val="{{ false }}">
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; animation:rvScreenIn .3s ease;">
+          <div class="rv-scroll" style="flex:1; overflow-y:auto;">
+            <div style="padding:14px 24px 22px;">
+              <div style="font-family:'Shippori Mincho',serif; font-size:26px; font-weight:600; color:#141414; letter-spacing:1px; margin-bottom:22px;">{{ t.profTitle }}</div>
+              <div style="display:flex; align-items:center; gap:16px;">
+                <div style="width:62px; height:62px; border-radius:50%; background:linear-gradient(140deg,#2a2a2a,#141414); display:flex; align-items:center; justify-content:center; font-family:'Shippori Mincho',serif; color:#fff; font-size:24px; flex:none;">佐</div>
+                <div style="flex:1; min-width:0;">
+                  <div style="font-size:18px; font-weight:700; color:#141414;">{{ profName }}</div>
+                  <div style="display:inline-flex; align-items:center; gap:6px; margin-top:6px; padding:3px 10px; border:1px solid rgba(20,20,20,.18);">
+                    <span style="width:5px; height:5px; background:#bfa15e; border-radius:50%;"></span>
+                    <span style="font-size:10px; letter-spacing:2px; color:#7c766b;">PRIVÉ MEMBER · No.0042</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex; margin:0 24px 26px; border:1px solid rgba(20,20,20,.1);">
+              <div onClick="{{ goFav }}" style="flex:1; padding:16px 6px; text-align:center; cursor:pointer; border-right:1px solid rgba(20,20,20,.08);">
+                <div style="font-family:'Shippori Mincho',serif; font-size:22px; font-weight:600; color:#141414;">{{ savedCount }}</div>
+                <div style="font-size:10px; color:#9b968c; letter-spacing:1px; margin-top:4px;">{{ t.statSaved }}</div>
+              </div>
+              <div style="flex:1; padding:16px 6px; text-align:center; border-right:1px solid rgba(20,20,20,.08);">
+                <div style="font-family:'Shippori Mincho',serif; font-size:22px; font-weight:600; color:#141414;">{{ viewedCount }}</div>
+                <div style="font-size:10px; color:#9b968c; letter-spacing:1px; margin-top:4px;">{{ t.statViewed }}</div>
+              </div>
+              <div onClick="{{ goMsg }}" style="flex:1; padding:16px 6px; text-align:center; cursor:pointer;">
+                <div style="font-family:'Shippori Mincho',serif; font-size:22px; font-weight:600; color:#141414;">{{ threadCount }}</div>
+                <div style="font-size:10px; color:#9b968c; letter-spacing:1px; margin-top:4px;">{{ t.statInq }}</div>
+              </div>
+            </div>
+            <div style="border-top:1px solid rgba(20,20,20,.07);">
+              <sc-for list="{{ menu }}" as="m" hint-placeholder-count="5">
+                <div style="display:flex; align-items:center; gap:14px; padding:17px 24px; border-bottom:1px solid rgba(20,20,20,.06); cursor:pointer;">
+                  <span style="font-size:14px; color:#141414; flex:1;">{{ m.label }}</span>
+                  <span style="font-size:12px; color:#a39a88;">{{ m.sub }}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c2beb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:26px 24px; text-align:center;"><span style="font-size:12px; color:#c2beb4; letter-spacing:1px; cursor:pointer;">{{ t.logout }}</span></div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ================= BOTTOM NAV ================= -->
+      <nav style="flex:none; display:flex; align-items:stretch; justify-content:space-around; padding:9px 6px 24px; background:#fff; border-top:1px solid rgba(20,20,20,.07); z-index:40;">
+        <button onClick="{{ goHome }}" aria-label="ホーム" style="flex:1; background:none; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0;">
+          <svg width="25" height="25" viewBox="0 0 24 24" fill="{{ cHome }}"><path d="M11.3 2.6 2.6 10a1 1 0 0 0 .65 1.76H4.4V20a1.4 1.4 0 0 0 1.4 1.4h3.3V15.4a1 1 0 0 1 1-1h3.8a1 1 0 0 1 1 1v6h3.3a1.4 1.4 0 0 0 1.4-1.4v-8.24h1.15A1 1 0 0 0 21.4 10l-8.7-7.4a1 1 0 0 0-1.4 0Z"/></svg>
+        </button>
+        <button onClick="{{ goSearch }}" aria-label="探す" style="flex:1; background:none; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0;">
+          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="{{ cSearch }}" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
+        </button>
+        <button onClick="{{ goMsg }}" aria-label="メッセージ" style="flex:1; background:none; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0; position:relative;">
+          <span style="position:relative; display:inline-flex;">
+            <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="{{ cMsg }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8 0 0 1-8.5 8 9.5 9.5 0 0 1-3.9-.8L3 20l1.4-4.1a7.8 7.8 0 0 1-1.4-4.4 8.5 8 0 0 1 8.5-8 8.5 8 0 0 1 8.5 8z"/></svg>
+            <sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ true }}"><span style="position:absolute; top:-2px; right:-2px; width:8px; height:8px; border-radius:50%; background:#c0392b; border:1.5px solid #fff;"></span></sc-if>
+          </span>
+        </button>
+        <button onClick="{{ goFav }}" aria-label="お気に入り" style="flex:1; background:none; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="{{ favFill }}" stroke="{{ cFav }}" stroke-width="2" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </button>
+        <button onClick="{{ goMe }}" aria-label="マイページ" style="flex:1; background:none; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0;">
+          <svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="{{ cMe }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M5 20.5a7 7 0 0 1 14 0"/></svg>
+        </button>
+      </nav>
+
+      <!-- ================= DETAIL SHEET ================= -->
+      <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ onClose }}" style="position:absolute; inset:0; background:rgba(12,14,18,.42); z-index:80; animation:rvFadeIn .25s;"></div>
+        <div style="position:absolute; left:0; right:0; bottom:0; height:90%; background:#fff; border-radius:30px 30px 46px 46px; z-index:90; overflow:hidden; display:flex; flex-direction:column; animation:rvSheetUp .42s cubic-bezier(.22,.61,.36,1); box-shadow:0 -20px 50px -20px rgba(12,14,18,.4);">
+          <div style="flex:none; position:relative; height:46%;">
+            <div style="position:absolute; inset:0; background:{{ currBg2 }}; background-size:cover; background-position:center;"></div>
+            <sc-if value="{{ curr.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:30px; letter-spacing:1px; color:rgba(255,255,255,.9);">List Sotheby's</div></sc-if>
+            <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(12,14,18,.28), rgba(12,14,18,0) 35%);"></div>
+            <button onClick="{{ onClose }}" aria-label="閉じる" style="position:absolute; top:16px; right:16px; width:36px; height:36px; border-radius:50%; border:none; background:rgba(12,14,18,.5); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; cursor:pointer;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+            <div style="position:absolute; top:14px; left:50%; transform:translateX(-50%); width:42px; height:4px; border-radius:2px; background:rgba(255,255,255,.7);"></div>
+          </div>
+          <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:24px 26px 30px;">
+            <div style="font-size:10.5px; letter-spacing:3px; color:#a39a88; margin-bottom:8px;">{{ curr.areaUp }}</div>
+            <div style="font-size:22px; line-height:1.4; font-weight:500; color:#141414; letter-spacing:.3px; text-wrap:pretty; margin-bottom:6px;">{{ curr.name }}</div>
+            <div style="font-size:13px; color:#7c766b; margin-bottom:18px;">{{ curr.area }}</div>
+            <div style="display:flex; align-items:baseline; justify-content:space-between; padding:18px 0; border-top:1px solid rgba(20,20,20,.1); border-bottom:1px solid rgba(20,20,20,.1);">
+              <span style="font-size:12px; color:#9b968c; letter-spacing:1px;">{{ t.refPrice }}</span>
+              <span style="font-family:'Shippori Mincho',serif; font-size:28px; font-weight:600; color:#141414;">{{ curr.price }}</span>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr 1fr; margin:22px 0 24px;">
+              <sc-for list="{{ curr.facts }}" as="f" hint-placeholder-count="3">
+                <div style="text-align:center; padding:4px 6px; border-right:1px solid rgba(20,20,20,.08);">
+                  <div style="font-size:10px; letter-spacing:1.5px; color:#a39a88; margin-bottom:7px;">{{ f.0 }}</div>
+                  <div style="font-size:15px; font-weight:700; color:#141414;">{{ f.1 }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <p style="font-size:13.5px; line-height:1.95; color:#54504a; margin:0 0 22px; text-wrap:pretty;">{{ curr.summary }}</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:26px;">
+              <sc-for list="{{ curr.tags }}" as="tg" hint-placeholder-count="3">
+                <span style="font-size:11.5px; color:#141414; padding:7px 13px; border:1px solid rgba(20,20,20,.16);">{{ tg }}</span>
+              </sc-for>
+            </div>
+            <div style="display:flex; align-items:center; gap:13px; padding:16px; background:#f6f4f0; margin-bottom:18px;">
+              <div style="width:46px; height:46px; border-radius:50%; background:linear-gradient(140deg,#2a2a2a,#141414); display:flex; align-items:center; justify-content:center; font-family:'Shippori Mincho',serif; color:#fff; font-size:18px; flex:none;">{{ curr.agentInitial }}</div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:14px; font-weight:700; color:#141414;">{{ curr.agentName }}</div>
+                <div style="font-size:11px; color:#a39a88; margin-top:2px;">{{ curr.agentTitle }}</div>
+              </div>
+              <div style="font-size:10px; color:#6f8a63; display:flex; align-items:center; gap:4px;"><span style="width:6px; height:6px; border-radius:50%; background:#6f8a63; display:inline-block;"></span>{{ curr.agentReply }}</div>
+            </div>
+            <div style="display:flex; gap:12px;">
+              <button onClick="{{ onSaveTap }}" style="flex:none; width:54px; height:52px; border:1px solid rgba(20,20,20,.16); background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="{{ saveFillDark }}" stroke="{{ accent }}" stroke-width="1.7" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+              <button onClick="{{ goMsg }}" style="flex:1; height:52px; border:none; background:#141414; color:#fff; font-size:14px; font-weight:500; letter-spacing:3px; cursor:pointer; font-family:inherit;">{{ t.reserve }}</button>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 520, &quot;height&quot;: 920 },
+  &quot;accentColor&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#141414&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;スタイル&quot;, &quot;options&quot;: [&quot;#141414&quot;, &quot;#1c2d52&quot;, &quot;#9a6a3c&quot;] },
+  &quot;cardRadius&quot;: { &quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 24, &quot;min&quot;: 0, &quot;max&quot;: 40, &quot;step&quot;: 2, &quot;unit&quot;: &quot;px&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;スタイル&quot; },
+  &quot;showSwipeHints&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;操作&quot; }
+}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.cardRef = React.createRef();
+    this.peek1Ref = React.createRef();
+    this.peek2Ref = React.createRef();
+    this.saveRef = React.createRef();
+    this.state = { tab:'home', index:0, saved:{}, savedPulse:false, detailOpen:false, hintsDismissed:false, lang:'ja', mode:'buy', langOpen:false, menuOpen:false, aiOpen:false, aiMsgs:[], aiListening:false, aiInput:'', sellDone:false, detailId:null };
+    this.DATA = [
+      { id:'karuizawa-farmhouse', name:'旧軽井沢 モダンファームハウス', area:'長野県 北佐久郡 軽井沢町', areaUp:'KARUIZAWA · NAGANO',
+        price:'4億2,000万円', layout:'5LDK ・ 建物 410.50㎡', img:null, img2:null,
+        facts:[['間取り','5LDK'],['建物面積','410.50㎡'],['土地面積','1,650㎡']],
+        tags:['旧軽井沢','アウトドアキッチン','吹抜けリビング'],
+        summary:'旧軽井沢の緑に抱かれたモダンファームハウス。黒のメタルルーフと白の板張りが調和した外観、石積みのアウトドアキッチンとペルゴラを備えた中庭が、上質なリゾートライフを演出します。',
+        agent:'安井 弥月', agentTitle:'リゾート プロパティ アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'akiya-ocean', name:'秋谷 Private Ocean View 邸宅', area:'神奈川県 横須賀市 秋谷', areaUp:'HAYAMA · KANAGAWA',
+        price:'11億円', layout:'6LDK ・ 372.89㎡', img:'images/p-exterior.jpg', img2:'images/p-terrace.jpg',
+        facts:[['間取り','6LDK'],['建物面積','372.89㎡'],['土地面積','963㎡']],
+        tags:['180°オーシャンビュー','富士山 眺望','城戸崎建築研究室 設計'],
+        summary:'秋谷の高台に佇む、城戸崎建築研究室設計のプライベート邸宅。リビング・ベッドルームからは180度、富士山・海・サンセットを一望。約33㎡以上の開放的なウッドデッキを備えます。',
+        agent:'志水 銀太', agentTitle:'リゾート プロパティ アドバイザー', agentReply:'通常2時間以内に返信' },
+      { id:'waiea-3401', name:'Waiea #3401（ワード・ヴィレッジ）', area:'アメリカ ハワイ ホノルル', areaUp:'HONOLULU · HAWAII',
+        price:'$9,900,000', layout:'3BR ・ 281.78㎡', img:'images/waiea-3401-1.jpg', img2:'images/waiea-3401-2.jpg',
+        facts:[['ベッドルーム','3BR'],['専有面積','281.78㎡'],['所在階','34F']],
+        tags:['ワード・ヴィレッジ','オーシャンフロント','専用エレベーター'],
+        summary:'カカアコ「ワード・ヴィレッジ」の旗艦タワー Waiea。James K.M. Cheng 設計、専用エレベーターでアクセスする高層階の3ベッドルーム・レジデンス。アラモアナ・ビーチパークを望むフロントロウに位置します。',
+        agent:'浦田 美和', agentTitle:'インターナショナル アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'kawaguchiko', name:'河口湖VILLA（富士山ビュー）', area:'山梨県 南都留郡 鳴沢村', areaUp:'MT. FUJI · YAMANASHI',
+        price:'2億9,430万円', layout:'4LDK ・ 191.90㎡', img:'images/p-ocean.jpg', img2:'images/p-ocean.jpg',
+        facts:[['間取り','4LDK'],['建物面積','191.90㎡'],['土地面積','9,715㎡']],
+        tags:['富士山ビュー','ゴルフ場 隣接','テニスコート付'],
+        summary:'富士山を望む贅沢な眺望が魅力の別荘。敷地面積9,715㎡の広大な庭にはアートが配され、4LDK＋地下室＋大型ウッドデッキを備えます。ゴルフ場隣接・テニスコート付の好立地です。',
+        agent:'小川 益生', agentTitle:'リゾート プロパティ アドバイザー', agentReply:'通常2時間以内に返信' },
+      { id:'akiya-tei', name:'秋谷 邸宅（約48帖LDK）', area:'神奈川県 横須賀市 秋谷', areaUp:'HAYAMA · KANAGAWA',
+        price:'7億円', layout:'3LDK ・ 354.52㎡', img:'images/p-living.jpg', img2:'images/p-terrace.jpg',
+        facts:[['間取り','3LDK'],['建物面積','354.52㎡'],['土地面積','1,155㎡']],
+        tags:['約48帖LDK','海・森の大型テラス','ホームエレベーター'],
+        summary:'海沿いに映えるモダンな邸宅。海側・森側の双方に大型テラスを配した約48帖のLDKは圧倒的な開放感。全居室10帖超で各室に専用バスルームを完備した、ホテルライクなプライベート設計です。',
+        agent:'大嶋 諒太', agentTitle:'リゾート プロパティ アドバイザー', agentReply:'通常2時間以内に返信' },
+      { id:'waiea-2903', name:'Waiea #2903（コーナーユニット）', area:'アメリカ ハワイ ホノルル', areaUp:'HONOLULU · HAWAII',
+        price:'$4,500,000', layout:'2BR ・ 134.43㎡', img:'images/waiea-2903-1.jpg', img2:'images/waiea-2903-2.jpg',
+        facts:[['ベッドルーム','2BR'],['専有面積','134.43㎡'],['所在階','29F']],
+        tags:['コーナーユニット','シティ＆オーシャンビュー','24時間コンシェルジュ'],
+        summary:'旗艦タワー Waiea の29階コーナーユニット。床から天井まで広がるガラス窓から自然光がたっぷり差し込み、シティ＆オーシャンビューを楽しめる2ベッドルーム・レジデンスです。',
+        agent:'浦田 美和', agentTitle:'インターナショナル アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'chigataki', name:'千ヶ滝Villa B号棟', area:'長野県 北佐久郡 軽井沢町', areaUp:'KARUIZAWA · NAGANO',
+        price:'3億円', layout:'3LDK ・ 257.62㎡', img:'images/imagereader.webp', img2:null,
+        facts:[['間取り','3LDK'],['建物面積','257.62㎡'],['土地面積','1,528㎡']],
+        tags:['浅間山 眺望','インナーガレージ','2025年新築'],
+        summary:'浅間山を望む、黒を基調としたモダンでスタイリッシュな新築Villa。広々とした芝生の庭とウッドデッキが屋内外をつなぎ、薪ストーブのある山荘の趣。ホームエレベーターも完備します。',
+        agent:'安井 弥月', agentTitle:'リゾート プロパティ アドバイザー', agentReply:'通常2時間以内に返信' },
+      { id:'kamakura-house', name:'鎌倉 デザイナーズ戸建て', area:'神奈川県 鎌倉市 由比ガ浜', areaUp:'KAMAKURA · KANAGAWA',
+        price:'1億2,800万円', layout:'3LDK ・ 建物 124.50㎡', img:null, img2:'images/download-7.jpg',
+        facts:[['間取り','3LDK'],['建物面積','124.50㎡'],['土地面積','148㎡']],
+        tags:['由比ガ浜 徒歩8分','吹抜けリビング','カリフォルニアスタイル'],
+        summary:'湘南の暮らしを楽しむ、吹抜けと無垢材フローリングが心地よいデザイナーズ戸建て。大開口の掃き出し窓から光と風が抜け、ウッドデッキへとつながります。',
+        agent:'大嶋 諒太', agentTitle:'プロパティ アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'tokyo-reno', name:'表参道 リノベーションレジデンス', area:'東京都 渋谷区 神宮前', areaUp:'OMOTESANDO · TOKYO',
+        price:'1億8,500万円', layout:'2LDK ・ 専有 78.40㎡', img:'images/download-9.jpg', img2:'images/download-9.jpg',
+        facts:[['間取り','2LDK'],['専有面積','78.40㎡'],['所在階','7F']],
+        tags:['表参道 徒歩5分','フルリノベ済','ウォルナット内装'],
+        summary:'表参道の邸宅街に佇むヴィンテージマンションを上質にフルリノベーション。ウォルナットの天井と石目調キッチンが、落ち着いたホテルライクな空間を演出します。',
+        agent:'宮本 渉', agentTitle:'プロパティ アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'aoyama-residence', name:'南青山 ザ・レジデンス', area:'東京都 港区 南青山', areaUp:'MINATO · TOKYO',
+        price:'3億2,000万円', layout:'2LDK ・ 専有 96.20㎡', img:'images/download-11.jpg', img2:'images/download-11.jpg',
+        facts:[['間取り','2LDK'],['専有面積','96.20㎡'],['所在階','5F']],
+        tags:['表参道 徒歩6分','ルーフテラス付','コンシェルジュ'],
+        summary:'緑あふれる南青山に誕生した低層プレミアムレジデンス。各住戸に奥行きあるバルコニーを備え、最上階にはルーフテラスを擁する全28邸の希少な住まいです。',
+        agent:'宮本 渉', agentTitle:'プロパティ アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'phuket-villa', name:'Phuket Pool Villa（バンタオ）', area:'タイ プーケット バンタオ', areaUp:'PHUKET · THAILAND',
+        price:'$3,200,000', layout:'4BR ・ 建物 480㎡', img:'images/download-14.jpg', img2:'images/download-13.jpg',
+        facts:[['ベッドルーム','4BR'],['建物面積','480㎡'],['土地面積','1,120㎡']],
+        tags:['プライベートプール','ラグーナ地区','24時間セキュリティ'],
+        summary:'タイ伝統建築と現代的な快適性を融合したプールヴィラ。リビングからプール、そしてトロピカルガーデンへと視線が抜ける、開放的なリゾートライフを実現します。',
+        agent:'モーガン', agentTitle:'インターナショナル アドバイザー', agentReply:'通常2時間以内に返信' },
+      { id:'samui-beach', name:'Samui Beachfront Residence', area:'タイ サムイ島 チャウエン', areaUp:'KOH SAMUI · THAILAND',
+        price:'$1,150,000', layout:'2BR ・ 専有 138㎡', img:'images/download-14.jpg', img2:'images/download-13.jpg',
+        facts:[['ベッドルーム','2BR'],['専有面積','138㎡'],['竣工','2026年']],
+        tags:['ビーチフロント','インフィニティプール','賃貸運用可'],
+        summary:'白砂のビーチに面したローライズ・ブランデッドレジデンス。一面の海とヤシ並木を望むテラス付き住戸で、オーナー不在時はホテル運用による収益も期待できます。',
+        agent:'髙野 友紀子', agentTitle:'インターナショナル アドバイザー', agentReply:'通常2時間以内に返信' },
+      { id:'dubai-object1', name:'Object 1（ドバイ JVT）', area:'UAE ドバイ JVT', areaUp:'DUBAI · UAE',
+        price:'$1,850,000', layout:'2BR ・ 専有 110㎡', img:'images/download-15.jpg', img2:'images/download-15.jpg',
+        facts:[['ベッドルーム','2BR'],['専有面積','110㎡'],['竣工','2027年']],
+        tags:['ダウンタウン10分','利回り重視','フルファシリティ'],
+        summary:'ドバイ屈指のデベロッパーが手掛ける大規模ブランデッドタワー。プール、ジム、ラウンジなど充実の共用施設を備え、安定した賃貸需要が見込める投資向けレジデンスです。',
+        agent:'浦田 美和', agentTitle:'インターナショナル アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'kahala-estate', name:'Kahala Oceanfront Estate', area:'アメリカ ハワイ カハラ', areaUp:'KAHALA · HAWAII',
+        price:'$22,000,000', layout:'6BR ・ 建物 720㎡', img:'images/download-18.jpg', img2:'images/download-20.jpg',
+        facts:[['ベッドルーム','6BR'],['建物面積','720㎡'],['土地面積','2,000㎡']],
+        tags:['ビーチフロント','インフィニティプール','ゲストハウス付'],
+        summary:'カハラの邸宅街、ビーチに直結するモダンなオーシャンフロント邸宅。海へと開かれた大開口とインフィニティプールが、ハワイの空と海を住まいに取り込みます。',
+        agent:'浦田 美和', agentTitle:'インターナショナル アドバイザー', agentReply:'通常1時間以内に返信' },
+      { id:'diamondhead-estate', name:'Diamond Head 邸宅', area:'アメリカ ハワイ ダイヤモンドヘッド', areaUp:'DIAMOND HEAD · HAWAII',
+        price:'$16,500,000', layout:'5BR ・ 建物 560㎡', img:'images/download-16.jpg', img2:'images/download-19.jpg',
+        facts:[['ベッドルーム','5BR'],['建物面積','560㎡'],['土地面積','2,400㎡']],
+        tags:['ダイヤモンドヘッド','スパニッシュ様式','サーキュラードライブ'],
+        summary:'ダイヤモンドヘッドの麓、太平洋を望む高台に建つスパニッシュ様式の邸宅。赤瓦の屋根とサーキュラードライブが格調高い佇まいを生み、広大な芝生の庭を備えます。',
+        agent:'志水 銀太', agentTitle:'インターナショナル アドバイザー', agentReply:'通常2時間以内に返信' },
+    ];
+    // Home swipe deck excludes listings whose only photos are low-resolution (would look blurry full-bleed)
+    this.DECK_EXCLUDE = new Set(['waiea-3401','waiea-2903','tokyo-reno','kahala-estate','diamondhead-estate']);
+    this.DECK = this.DATA.filter(d => !this.DECK_EXCLUDE.has(d.id));
+    this.VIEWED = ['kawaguchiko','waiea-2903','akiya-tei','tokyo-reno'];
+    this.RECO   = ['kahala-estate','phuket-villa','dubai-object1'];
+    this.THREADS = [
+      { id:'akiya-ocean', last:'内見のご希望日をお知らせください。', time:'14:20', unread:true },
+      { id:'phuket-villa', last:'プールヴィラの動画をお送りします。', time:'昨日', unread:true },
+      { id:'waiea-3401', last:'ハワイ物件の英文資料をお送りしました。', time:'月曜', unread:false },
+    ];
+    this.POPULAR = ['軽井沢','葉山','東京 港区','ハワイ','プーケット','ドバイ'];
+    this.AICHIPS = { ja:['海が見える','2億円以下','ハワイ','プール付き','軽井沢','東京のマンション'], zh:['看得见海','2亿円以下','夏威夷','带泳池','轻井泽','东京公寓'], en:['Ocean view','Under ¥200M','Hawaii','With a pool','Karuizawa','Tokyo condo'], th:['วิวทะเล','ต่ำกว่า ¥200M','ฮาวาย','มีสระว่ายน้ำ','คารุอิซาวะ','คอนโดโตเกียว'] };
+    this.AIVOICE = { ja:['海が見えるリゾート物件を探しています','予算2億円以内のマンションはありますか','ハワイのコンドミニアムが見たい','プール付きのヴィラを探しています','軽井沢の別荘を見せてください'], zh:['想找能看到海的度假房产','有没有2亿円以内的公寓','想看夏威夷的公寓','在找带泳池的别墅','想看轻井泽的别墅'], en:['Looking for an ocean-view resort home','Any condos under ¥200M?','Show me condos in Hawaii','I want a villa with a pool','Show me villas in Karuizawa'], th:['กำลังหาบ้านพักตากอากาศวิวทะเล','มีคอนโดต่ำกว่า ¥200M ไหม','ขอดูคอนโดในฮาวาย','อยากได้วิลล่าพร้อมสระว่ายน้ำ','ขอดูวิลล่าในคารุอิซาวะ'] };
+    this.LANGS = [ {code:'ja',short:'JA',name:'日本語'}, {code:'zh',short:'中',name:'中文'}, {code:'en',short:'EN',name:'English'}, {code:'th',short:'TH',name:'ภาษาไทย'} ];
+    this.I18N = {
+      ja:{ modeBuy:'買う',modeSell:'売る',modeRent:'借りる', searchTitle:'探す',searchPh:'エリア・物件名で検索',popular:'人気の検索',listLabel:'物件一覧',count:'件',
+        msgTitle:'メッセージ',msgFooter:'アドバイザーが通常1〜2時間以内に返信します', favTitle:'お気に入り',favSaved:'保存した物件',favViewed:'最近見た物件',favReco:'おすすめ物件',favRecoSub:'あなたの保存履歴から',emptyText:'ホームでスワイプしながら気になる物件を保存しましょう',emptyBtn:'物件を探す',
+        profTitle:'マイページ',statSaved:'保存',statViewed:'閲覧',statInq:'お問合せ',logout:'ログアウト', m_savedSearch:'保存した検索条件',m_history:'閲覧履歴',m_notice:'お知らせ',m_account:'アカウント設定',m_lang:'言語',
+        refPrice:'参考価格',reserve:'内見を予約',saved:'保存しました', nameSuffix:' 様',
+        aiName:'AI コンシェルジュ', aiSub:'ご希望を話しかけてください', aiGreet:'こんにちは。理想の住まいについて、エリア・ご予算・暮らし方など、なんでもお聞かせください。最適な物件をご提案します。', aiPh:'メッセージを入力…', aiListen:'お聞きしています…', aiPre:'ご希望に近い物件を', aiSuf:'件お選びしました。', aiNone:'条件に合う物件が見つかりませんでした。別の条件でお試しください。',
+        sellTitle:'売却・査定のご相談', sellSub:'物件情報をご入力ください。担当アドバイザーが査定いたします。', sellDone:'査定のご依頼を受け付けました。担当者よりご連絡いたします。', sellSubmitL:'査定を依頼する', fType:'物件種別', fLoc:'所在地', fLayout:'間取り', fSize:'面積', fPrice:'ご希望価格', fName:'お名前', fContact:'連絡先（メール / 電話）', fNote:'ご要望・備考', rentTitle:'賃貸物件', perMonth:'/ 月' },
+      zh:{ modeBuy:'买房',modeSell:'卖房',modeRent:'租赁', searchTitle:'寻找',searchPh:'按地区·房产名搜索',popular:'热门搜索',listLabel:'房源列表',count:'套',
+        msgTitle:'消息',msgFooter:'顾问通常会在 1〜2 小时内回复', favTitle:'收藏',favSaved:'已保存房源',favViewed:'最近浏览',favReco:'推荐房源',favRecoSub:'基于您的收藏记录',emptyText:'在首页滑动，收藏您感兴趣的房源',emptyBtn:'浏览房源',
+        profTitle:'我的',statSaved:'收藏',statViewed:'浏览',statInq:'咨询',logout:'退出登录', m_savedSearch:'已保存的搜索',m_history:'浏览记录',m_notice:'通知',m_account:'账户设置',m_lang:'语言',
+        refPrice:'参考价格',reserve:'预约看房',saved:'已收藏', nameSuffix:' 先生',
+        aiName:'AI 管家', aiSub:'请告诉我您的需求', aiGreet:'您好。请告诉我您理想的住所——地区、预算或生活方式，我会为您推荐最合适的房源。', aiPh:'输入消息…', aiListen:'正在聆听…', aiPre:'为您挑选了', aiSuf:'套合适的房源。', aiNone:'未找到符合条件的房源，请尝试其他条件。',
+        sellTitle:'出售 / 估价咨询', sellSub:'请填写房产信息，专属顾问将为您评估。', sellDone:'已收到您的估价申请，顾问将尽快与您联系。', sellSubmitL:'申请估价', fType:'房产类型', fLoc:'所在地区', fLayout:'户型', fSize:'面积', fPrice:'期望价格', fName:'您的称呼', fContact:'联系方式（邮箱 / 电话）', fNote:'需求 / 备注', rentTitle:'租赁房源', perMonth:'/ 月' },
+      en:{ modeBuy:'Buy',modeSell:'Sell',modeRent:'Rent', searchTitle:'Search',searchPh:'Search by area or name',popular:'Popular',listLabel:'Listings',count:'',
+        msgTitle:'Messages',msgFooter:'An advisor usually replies within 1–2 hours', favTitle:'Saved',favSaved:'Saved homes',favViewed:'Recently viewed',favReco:'Recommended',favRecoSub:'Based on your saves',emptyText:'Swipe on Home and save the homes you love',emptyBtn:'Browse homes',
+        profTitle:'Account',statSaved:'Saved',statViewed:'Viewed',statInq:'Inquiries',logout:'Sign out', m_savedSearch:'Saved searches',m_history:'History',m_notice:'Notifications',m_account:'Account',m_lang:'Language',
+        refPrice:'Guide price',reserve:'Book a viewing',saved:'Saved', nameSuffix:'',
+        aiName:'AI Concierge', aiSub:'Tell me what you’re looking for', aiGreet:'Hello. Tell me about your ideal home — location, budget, or lifestyle — and I’ll suggest the best matches.', aiPh:'Type a message…', aiListen:'Listening…', aiPre:'I found ', aiSuf:' homes for you.', aiNone:'No matching homes found. Try different criteria.',
+        sellTitle:'Sell / Valuation', sellSub:'Enter your property details and an advisor will appraise it.', sellDone:'Your request has been received. An advisor will be in touch shortly.', sellSubmitL:'Request a valuation', fType:'Property type', fLoc:'Location', fLayout:'Layout', fSize:'Size', fPrice:'Target price', fName:'Your name', fContact:'Contact (email / phone)', fNote:'Notes', rentTitle:'Rentals', perMonth:'/ mo' },
+      th:{ modeBuy:'ซื้อ',modeSell:'ขาย',modeRent:'เช่า', searchTitle:'ค้นหา',searchPh:'ค้นหาตามพื้นที่หรือชื่อ',popular:'ยอดนิยม',listLabel:'รายการ',count:'',
+        msgTitle:'ข้อความ',msgFooter:'ที่ปรึกษามักตอบกลับภายใน 1–2 ชั่วโมง', favTitle:'บันทึก',favSaved:'บ้านที่บันทึก',favViewed:'ดูล่าสุด',favReco:'แนะนำ',favRecoSub:'จากรายการที่คุณบันทึก',emptyText:'ปัดที่หน้าแรกเพื่อบันทึกบ้านที่คุณชอบ',emptyBtn:'ดูบ้าน',
+        profTitle:'บัญชี',statSaved:'บันทึก',statViewed:'ดู',statInq:'สอบถาม',logout:'ออกจากระบบ', m_savedSearch:'การค้นหาที่บันทึก',m_history:'ประวัติ',m_notice:'การแจ้งเตือน',m_account:'บัญชี',m_lang:'ภาษา',
+        refPrice:'ราคาประเมิน',reserve:'จองเข้าชม',saved:'บันทึกแล้ว', nameSuffix:'',
+        aiName:'AI Concierge', aiSub:'บอกสิ่งที่คุณกำลังมองหา', aiGreet:'สวัสดีค่ะ บอกเกี่ยวกับบ้านในฝันของคุณ — ทำเล งบประมาณ หรือไลฟ์สไตล์ แล้วฉันจะแนะนำที่ดีที่สุดให้', aiPh:'พิมพ์ข้อความ…', aiListen:'กำลังฟัง…', aiPre:'พบ ', aiSuf:' รายการสำหรับคุณ', aiNone:'ไม่พบบ้านที่ตรงเงื่อนไข ลองเปลี่ยนเงื่อนไขดูนะคะ',
+        sellTitle:'ขาย / ประเมินราคา', sellSub:'กรอกข้อมูลทรัพย์ แล้วที่ปรึกษาจะประเมินให้', sellDone:'รับคำขอแล้ว ที่ปรึกษาจะติดต่อกลับโดยเร็ว', sellSubmitL:'ขอประเมินราคา', fType:'ประเภท', fLoc:'ทำเล', fLayout:'แปลน', fSize:'ขนาด', fPrice:'ราคาที่ต้องการ', fName:'ชื่อ', fContact:'ติดต่อ (อีเมล / โทร)', fNote:'หมายเหตุ', rentTitle:'เช่า', perMonth:'/ เดือน' },
+    };
+  }
+
+  componentDidMount(){
+    this.DATA.forEach(d => { if(d.img){ const a=new Image(); a.src=d.img; } if(d.img2 && d.img2!==d.img){ const b=new Image(); b.src=d.img2; } });
+    this._bindCardDrag();
+  }
+  componentDidUpdate(){ this._bindCardDrag(); }
+  _bindCardDrag(){
+    const el = this.cardRef && this.cardRef.current;
+    if(!el || el === this._boundCard) return;
+    if(this._boundCard){
+      this._boundCard.removeEventListener('pointerdown', this.onDown);
+      this._boundCard.removeEventListener('pointermove', this.onMove);
+      this._boundCard.removeEventListener('pointerup', this.onUp);
+      this._boundCard.removeEventListener('pointercancel', this.onUp);
+    }
+    el.addEventListener('pointerdown', this.onDown);
+    el.addEventListener('pointermove', this.onMove);
+    el.addEventListener('pointerup', this.onUp);
+    el.addEventListener('pointercancel', this.onUp);
+    this._boundCard = el;
+  }
+
+  byId(id){ return this.DATA.find(p => p.id === id); }
+  wrap(i){ const n=this.DECK.length; return ((i%n)+n)%n; }
+  card(i){ return this.DECK[this.wrap(i)]; }
+  currentId(){ return (this.state.detailOpen && this.state.detailId) ? this.state.detailId : this.card(this.state.index).id; }
+
+  resetPeeks(instant){
+    const t = instant?'none':'transform .44s cubic-bezier(.22,.68,.28,1), opacity .36s';
+    const p1=this.peek1Ref.current; if(p1){ p1.style.transition=t; p1.style.transform='scale(.94) translateY(13px)'; p1.style.opacity='.78'; }
+    const p2=this.peek2Ref.current; if(p2){ p2.style.transition=t; p2.style.transform='scale(.88) translateY(26px)'; p2.style.opacity='.5'; }
+  }
+  resetStack(instant){
+    const el=this.cardRef.current;
+    if(el){ el.style.transition = instant?'none':'transform .44s cubic-bezier(.22,.68,.28,1), opacity .36s'; el.style.transform='translate(0px,0px) rotate(0deg)'; el.style.opacity='1'; }
+    this.resetPeeks(instant);
+  }
+  // settle the freshly-promoted card in without any opacity dip (no flicker)
+  enterCard(){
+    const el=this.cardRef.current; if(!el) return;
+    el.style.transition='none'; el.style.transform='scale(.985)'; el.style.opacity='1';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ const c=this.cardRef.current; if(!c) return; c.style.transition='transform .26s cubic-bezier(.2,.7,.25,1)'; c.style.transform='translate(0px,0px) rotate(0deg)'; }));
+  }
+
+  onDown = (e) => {
+    if(this.state.detailOpen || this.state.langOpen || this.state.menuOpen) return;
+    this.dragging=true; this.dx=0; this.dy=0; this.moved=false; this.startX=e.clientX; this.startY=e.clientY;
+    const el=this.cardRef.current; if(el){ el.style.transition='none'; el.style.cursor='grabbing'; }
+    const p1=this.peek1Ref.current; if(p1) p1.style.transition='none';
+    const p2=this.peek2Ref.current; if(p2) p2.style.transition='none';
+    if(e.target.setPointerCapture){ try{ e.target.setPointerCapture(e.pointerId); }catch(_){} }
+    if(!this.state.hintsDismissed) this.setState({ hintsDismissed:true });
+  };
+  onMove = (e) => {
+    if(!this.dragging) return;
+    const dx=e.clientX-this.startX, dy=e.clientY-this.startY; this.dx=dx; this.dy=dy;
+    const dist=Math.hypot(dx,dy); if(dist>6) this.moved=true;
+    const el=this.cardRef.current; if(el){ el.style.transform=`translate(${dx}px,${dy}px) rotate(${(dx/28).toFixed(2)}deg)`; el.style.opacity=String(Math.max(.72, 1-dist/1100)); }
+    const prog=Math.min(dist/130, 1);
+    const p1=this.peek1Ref.current; if(p1){ p1.style.transform=`scale(${(.94+.06*prog).toFixed(3)}) translateY(${(13*(1-prog)).toFixed(1)}px)`; p1.style.opacity=(.78+.22*prog).toFixed(2); }
+    const p2=this.peek2Ref.current; if(p2){ p2.style.transform=`scale(${(.88+.06*prog).toFixed(3)}) translateY(${(26-13*prog).toFixed(1)}px)`; p2.style.opacity=(.5+.28*prog).toFixed(2); }
+  };
+  onUp = () => {
+    if(!this.dragging) return; this.dragging=false;
+    const el=this.cardRef.current; if(el) el.style.cursor='grab';
+    const dx=this.dx||0, dy=this.dy||0, dist=Math.hypot(dx,dy);
+    if(!this.moved){ if(!this.state.detailOpen) this.setState({ detailOpen:true }); this.dx=this.dy=0; return; }
+    if(dist>=88){ this.commitNext(dx,dy); }
+    else { this.resetStack(false); }
+    this.dx=this.dy=0;
+  };
+  // dismiss the top card along the drag vector (any angle) and promote the next
+  commitNext(dx, dy){
+    const dist=Math.hypot(dx,dy)||1, ux=dx/dist, uy=dy/dist;
+    const el=this.cardRef.current;
+    if(el){ el.style.transition='transform .32s cubic-bezier(.36,0,.5,1), opacity .3s'; el.style.transform=`translate(${(ux*640).toFixed(0)}px,${(uy*700).toFixed(0)}px) rotate(${(ux*16).toFixed(1)}deg)`; el.style.opacity='0'; }
+    const p1=this.peek1Ref.current; if(p1){ p1.style.transition='transform .32s cubic-bezier(.2,.7,.25,1), opacity .3s'; p1.style.transform='scale(1) translateY(0px)'; p1.style.opacity='1'; }
+    const p2=this.peek2Ref.current; if(p2){ p2.style.transition='transform .32s cubic-bezier(.2,.7,.25,1), opacity .3s'; p2.style.transform='scale(.94) translateY(13px)'; p2.style.opacity='.78'; }
+    setTimeout(()=> this.setState(s=>({ index:this.wrap(s.index+1) }), ()=>{ this.resetStack(true); this.enterCard(); }), 300);
+  }
+  // go back: current slides off to the right, previous slides in from the left
+  commitPrev(){
+    const el=this.cardRef.current;
+    if(el){ el.style.transition='transform .3s cubic-bezier(.36,0,.5,1), opacity .28s'; el.style.transform='translate(380px,0px) rotate(12deg)'; el.style.opacity='0'; }
+    setTimeout(()=> this.setState(s=>({ index:this.wrap(s.index-1) }), ()=>{
+      this.resetPeeks(true);
+      const c=this.cardRef.current;
+      if(c){ c.style.transition='none'; c.style.transform='translateX(-360px) rotate(-9deg)'; c.style.opacity='1';
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{ const k=this.cardRef.current; if(!k) return; k.style.transition='transform .4s cubic-bezier(.22,.68,.28,1)'; k.style.transform='translate(0px,0px) rotate(0deg)'; })); }
+    }), 280);
+  }
+  onSkip = () => { if(!this.state.detailOpen) this.commitNext(-1, 0.06); };
+  onPrev = () => { if(!this.state.detailOpen) this.commitPrev(); };
+
+  onSaveTap = () => {
+    const id=this.currentId(); const already=!!this.state.saved[id];
+    this.setState({ saved:{ ...this.state.saved, [id]: !already } });
+    if(!already){
+      if(this.saveRef.current){ this.saveRef.current.style.animation='rvPop .5s ease'; setTimeout(()=>{ if(this.saveRef.current) this.saveRef.current.style.animation=''; },520); }
+      clearTimeout(this._pulseT); this.setState({ savedPulse:true });
+      this._pulseT=setTimeout(()=> this.setState({ savedPulse:false }), 1150);
+    }
+  };
+  onDetail = () => this.setState({ detailOpen:true });
+  onClose  = () => this.setState({ detailOpen:false });
+  setTab = (t) => this.setState({ tab:t, detailOpen:false, langOpen:false, menuOpen:false, aiOpen:false, aiListening:false });
+
+  priceVal(p){
+    if(p.indexOf('$')>=0){ return (parseFloat(p.replace(/[^0-9.]/g,''))||0)*155; }
+    let jpy=0; const am=p.match(/([\d,.]+)\s*億/); if(am) jpy+=parseFloat(am[1].replace(/,/g,''))*1e8;
+    const wm=p.match(/([\d,.]+)\s*万/); if(wm) jpy+=parseFloat(wm[1].replace(/,/g,''))*1e4;
+    if(!am&&!wm) jpy=parseFloat(p.replace(/[^0-9.]/g,''))||0;
+    return jpy;
+  }
+  matchListings(q){
+    const s=(q||'').toLowerCase();
+    const intents=[
+      { t:/海|オーシャン|ビーチ|ocean|beach|sea|看得见海|海景|临海|ทะเล|วิวทะเล/i, m:(b)=>/ocean|beach|秋谷|葉山|hawaii|kahala|diamond|waiea|samui|オーシャン|ビーチ|富士|河口湖/.test(b) },
+      { t:/ハワイ|hawaii|夏威夷|ฮาวาย/i, m:(b)=>/hawaii|honolulu|kahala|diamond|waiea/.test(b) },
+      { t:/タイ|プーケット|サムイ|thailand|phuket|samui|泰国|泰|ภูเก็ต|สมุย|ไทย/i, m:(b)=>/thailand|phuket|samui/.test(b) },
+      { t:/ドバイ|dubai|迪拜|ดูไบ/i, m:(b)=>/dubai|object/.test(b) },
+      { t:/軽井沢|karuizawa|轻井泽|คารุอิซาวะ/i, m:(b)=>/karuizawa|軽井沢|千ヶ滝|farmhouse/.test(b) },
+      { t:/富士|fuji|ฟูจิ/i, m:(b)=>/富士|fuji|河口湖/.test(b) },
+      { t:/プール|ヴィラ|別荘|別墅|pool|villa|带泳池|สระ|วิลล่า/i, m:(b)=>/pool|villa|プール|ヴィラ|別荘|farmhouse|estate|邸宅/.test(b) },
+      { t:/タワー|マンション|レジデンス|コンド|condo|apartment|tower|公寓|residence|คอนโด/i, m:(b)=>/residence|レジデンス|タワー|condo|object|waiea|専有|階|reno|マンション/.test(b) },
+      { t:/戸建|一戸建|デザイナーズ|house|detached|独栋|บ้าน/i, m:(b)=>/戸建|デザイナーズ|house|farmhouse|邸宅|estate|villa/.test(b) },
+      { t:/東京|港区|表参道|南青山|tokyo|东京|โตเกียว/i, m:(b)=>/tokyo|東京|港区|表参道|南青山|omotesando|minato/.test(b) },
+      { t:/2億|2亿|以下|under|安い|便宜|予算|budget|ต่ำกว่า|งบ/i, m:(b,c)=>this.priceVal(c.price)<=2.1e8 },
+    ];
+    const active=intents.filter(i=>i.t.test(s));
+    if(!active.length) return this.RECO.slice(0,3);
+    const scored=this.DATA.map(c=>{ const b=(c.name+' '+c.area+' '+c.areaUp+' '+c.tags.join(' ')+' '+c.layout).toLowerCase(); let sc=0; active.forEach(i=>{ if(i.m(b,c)) sc++; }); return {id:c.id, sc}; }).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc);
+    const ids=scored.slice(0,3).map(x=>x.id);
+    return ids.length?ids:this.RECO.slice(0,3);
+  }
+  openAi = () => { const T=this.I18N[this.state.lang]; const msgs=this.state.aiMsgs.length?this.state.aiMsgs:[{role:'ai',text:T.aiGreet,recos:[]}]; this.setState({ aiOpen:true, aiMsgs:msgs }); };
+  closeAi = () => this.setState({ aiOpen:false, aiListening:false });
+  pushAndAnswer = (text) => {
+    if(!text || !text.trim()) return;
+    const T=this.I18N[this.state.lang]; const ids=this.matchListings(text);
+    this.setState(s=>({ aiMsgs:[...s.aiMsgs, {role:'user', text:text.trim(), recos:[]}], aiInput:'' }));
+    clearTimeout(this._aiT);
+    this._aiT=setTimeout(()=>{ const reply = ids.length ? (T.aiPre+ids.length+T.aiSuf) : T.aiNone; this.setState(s=>({ aiMsgs:[...s.aiMsgs, {role:'ai', text:reply, recos:ids}] })); }, 650);
+  };
+  onAiInput = (e) => this.setState({ aiInput:e.target.value });
+  sendAi = () => this.pushAndAnswer(this.state.aiInput);
+  askChip = (text) => this.pushAndAnswer(text);
+  startVoice = () => {
+    if(this.state.aiListening) return;
+    this.setState({ aiListening:true });
+    const v=this.AIVOICE[this.state.lang]||this.AIVOICE.ja; this._vi=(this._vi||0); const phrase=v[this._vi%v.length]; this._vi++;
+    clearTimeout(this._voiceT);
+    this._voiceT=setTimeout(()=>{ this.setState({ aiListening:false }); this.pushAndAnswer(phrase); }, 1700);
+  };
+  toggleLang = () => this.setState(s=>({ langOpen:!s.langOpen, menuOpen:false }));
+  toggleMenu = () => this.setState(s=>({ menuOpen:!s.menuOpen, langOpen:false }));
+  closeMenus = () => this.setState({ langOpen:false, menuOpen:false });
+  setLang = (code) => this.setState({ lang:code, langOpen:false });
+  setMode = (m) => this.setState({ mode:m, menuOpen:false, sellDone:false });
+  sellSubmit = () => this.setState({ sellDone:true });
+
+  cardBg(c){ return c && c.img ? `url('${c.img}') center/cover no-repeat` : 'linear-gradient(150deg,#26375f 0%,#1c2d52 55%,#16243f 100%)'; }
+  present(c){
+    return { id:c.id, name:c.name, area:c.area, areaUp:c.areaUp, price:c.price, layout:c.layout,
+      brand:!c.img, bg:this.cardBg(c), saved:!!this.state.saved[c.id],
+      open:()=> this.setState({ detailId:c.id, detailOpen:true, langOpen:false, menuOpen:false }) };
+  }
+  jumpTo(id){ this.setState({ detailId:id, detailOpen:true, langOpen:false, menuOpen:false }); }
+
+  renderVals(){
+    const accent = this.props.accentColor ?? '#141414';
+    const radius = this.props.cardRadius ?? 24;
+    const showHintsPref = this.props.showSwipeHints ?? true;
+    const tab=this.state.tab, lang=this.state.lang, T=this.I18N[lang];
+    const i=this.state.index, deckCurr=this.card(i), p1=this.card(i+1), p2=this.card(i+2);
+    const curr=(this.state.detailOpen && this.state.detailId) ? this.byId(this.state.detailId) : deckCurr;
+    const peekBg=(c)=> c.img ? `url('${c.img}') center/cover` : 'linear-gradient(150deg,#26375f,#16243f)';
+    const isSaved=!!this.state.saved[curr.id];
+    const savedCount=Object.values(this.state.saved).filter(Boolean).length;
+    const pad2=(n)=>String(n+1).padStart(2,'0');
+    const ACT='#141414', INACT='#c2beb4';
+    const savedData=this.DATA.filter(d=>this.state.saved[d.id]);
+    const langCur=this.LANGS.find(l=>l.code===lang)||this.LANGS[0];
+
+    return {
+      accent, cardRadius:radius,
+      saveFill: isSaved ? '#fff' : 'none',
+      saveFillDark: isSaved ? accent : 'none',
+      t:{ saved:T.saved, searchTitle:T.searchTitle, searchPh:T.searchPh, popular:T.popular, msgTitle:T.msgTitle, msgFooter:T.msgFooter,
+        favTitle:T.favTitle, favSaved:T.favSaved, favViewed:T.favViewed, favReco:T.favReco, favRecoSub:T.favRecoSub, emptyText:T.emptyText, emptyBtn:T.emptyBtn,
+        profTitle:T.profTitle, statSaved:T.statSaved, statViewed:T.statViewed, statInq:T.statInq, logout:T.logout, refPrice:T.refPrice, reserve:T.reserve },
+      // tabs
+      isHome:tab==='home', isSearch:tab==='search', isMsg:tab==='messages', isFav:tab==='favorites', isMe:tab==='profile',
+      cHome:tab==='home'?ACT:INACT, cSearch:tab==='search'?ACT:INACT, cMsg:tab==='messages'?ACT:INACT, cFav:tab==='favorites'?ACT:INACT, cMe:tab==='profile'?ACT:INACT,
+      favFill:tab==='favorites'?ACT:'none', hasUnread:this.THREADS.some(t=>t.unread),
+      goHome:()=>this.setTab('home'), goSearch:()=>this.setTab('search'), goMsg:()=>this.setTab('messages'), goFav:()=>this.setTab('favorites'), goMe:()=>this.setTab('profile'),
+      // home modes (buy / sell / rent)
+      isBuy:this.state.mode==='buy', isSell:this.state.mode==='sell', isRent:this.state.mode==='rent',
+      sellDone:this.state.sellDone, sellSubmit:this.sellSubmit,
+      sellTitle:T.sellTitle, sellSub:T.sellSub, sellDoneText:T.sellDone, sellSubmitL:T.sellSubmitL,
+      fType:T.fType, fLoc:T.fLoc, fLayout:T.fLayout, fSize:T.fSize, fPrice:T.fPrice, fName:T.fName, fContact:T.fContact, fNote:T.fNote,
+      rentTitle:T.rentTitle,
+      rentList:this.DATA.map(c=>{ const p=this.present(c); p.rent='¥'+Math.round(this.priceVal(c.price)*0.003/1e4).toLocaleString()+'万 '+T.perMonth; return p; }),
+      // AI concierge
+      aiOpen:this.state.aiOpen, aiListShown:!this.state.aiOpen, aiListening:this.state.aiListening, aiInput:this.state.aiInput,
+      aiName:T.aiName, aiSub:T.aiSub, aiPh:T.aiPh, aiListen:T.aiListen,
+      aiChips:(this.AICHIPS[lang]||this.AICHIPS.ja).map(c=>({ label:c, pick:()=>this.askChip(c) })),
+      aiMsgs:this.state.aiMsgs.map(m=>({ isAi:m.role==='ai', isUser:m.role==='user', text:m.text, hasRecos:!!(m.recos&&m.recos.length), recos:(m.recos||[]).map(id=>this.present(this.byId(id))) })),
+      openAi:this.openAi, closeAi:this.closeAi, onAiInput:this.onAiInput, sendAi:this.sendAi, startVoice:this.startVoice,
+      // header menus
+      langCode:langCur.short, langOpen:this.state.langOpen, menuOpen:this.state.menuOpen, anyMenuOpen:this.state.langOpen||this.state.menuOpen,
+      toggleLang:this.toggleLang, toggleMenu:this.toggleMenu, closeMenus:this.closeMenus,
+      langs:this.LANGS.map(l=>({ name:l.name, active:l.code===lang, bg:l.code===lang?'#f4f2ee':'#fff', pick:()=>this.setLang(l.code) })),
+      modeItems:[ {key:'buy',label:T.modeBuy},{key:'sell',label:T.modeSell},{key:'rent',label:T.modeRent} ].map(m=>({ label:m.label, active:m.key===this.state.mode, bg:m.key===this.state.mode?'#f4f2ee':'#fff', pick:()=>this.setMode(m.key) })),
+      // home card
+      curr:{ ...curr, hasImg:!!curr.img, brand:!curr.img, agentName:curr.agent, agentTitle:curr.agentTitle, agentReply:curr.agentReply, agentInitial:(curr.agent||'').trim().charAt(0) },
+      currBg:this.cardBg(curr), currBg2:this.cardBg({ img:curr.img2 }), peek1bg:peekBg(p1), peek2bg:peekBg(p2),
+      peek1:{ areaUp:p1.areaUp, name:p1.name, price:p1.price, layout:p1.layout },
+      idxLabel:pad2(this.wrap(i)), total:pad2(this.DECK.length-1), isSaved, savedCount:String(savedCount),
+      savedPulse:this.state.savedPulse, detailOpen:this.state.detailOpen,
+      showHints: showHintsPref && !this.state.hintsDismissed && tab==='home' && !this.state.detailOpen,
+      cardRef:this.cardRef, peek1Ref:this.peek1Ref, peek2Ref:this.peek2Ref, saveRef:this.saveRef,
+      onDown:this.onDown, onMove:this.onMove, onUp:this.onUp, onSkip:this.onSkip, onPrev:this.onPrev, onSaveTap:this.onSaveTap, onDetail:this.onDetail, onClose:this.onClose,
+      // search
+      searchList:this.DATA.map(c=>this.present(c)), popular:this.POPULAR, listLabel:`${T.listLabel} · ${this.DATA.length}${T.count}`,
+      // messages
+      threads:this.THREADS.map(t=>{ const p=this.byId(t.id); return { name:p.name, last:t.last, time:t.time, unread:t.unread, brand:!p.img, bg:this.cardBg(p), open:()=>this.jumpTo(t.id) }; }),
+      // favorites
+      savedList:savedData.map(c=>this.present(c)), savedEmpty:savedCount===0, savedHas:savedCount>0, savedLabel:`${savedCount}${T.count}`,
+      viewedList:this.VIEWED.map(id=>this.present(this.byId(id))), recoList:this.RECO.map(id=>this.present(this.byId(id))),
+      // profile
+      profName:'佐藤 健一'+T.nameSuffix, viewedCount:String(this.VIEWED.length), threadCount:String(this.THREADS.length),
+      menu:[ {label:T.m_savedSearch,sub:'3'},{label:T.m_history,sub:''},{label:T.m_notice,sub:''},{label:T.m_account,sub:''},{label:T.m_lang,sub:langCur.name} ],
+    };
+  }
+}
+</script>
+</body>
+</html>

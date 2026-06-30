@@ -40,3 +40,23 @@ python3 -m http.server 8099
   retrieved in full from the design project (the import API caps file content at 256 KiB and these
   originals exceed it), so their listings use the brand‑gradient fallback. All other photos are
   complete; a few oversized ones were re‑encoded to fit.
+
+## Run with Node
+
+A zero‑dependency Node static server is included:
+
+```bash
+npm start          # serves on http://localhost:3000 (PORT env overridable)
+```
+
+Routes: `/` and `/standalone` serve the two builds; everything else is served
+from disk with correct content types.
+
+## Deploy to Vercel
+
+The repo is a static site, configured by `vercel.json` (`framework: null`, no
+build step, output = repo root). On a push, Vercel serves the files directly
+from its CDN — `index.html` (a copy of the main app) is served at `/`, so the
+deployment URL opens the app immediately. `/standalone` serves the thumbnail
+build. No Node process runs on Vercel; `server.js` / `npm start` is for local
+use or any Node host (Render, Railway, etc.).
