@@ -14,15 +14,12 @@
 <style>
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html,body{ margin:0; height:100%; }
-  /* Full-bleed on phones (no device frame); centered column on wider screens. */
-  .rv-stage{ width:100%; min-height:100vh; min-height:100dvh; display:flex; justify-content:center; background:#f4f2ee; }
-  .rv-phone{ position:relative; width:100%; max-width:480px; min-height:100vh; min-height:100dvh; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; }
+  /* Full-bleed everywhere — no device frame, no rounded corners. On wide screens
+     it stays a centered column on a plain white background (no visible border). */
+  .rv-stage{ width:100%; height:100vh; height:100dvh; display:flex; justify-content:center; background:#ffffff; }
+  .rv-phone{ position:relative; width:100%; max-width:480px; height:100vh; height:100dvh; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; }
   .rv-statusbar{ flex:none; height:env(safe-area-inset-top, 0px); min-height:10px; }
   .rv-nav-safe{ padding-bottom:calc(18px + env(safe-area-inset-bottom, 0px)); }
-  @media (min-width:520px){
-    .rv-stage{ align-items:center; padding:24px 16px; background:radial-gradient(120% 90% at 50% 0%, #efece6 0%, #e4e0d8 55%, #d9d4ca 100%); }
-    .rv-phone{ min-height:0; height:min(856px, calc(100dvh - 48px)); border-radius:18px; box-shadow:0 30px 70px -30px rgba(20,20,20,.45), 0 6px 20px rgba(0,0,0,.08); }
-  }
   .rv-scroll::-webkit-scrollbar{ width:0; height:0; }
   .rv-gallery{ scrollbar-width:none; }
   .rv-gallery::-webkit-scrollbar{ width:0; height:0; }
@@ -587,7 +584,7 @@
       <!-- ================= DETAIL SHEET ================= -->
       <sc-if value="{{ detailOpen }}" hint-placeholder-val="{{ false }}">
         <div onClick="{{ onClose }}" style="position:absolute; inset:0; background:rgba(12,14,18,.42); z-index:80; animation:rvFadeIn .25s;"></div>
-        <div style="position:absolute; left:0; right:0; bottom:0; height:90%; background:#fff; border-radius:30px 30px 46px 46px; z-index:90; overflow:hidden; display:flex; flex-direction:column; animation:rvSheetUp .42s cubic-bezier(.22,.61,.36,1); box-shadow:0 -20px 50px -20px rgba(12,14,18,.4);">
+        <div style="position:absolute; left:0; right:0; bottom:0; height:90%; background:#fff; border-radius:30px 30px 0 0; z-index:90; overflow:hidden; display:flex; flex-direction:column; animation:rvSheetUp .42s cubic-bezier(.22,.61,.36,1); box-shadow:0 -20px 50px -20px rgba(12,14,18,.4);">
           <div style="flex:none; position:relative; height:46%;">
             <div class="rv-gallery" style="position:absolute; inset:0; display:flex; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;">
               <sc-for list="{{ currGallery }}" as="g" hint-placeholder-count="3">
