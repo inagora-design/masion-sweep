@@ -21,9 +21,46 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 API = "https://list-sir.jp/api/apiHandller.php"
-WANT = int(os.environ.get("WANT", "18"))   # number of listings to publish
+WANT = int(os.environ.get("WANT", "30"))   # number of listings to publish
 GALLERY_MAX = int(os.environ.get("GALLERY", "5"))  # photos per listing (gallery)
-MAX_PAGES = 8
+MAX_PAGES = int(os.environ.get("MAX_PAGES", "26"))  # scan whole inventory (~1218 / 50)
+
+# Popular-search chips shown in the app (clickable → runs the search).
+POPULAR_CHIPS = ["軽井沢", "ニセコ", "葉山", "東京都 港区", "ハワイ"]
+
+# Areas to guarantee from the list-sir.jp crawl so those chips return results;
+# (chip label, address-substring to match, min listings to guarantee).
+# ハワイ is not on list-sir.jp — it is injected from HAWAII_EXTRA (vendored images).
+HOT_AREAS = [
+    ("軽井沢",      "軽井沢", 4),
+    ("東京都 港区",  "港区",   4),
+    ("葉山",        "葉山",   3),
+    ("ニセコ",      "ニセコ", 3),
+]
+
+# Hawaii listings (List Sotheby's Waiea, Honolulu) — photos vendored in
+# tools/hawaii/ because list-hawaii.jp is bot-protected. Source data supplied by
+# the user (MAISON design export). area contains "ハワイ" so search matches.
+HAWAII_EXTRA = [
+    {"id": "hi-waiea-2903", "name": "Waiea 1118 アラモアナ #2903",
+     "area": "米国 ハワイ ホノルル カカアコ", "areaUp": "HONOLULU · HAWAII",
+     "price": "9億8,000万円", "layout": "3BR ・ 200㎡",
+     "facts": [["間取り", "3BR"], ["専有面積", "200㎡"], ["築年", "2016年"]],
+     "tags": ["アラモアナセンター 近接", "オーシャンビュー", "コンシェルジュ"],
+     "summary": "カカアコの名門レジデンスWaiea、29階のオーシャンビュー邸。",
+     "agent": "佐藤 健一", "agentTitle": "インターナショナル アドバイザー",
+     "agentReply": "通常1時間以内に返信",
+     "_src": ["waiea-2903-1.jpg", "waiea-2903-2.jpg"]},
+    {"id": "hi-waiea-3401", "name": "Waiea 1118 アラモアナ #3401",
+     "area": "米国 ハワイ ホノルル カカアコ", "areaUp": "HONOLULU · HAWAII",
+     "price": "12億8,000万円", "layout": "3BR ・ 230㎡",
+     "facts": [["間取り", "3BR"], ["専有面積", "230㎡"], ["築年", "2016年"]],
+     "tags": ["ダイヤモンドヘッド眺望", "オーシャンビュー", "最上級"],
+     "summary": "Waiea 34階、ダイヤモンドヘッドと太平洋を見渡す最上級邸。",
+     "agent": "佐藤 健一", "agentTitle": "インターナショナル アドバイザー",
+     "agentReply": "通常1時間以内に返信",
+     "_src": ["waiea-3401-1.jpg", "waiea-3401-2.jpg"]},
+]
 
 PREF = {
  "北海道":"HOKKAIDO","青森県":"AOMORI","岩手県":"IWATE","宮城県":"MIYAGI","秋田県":"AKITA",
@@ -43,7 +80,8 @@ CITY = {
  "江東区":"KOTO","大田区":"OTA","杉並区":"SUGINAMI","豊島区":"TOSHIMA","中野区":"NAKANO",
  "練馬区":"NERIMA","板橋区":"ITABASHI","北区":"KITA","荒川区":"ARAKAWA","足立区":"ADACHI",
  "葛飾区":"KATSUSHIKA","江戸川区":"EDOGAWA","墨田区":"SUMIDA",
- "横浜市":"YOKOHAMA","鎌倉市":"KAMAKURA","藤沢市":"FUJISAWA","逗子市":"ZUSHI",
+ "横浜市":"YOKOHAMA","鎌倉市":"KAMAKURA","藤沢市":"FUJISAWA","逗子市":"ZUSHI","葉山町":"HAYAMA",
+ "軽井沢町":"KARUIZAWA","ニセコ町":"NISEKO","倶知安町":"KUTCHAN","恩納村":"ONNA","今帰仁村":"NAKIJIN","北谷町":"CHATAN",
  "軽井沢町":"KARUIZAWA","箱根町":"HAKONE","熱海市":"ATAMI","京都市":"KYOTO","大阪市":"OSAKA",
  "福岡市":"FUKUOKA","札幌市":"SAPPORO","那覇市":"NAHA","ニセコ町":"NISEKO","つくば市":"TSUKUBA",
 }
@@ -57,6 +95,17 @@ AGENTS = [
 ]
 
 
+def _safe_loads(s):
+    """list-sir.jp sometimes emits invalid JSON escapes (e.g. a bare \\u with
+    fewer than 4 hex digits) in free-text fields. Double any backslash that
+    doesn't start a valid JSON escape so json.loads can parse the page."""
+    try:
+        return json.loads(s)
+    except json.JSONDecodeError:
+        fixed = re.sub(r'\\(?=u(?![0-9a-fA-F]{4})|[^"\\/bfnrtu])', r'\\\\', s)
+        return json.loads(fixed)
+
+
 def curl_json(url):
     p = subprocess.run(
         ["curl", "-s", "--max-time", "45", "-A", UA,
@@ -64,7 +113,7 @@ def curl_json(url):
          "-H", "Accept: application/json, text/javascript, */*; q=0.01",
          "-H", "Referer: https://list-sir.jp/buy/", url],
         capture_output=True)
-    return json.loads(p.stdout.decode("utf-8", "replace"))
+    return _safe_loads(p.stdout.decode("utf-8", "replace"))
 
 
 def curl_download(url, dest):
@@ -277,28 +326,67 @@ def write_dataset(listings):
     print(f"  wrote data/listings.json ({len(out)} listings)")
 
 
+def _blob(item):
+    r = item.get("readable") or {}
+    return (r.get("pref_name", "") + r.get("shiku_name", "") + (r.get("address") or ""))
+
+
 def main():
     print(f"Fetching listings from {API} ...")
-    listings, page = [], 1
-    seen = set()
-    while len(listings) < WANT and page <= MAX_PAGES:
-        url = f"{API}?type=multiple&search_type=all&search_sort=&page={page}&item_count=12&control=2"
+    # 1) Scan the inventory and keep every candidate that has real photos.
+    candidates, seen_bk, page = [], set(), 1
+    while page <= MAX_PAGES:
+        url = f"{API}?type=multiple&search_type=all&search_sort=&page={page}&item_count=50&control=2"
         try:
             d = curl_json(url)
         except Exception as e:
-            print("  page", page, "fetch error:", e); break
+            print("  page", page, "parse error (skipped):", str(e)[:50]); page += 1; continue
         data = d.get("data") or []
-        print(f"  page {page}: {len(data)} items (total {d.get('totalCount')})")
         if not data:
             break
-        for i, item in enumerate(data):
-            L = build_listing(item, len(listings))
-            if L and L["id"] not in seen:
-                seen.add(L["id"]); listings.append(L)
-                if len(listings) >= WANT:
-                    break
+        kept = 0
+        for item in data:
+            v = item.get("value") or {}
+            bk = v.get("bk_id") or v.get("bk_cd")
+            if not bk or bk in seen_bk or not usable_photos(item):
+                continue
+            seen_bk.add(bk); candidates.append(item); kept += 1
+        print(f"  page {page}: {len(data)} items, +{kept} (total {d.get('totalCount')})")
+        if len(data) < 50:
+            break
         page += 1
-        time.sleep(0.3)
+        time.sleep(0.2)
+    print(f"Collected {len(candidates)} candidates with real photos.")
+
+    # 2) Select: first guarantee the popular-area quotas, then fill to WANT.
+    chosen, chosen_bk = [], set()
+
+    def take(item):
+        v = item.get("value") or {}
+        bk = v.get("bk_id") or v.get("bk_cd")
+        if bk in chosen_bk:
+            return False
+        chosen_bk.add(bk); chosen.append(item); return True
+
+    for chip, match, quota in HOT_AREAS:
+        cnt = 0
+        for item in candidates:
+            if cnt >= quota:
+                break
+            if match in _blob(item) and take(item):
+                cnt += 1
+        print(f"  hot '{chip}': {cnt}/{quota}")
+    for item in candidates:
+        if len(chosen) >= WANT:
+            break
+        take(item)
+
+    # 3) Build listing objects (agent rotates by index).
+    listings, seen = [], set()
+    for item in chosen:
+        L = build_listing(item, len(listings))
+        if L and L["id"] not in seen:
+            seen.add(L["id"]); listings.append(L)
 
     print(f"Selected {len(listings)} listings with real photos.")
     os.makedirs(os.path.join(ROOT, "images"), exist_ok=True)
@@ -329,6 +417,28 @@ def main():
         print(f"  {L['id']:<18} {len(locs)} photo(s)  {L['name'][:24]}")
     listings = [L for L in listings if L["img"]]
     print(f"{len(listings)} listings have downloaded photos.")
+
+    # ---- inject Hawaii listings (vendored photos, not on list-sir.jp) ----
+    hwdir = os.path.join(ROOT, "tools", "hawaii")
+    for H in HAWAII_EXTRA:
+        locs = []
+        for n, src in enumerate(H["_src"], 1):
+            srcpath = os.path.join(hwdir, src)
+            if not os.path.exists(srcpath):
+                continue
+            rel = f"{H['id']}-{n}.jpg"
+            if process_image(srcpath, os.path.join(ROOT, "images", rel), 1280, 82):
+                process_image(srcpath, os.path.join(ROOT, "min", rel), 560, 80)
+                locs.append(rel)
+        if not locs:
+            print(f"  ! Hawaii {H['id']}: no images found in tools/hawaii/"); continue
+        rec = {k: v for k, v in H.items() if k != "_src"}
+        rec["gallery"] = [f"images/{x}" for x in locs]
+        rec["img"] = f"images/{locs[0]}"
+        rec["img2"] = f"images/{locs[1]}" if len(locs) > 1 else f"images/{locs[0]}"
+        listings.append(rec)
+        print(f"  {H['id']:<18} {len(locs)} photo(s)  {H['name'][:24]}  (Hawaii)")
+    print(f"{len(listings)} listings total (incl. Hawaii).")
 
     # ---- emit canonical machine-readable dataset (data/listings.json) ----
     # This is the source of truth other apps (e.g. ../masion-feed) consume.
@@ -374,9 +484,8 @@ def main():
             lines.append("      { id:%s, last:%s, time:%s, unread:%s }," % (
                 esc(tid), esc(msgs[k]), esc(times[k]), unread[k]))
         lines.append("    ];")
-        # POPULAR: fixed aspirational hot-search keywords (clickable search chips)
-        pops = ["軽井沢", "ニセコ", "葉山", "東京都 港区", "ハワイ"]
-        lines.append("    this.POPULAR = [" + ",".join(esc(p) for p in pops) + "];")
+        # POPULAR: clickable hot-search chips — every one has real inventory
+        lines.append("    this.POPULAR = [" + ",".join(esc(p) for p in POPULAR_CHIPS) + "];")
         return "\n".join(lines) + "\n    "
 
     def splice(path, prefix):
