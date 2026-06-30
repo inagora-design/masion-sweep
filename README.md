@@ -43,20 +43,32 @@ python3 -m http.server 8099
 
 ## Run with Node
 
-A zero‑dependency Node static server is included:
+A single zero‑dependency request handler (`lib/static.js`) backs both local
+hosting and the Vercel deploy.
 
 ```bash
-npm start          # serves on http://localhost:3000 (PORT env overridable)
+npm start          # http://localhost:3000  (PORT env overridable)
 ```
 
-Routes: `/` and `/standalone` serve the two builds; everything else is served
-from disk with correct content types.
+`/` serves the main app, `/standalone` serves the thumbnail build, and every
+other path is read from disk with the correct content type.
 
-## Deploy to Vercel
+## Deploy to Vercel (dynamic / Serverless Function)
 
-The repo is a static site, configured by `vercel.json` (`framework: null`, no
-build step, output = repo root). On a push, Vercel serves the files directly
-from its CDN — `index.html` (a copy of the main app) is served at `/`, so the
-deployment URL opens the app immediately. `/standalone` serves the thumbnail
-build. No Node process runs on Vercel; `server.js` / `npm start` is for local
-use or any Node host (Render, Railway, etc.).
+This is configured as a **dynamic** Vercel deployment, not a plain static
+upload:
+
+- `api/index.js` is a Vercel **Node Serverless Function** that wraps the same
+  `lib/static.js` handler.
+- `vercel.json` rewrites every route (`/(.*)`) to that function, so the Node
+  code generates the response for `/` and `/standalone`.
+- Rewrites only apply when no static file matches, so real assets
+  (`support.js`, `images/`, `min/`, the `.dc.html` files) are still served
+  straight from Vercel's CDN — the function only handles the entry routes.
+- `includeFiles: "*.dc.html"` bundles the two HTML builds into the function so
+  it can read them at request time.
+
+On push, Vercel builds the function and the site is live: opening the
+deployment URL runs the Node function, which returns the app (its `support.js`
+runtime then loads React 18 from unpkg). The same handler runs locally via
+`npm start` and on any other Node host.
