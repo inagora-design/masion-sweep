@@ -14,7 +14,20 @@ WANT=18 GALLERY=5 python3 tools/crawl-listings.py
 
 That command refreshes `data/listings.json`, downloads each property's photos
 into `images/` (full-res) and `min/` (560 px thumbnails), and re-splices the two
-`.dc.html` builds. **Do not hand-edit `listings.json`** — re-run the crawler.
+`.dc.html` builds. **Do not hand-edit the Japan (`sir-*`) listings** — re-run the
+crawler.
+
+### Hawaii listings (`hi-*`)
+
+The crawler covers Japan only. **Hawaii** units come from a separate source,
+`https://list-hawaii.jp/` (Honolulu / Kakaako — Waiea, Anaha, Kōʻula, ʻAʻaliʻi,
+Victoria Place). That site sits behind Cloudflare Turnstile and its `robots.txt`
+disallows automated crawlers, so the Hawaii rows are **assembled manually** from
+pages opened in a human-cleared browser session, not by the crawler. The source
+photos are vendored under `tools/hawaii-mls/` (named `<MLS#>-<n>.jpg`) and copied
+into `images/`/`min/` as `hi-<building>-<unit>-<n>.jpg`. To add more, collect the
+listing facts + `/matrix/downloaded-images/RESI/<MLS#>/<n>.jpg` photos for each
+unit and append `hi-*` objects following the schema below.
 
 ## How another agent / app gets this data
 
