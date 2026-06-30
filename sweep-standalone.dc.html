@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script src="./support.js"></script>
 <meta name="ext-resource-dependency" content="min/sir-3494364-1.jpg" data-resource-id="sir_3494364_1_jpg" />
 <meta name="ext-resource-dependency" content="min/sir-3632831-1.jpg" data-resource-id="sir_3632831_1_jpg" />
@@ -96,7 +96,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
   *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-  body{ margin:0; }
+  html,body{ margin:0; height:100%; }
+  /* Full-bleed on phones (no device frame); centered column on wider screens. */
+  .rv-stage{ width:100%; min-height:100vh; min-height:100dvh; display:flex; justify-content:center; background:#f4f2ee; }
+  .rv-phone{ position:relative; width:100%; max-width:480px; min-height:100vh; min-height:100dvh; background:#ffffff; overflow:hidden; display:flex; flex-direction:column; }
+  .rv-statusbar{ flex:none; height:env(safe-area-inset-top, 0px); min-height:10px; }
+  .rv-nav-safe{ padding-bottom:calc(18px + env(safe-area-inset-bottom, 0px)); }
+  @media (min-width:520px){
+    .rv-stage{ align-items:center; padding:24px 16px; background:radial-gradient(120% 90% at 50% 0%, #efece6 0%, #e4e0d8 55%, #d9d4ca 100%); }
+    .rv-phone{ min-height:0; height:min(856px, calc(100dvh - 48px)); border-radius:18px; box-shadow:0 30px 70px -30px rgba(20,20,20,.45), 0 6px 20px rgba(0,0,0,.08); }
+  }
   .rv-scroll::-webkit-scrollbar{ width:0; height:0; }
   .rv-gallery{ scrollbar-width:none; }
   .rv-gallery::-webkit-scrollbar{ width:0; height:0; }
@@ -111,11 +120,11 @@
   @keyframes rvMsgIn{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:translateY(0);} }
 </style>
 </helmet>
-<div style="min-height:100vh; width:100%; display:flex; align-items:center; justify-content:center; background:radial-gradient(120% 90% at 50% 0%, #efece6 0%, #e4e0d8 55%, #d9d4ca 100%); font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Yu Gothic',-apple-system,system-ui,sans-serif; padding:32px 16px;">
+<div class="rv-stage" style="font-family:'Noto Sans JP','Noto Sans Thai',-apple-system,system-ui,sans-serif;">
 
-    <div style="position:relative; width:404px; height:856px; background:#ffffff; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 30px 70px -30px rgba(20,20,20,.45), 0 6px 20px rgba(0,0,0,.08); flex:none;">
+    <div class="rv-phone">
 
-      <div style="height:22px; flex:none;"></div>
+      <div class="rv-statusbar"></div>
 
       <!-- ================= HOME ================= -->
       <sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
@@ -297,19 +306,27 @@
             <div style="font-family:'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif; font-size:26px; font-weight:600; color:#141414; letter-spacing:1px;">{{ t.searchTitle }}</div>
             <div style="display:flex; align-items:center; gap:10px; margin-top:14px; padding:13px 15px; background:#f4f2ee; border:1px solid rgba(20,20,20,.08);">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9b968c" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/></svg>
-              <span style="font-size:13px; color:#9b968c;">{{ t.searchPh }}</span>
+              <input value="{{ searchQuery }}" onInput="{{ onSearch }}" placeholder="{{ t.searchPh }}" style="flex:1; min-width:0; border:none; background:none; outline:none; font-size:13px; color:#141414; font-family:inherit;"/>
+              <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}">
+                <button onClick="{{ clearSearch }}" aria-label="クリア" style="flex:none; width:22px; height:22px; border:none; background:none; cursor:pointer; display:flex; align-items:center; justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9b968c" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
+              </sc-if>
             </div>
             <div style="margin-top:14px;">
               <div style="font-size:10px; letter-spacing:2px; color:#a39a88; margin-bottom:9px;">{{ t.popular }}</div>
               <div style="display:flex; flex-wrap:wrap; gap:8px;">
                 <sc-for list="{{ popular }}" as="p" hint-placeholder-count="5">
-                  <span style="font-size:12px; color:#141414; padding:7px 13px; border:1px solid rgba(20,20,20,.16);">{{ p }}</span>
+                  <button onClick="{{ p.pick }}" style="font-size:12px; color:{{ p.fg }}; background:{{ p.bg }}; padding:7px 13px; border:1px solid {{ p.bd }}; cursor:pointer; font-family:inherit;">{{ p.label }}</button>
                 </sc-for>
               </div>
             </div>
           </div>
           <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:6px 24px 20px;">
             <div style="font-size:10px; letter-spacing:2px; color:#a39a88; margin:8px 0 12px;">{{ listLabel }}</div>
+            <sc-if value="{{ searchEmpty }}" hint-placeholder-val="{{ false }}">
+              <div style="padding:46px 16px; text-align:center;">
+                <div style="font-size:13px; color:#9b968c; line-height:1.8;">{{ t.searchNoneText }}</div>
+              </div>
+            </sc-if>
             <div style="display:flex; flex-direction:column; gap:22px;">
               <sc-for list="{{ searchList }}" as="it" hint-placeholder-count="4">
                 <div onClick="{{ it.open }}" style="cursor:pointer; border:1px solid rgba(20,20,20,.13);">
@@ -460,6 +477,56 @@
             </sc-if>
           </div>
         </sc-if>
+
+        <sc-if value="{{ msgOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1; display:flex; flex-direction:column; min-height:0; position:relative;">
+            <div style="flex:none; display:flex; align-items:center; gap:11px; padding:8px 16px 12px; border-bottom:1px solid rgba(20,20,20,.07);">
+              <button onClick="{{ closeThread }}" aria-label="戻る" style="width:34px; height:34px; border-radius:50%; border:none; background:none; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div style="position:relative; flex:none;">
+                <div style="width:38px; height:38px; border-radius:50%; background:{{ msgThread.bg }}; background-size:cover; background-position:center;"></div>
+                <sc-if value="{{ msgThread.brand }}" hint-placeholder-val="{{ false }}"><div style="position:absolute; inset:0; border-radius:50%; background:linear-gradient(140deg,#26375f,#16243f); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; color:#fff; font-size:15px;">L</div></sc-if>
+              </div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:15px; font-weight:700; color:#141414; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ msgThread.agent }}</div>
+                <div style="font-size:10.5px; color:#7a9a6e; display:flex; align-items:center; gap:4px; margin-top:2px;"><span style="width:6px; height:6px; border-radius:50%; background:#7a9a6e;"></span>{{ msgThread.online }}</div>
+              </div>
+            </div>
+
+            <div onClick="{{ msgThread.open }}" style="flex:none; display:flex; align-items:center; gap:12px; padding:11px 16px; margin:10px 14px 0; background:#f6f4f0; cursor:pointer;">
+              <div style="flex:none; width:48px; height:48px; background:{{ msgThread.bg }}; background-size:cover; background-position:center;"></div>
+              <div style="flex:1; min-width:0;">
+                <div style="font-size:9px; letter-spacing:2px; color:#a39a88; margin-bottom:3px;">{{ msgThread.areaUp }}</div>
+                <div style="font-size:13px; font-weight:500; color:#141414; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ msgThread.name }}</div>
+                <div style="font-family:'Shippori Mincho',serif; font-size:14px; font-weight:600; color:#141414; margin-top:2px;">{{ msgThread.price }}</div>
+              </div>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#c2beb4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+
+            <div class="rv-scroll" style="flex:1; overflow-y:auto; padding:18px 16px 8px; display:flex; flex-direction:column; gap:14px;">
+              <sc-for list="{{ msgThread.msgs }}" as="m" hint-placeholder-count="2">
+                <div style="display:flex; animation:rvMsgIn .28s ease;">
+                  <sc-if value="{{ m.isAgent }}" hint-placeholder-val="{{ true }}">
+                    <div style="align-self:flex-start; max-width:82%; background:#f4f2ee; padding:11px 14px; border-radius:3px 14px 14px 14px; font-size:13px; line-height:1.65; color:#2c2a26; text-wrap:pretty;">{{ m.text }}</div>
+                  </sc-if>
+                  <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+                    <div style="align-self:flex-end; margin-left:auto; max-width:82%; background:#141414; color:#fff; padding:11px 14px; border-radius:14px 3px 14px 14px; font-size:13px; line-height:1.65;">{{ m.text }}</div>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="flex:none; display:flex; align-items:center; gap:10px; padding:6px 14px 16px; border-top:1px solid rgba(20,20,20,.07);">
+              <div style="flex:1; display:flex; align-items:center; background:#f4f2ee; border:1px solid rgba(20,20,20,.08); border-radius:999px; padding:0 5px 0 16px;">
+                <input value="{{ msgInput }}" onInput="{{ onMsgInput }}" placeholder="{{ msgThread.ph }}" style="flex:1; min-width:0; border:none; background:none; outline:none; font-size:13px; color:#141414; padding:11px 0; font-family:inherit;"/>
+                <button onClick="{{ sendMsg }}" aria-label="送信" style="width:34px; height:34px; border-radius:50%; border:none; background:#141414; display:flex; align-items:center; justify-content:center; cursor:pointer; flex:none;">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="6 11 12 5 18 11"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </sc-if>
         </div>
       </sc-if>
 
@@ -579,7 +646,7 @@
       </sc-if>
 
       <!-- ================= BOTTOM NAV ================= -->
-      <nav style="flex:none; display:flex; align-items:stretch; justify-content:space-around; padding:9px 6px 24px; background:#fff; border-top:1px solid rgba(20,20,20,.07); z-index:40;">
+      <nav class="rv-nav-safe" style="flex:none; display:flex; align-items:stretch; justify-content:space-around; padding:9px 6px 0; background:#fff; border-top:1px solid rgba(20,20,20,.07); z-index:40;">
         <button onClick="{{ goHome }}" aria-label="ホーム" style="flex:1; background:none; border:none; display:flex; align-items:center; justify-content:center; cursor:pointer; padding:6px 0;">
           <svg width="25" height="25" viewBox="0 0 24 24" fill="{{ cHome }}"><path d="M11.3 2.6 2.6 10a1 1 0 0 0 .65 1.76H4.4V20a1.4 1.4 0 0 0 1.4 1.4h3.3V15.4a1 1 0 0 1 1-1h3.8a1 1 0 0 1 1 1v6h3.3a1.4 1.4 0 0 0 1.4-1.4v-8.24h1.15A1 1 0 0 0 21.4 10l-8.7-7.4a1 1 0 0 0-1.4 0Z"/></svg>
         </button>
@@ -672,7 +739,7 @@ class Component extends DCLogic {
     this.peek1Ref = React.createRef();
     this.peek2Ref = React.createRef();
     this.saveRef = React.createRef();
-    this.state = { tab:'home', index:0, saved:{}, savedPulse:false, detailOpen:false, hintsDismissed:false, lang:'ja', mode:'buy', langOpen:false, menuOpen:false, aiOpen:false, aiMsgs:[], aiListening:false, aiInput:'', sellDone:false, detailId:null };
+    this.state = { tab:'home', index:0, saved:{}, savedPulse:false, detailOpen:false, hintsDismissed:false, lang:'ja', mode:'buy', langOpen:false, menuOpen:false, aiOpen:false, aiMsgs:[], aiListening:false, aiInput:'', sellDone:false, detailId:null, searchQuery:'', msgOpen:false, msgThreadId:null, msgInput:'', msgConvos:{} };
     this.DATA = [
       { id:"sir-4018734", name:"パークハウス六本木", area:"東京都港区六本木４丁目", areaUp:"MINATO · TOKYO",
         price:"2億9,990万円", layout:"2LDK ・ 84.74㎡", img:"min/sir-4018734-1.jpg", img2:"min/sir-4018734-2.jpg",
@@ -810,7 +877,7 @@ class Component extends DCLogic {
       { id:"sir-4018903", last:"資料を送付いたしました。ご確認ください。", time:"昨日", unread:true },
       { id:"sir-4018718", last:"オンライン相談も承っております。", time:"月曜", unread:false },
     ];
-    this.POPULAR = ["港区","新宿区","大田区","渋谷区","大阪市","北区"];
+    this.POPULAR = ["軽井沢","ニセコ","葉山","東京都 港区","ハワイ"];
         this.AICHIPS = { ja:['海が見える','2億円以下','ハワイ','プール付き','軽井沢','東京のマンション'], zh:['看得见海','2亿円以下','夏威夷','带泳池','轻井泽','东京公寓'], en:['Ocean view','Under ¥200M','Hawaii','With a pool','Karuizawa','Tokyo condo'], th:['วิวทะเล','ต่ำกว่า ¥200M','ฮาวาย','มีสระว่ายน้ำ','คารุอิซาวะ','คอนโดโตเกียว'] };
     this.AIVOICE = { ja:['海が見えるリゾート物件を探しています','予算2億円以内のマンションはありますか','ハワイのコンドミニアムが見たい','プール付きのヴィラを探しています','軽井沢の別荘を見せてください'], zh:['想找能看到海的度假房产','有没有2亿円以内的公寓','想看夏威夷的公寓','在找带泳池的别墅','想看轻井泽的别墅'], en:['Looking for an ocean-view resort home','Any condos under ¥200M?','Show me condos in Hawaii','I want a villa with a pool','Show me villas in Karuizawa'], th:['กำลังหาบ้านพักตากอากาศวิวทะเล','มีคอนโดต่ำกว่า ¥200M ไหม','ขอดูคอนโดในฮาวาย','อยากได้วิลล่าพร้อมสระว่ายน้ำ','ขอดูวิลล่าในคารุอิซาวะ'] };
     this.LANGS = [ {code:'ja',short:'JA',name:'日本語'}, {code:'zh',short:'中',name:'中文'}, {code:'en',short:'EN',name:'English'}, {code:'th',short:'TH',name:'ภาษาไทย'} ];
@@ -819,25 +886,25 @@ class Component extends DCLogic {
         msgTitle:'メッセージ',msgFooter:'アドバイザーが通常1〜2時間以内に返信します', favTitle:'お気に入り',favSaved:'保存した物件',favViewed:'最近見た物件',favReco:'おすすめ物件',favRecoSub:'あなたの保存履歴から',emptyText:'ホームでスワイプしながら気になる物件を保存しましょう',emptyBtn:'物件を探す',
         profTitle:'マイページ',statSaved:'保存',statViewed:'閲覧',statInq:'お問合せ',logout:'ログアウト', m_savedSearch:'保存した検索条件',m_history:'閲覧履歴',m_notice:'お知らせ',m_account:'アカウント設定',m_lang:'言語',
         refPrice:'参考価格',reserve:'内見を予約',saved:'保存しました', nameSuffix:' 様',
-        aiName:'AI コンシェルジュ', aiSub:'ご希望を話しかけてください', aiGreet:'こんにちは。理想の住まいについて、エリア・ご予算・暮らし方など、なんでもお聞かせください。最適な物件をご提案します。', aiPh:'メッセージを入力…', aiListen:'お聞きしています…', aiPre:'ご希望に近い物件を', aiSuf:'件お選びしました。', aiNone:'条件に合う物件が見つかりませんでした。別の条件でお試しください。',
+        aiName:'AI コンシェルジュ', aiSub:'ご希望を話しかけてください', aiGreet:'こんにちは。理想の住まいについて、エリア・ご予算・暮らし方など、なんでもお聞かせください。最適な物件をご提案します。', aiPh:'メッセージを入力…', aiListen:'お聞きしています…', aiPre:'ご希望に近い物件を', aiSuf:'件お選びしました。', aiNone:'条件に合う物件が見つかりませんでした。別の条件でお試しください。', searchNoneText:'該当する物件が見つかりませんでした。別のキーワードでお試しください。', msgOnline:'オンライン', msgGreet:'「{name}」へのお問い合わせ、ありがとうございます。担当アドバイザーがご案内いたします。', msgAuto:'メッセージをありがとうございます。内容を確認のうえ、担当より折り返しご連絡いたします。',
         sellTitle:'売却・査定のご相談', sellSub:'物件情報をご入力ください。担当アドバイザーが査定いたします。', sellDone:'査定のご依頼を受け付けました。担当者よりご連絡いたします。', sellSubmitL:'査定を依頼する', fType:'物件種別', fLoc:'所在地', fLayout:'間取り', fSize:'面積', fPrice:'ご希望価格', fName:'お名前', fContact:'連絡先（メール / 電話）', fNote:'ご要望・備考', rentTitle:'賃貸物件', perMonth:'/ 月' },
       zh:{ modeBuy:'买房',modeSell:'卖房',modeRent:'租赁', searchTitle:'寻找',searchPh:'按地区·房产名搜索',popular:'热门搜索',listLabel:'房源列表',count:'套',
         msgTitle:'消息',msgFooter:'顾问通常会在 1〜2 小时内回复', favTitle:'收藏',favSaved:'已保存房源',favViewed:'最近浏览',favReco:'推荐房源',favRecoSub:'基于您的收藏记录',emptyText:'在首页滑动，收藏您感兴趣的房源',emptyBtn:'浏览房源',
         profTitle:'我的',statSaved:'收藏',statViewed:'浏览',statInq:'咨询',logout:'退出登录', m_savedSearch:'已保存的搜索',m_history:'浏览记录',m_notice:'通知',m_account:'账户设置',m_lang:'语言',
         refPrice:'参考价格',reserve:'预约看房',saved:'已收藏', nameSuffix:' 先生',
-        aiName:'AI 管家', aiSub:'请告诉我您的需求', aiGreet:'您好。请告诉我您理想的住所——地区、预算或生活方式，我会为您推荐最合适的房源。', aiPh:'输入消息…', aiListen:'正在聆听…', aiPre:'为您挑选了', aiSuf:'套合适的房源。', aiNone:'未找到符合条件的房源，请尝试其他条件。',
+        aiName:'AI 管家', aiSub:'请告诉我您的需求', aiGreet:'您好。请告诉我您理想的住所——地区、预算或生活方式，我会为您推荐最合适的房源。', aiPh:'输入消息…', aiListen:'正在聆听…', aiPre:'为您挑选了', aiSuf:'套合适的房源。', aiNone:'未找到符合条件的房源，请尝试其他条件。', searchNoneText:'未找到相关房源，请尝试其他关键词。', msgOnline:'在线', msgGreet:'感谢您咨询「{name}」。您的专属顾问将为您提供服务。', msgAuto:'感谢您的留言。我们将尽快确认并由专人回复您。',
         sellTitle:'出售 / 估价咨询', sellSub:'请填写房产信息，专属顾问将为您评估。', sellDone:'已收到您的估价申请，顾问将尽快与您联系。', sellSubmitL:'申请估价', fType:'房产类型', fLoc:'所在地区', fLayout:'户型', fSize:'面积', fPrice:'期望价格', fName:'您的称呼', fContact:'联系方式（邮箱 / 电话）', fNote:'需求 / 备注', rentTitle:'租赁房源', perMonth:'/ 月' },
       en:{ modeBuy:'Buy',modeSell:'Sell',modeRent:'Rent', searchTitle:'Search',searchPh:'Search by area or name',popular:'Popular',listLabel:'Listings',count:'',
         msgTitle:'Messages',msgFooter:'An advisor usually replies within 1–2 hours', favTitle:'Saved',favSaved:'Saved homes',favViewed:'Recently viewed',favReco:'Recommended',favRecoSub:'Based on your saves',emptyText:'Swipe on Home and save the homes you love',emptyBtn:'Browse homes',
         profTitle:'Account',statSaved:'Saved',statViewed:'Viewed',statInq:'Inquiries',logout:'Sign out', m_savedSearch:'Saved searches',m_history:'History',m_notice:'Notifications',m_account:'Account',m_lang:'Language',
         refPrice:'Guide price',reserve:'Book a viewing',saved:'Saved', nameSuffix:'',
-        aiName:'AI Concierge', aiSub:'Tell me what you’re looking for', aiGreet:'Hello. Tell me about your ideal home — location, budget, or lifestyle — and I’ll suggest the best matches.', aiPh:'Type a message…', aiListen:'Listening…', aiPre:'I found ', aiSuf:' homes for you.', aiNone:'No matching homes found. Try different criteria.',
+        aiName:'AI Concierge', aiSub:'Tell me what you’re looking for', aiGreet:'Hello. Tell me about your ideal home — location, budget, or lifestyle — and I’ll suggest the best matches.', aiPh:'Type a message…', aiListen:'Listening…', aiPre:'I found ', aiSuf:' homes for you.', aiNone:'No matching homes found. Try different criteria.', searchNoneText:'No homes match your search. Try another keyword.', msgOnline:'Online', msgGreet:'Thank you for your interest in “{name}”. Your advisor will be glad to assist.', msgAuto:'Thank you for your message. We will review it and an advisor will reply shortly.',
         sellTitle:'Sell / Valuation', sellSub:'Enter your property details and an advisor will appraise it.', sellDone:'Your request has been received. An advisor will be in touch shortly.', sellSubmitL:'Request a valuation', fType:'Property type', fLoc:'Location', fLayout:'Layout', fSize:'Size', fPrice:'Target price', fName:'Your name', fContact:'Contact (email / phone)', fNote:'Notes', rentTitle:'Rentals', perMonth:'/ mo' },
       th:{ modeBuy:'ซื้อ',modeSell:'ขาย',modeRent:'เช่า', searchTitle:'ค้นหา',searchPh:'ค้นหาตามพื้นที่หรือชื่อ',popular:'ยอดนิยม',listLabel:'รายการ',count:'',
         msgTitle:'ข้อความ',msgFooter:'ที่ปรึกษามักตอบกลับภายใน 1–2 ชั่วโมง', favTitle:'บันทึก',favSaved:'บ้านที่บันทึก',favViewed:'ดูล่าสุด',favReco:'แนะนำ',favRecoSub:'จากรายการที่คุณบันทึก',emptyText:'ปัดที่หน้าแรกเพื่อบันทึกบ้านที่คุณชอบ',emptyBtn:'ดูบ้าน',
         profTitle:'บัญชี',statSaved:'บันทึก',statViewed:'ดู',statInq:'สอบถาม',logout:'ออกจากระบบ', m_savedSearch:'การค้นหาที่บันทึก',m_history:'ประวัติ',m_notice:'การแจ้งเตือน',m_account:'บัญชี',m_lang:'ภาษา',
         refPrice:'ราคาประเมิน',reserve:'จองเข้าชม',saved:'บันทึกแล้ว', nameSuffix:'',
-        aiName:'AI Concierge', aiSub:'บอกสิ่งที่คุณกำลังมองหา', aiGreet:'สวัสดีค่ะ บอกเกี่ยวกับบ้านในฝันของคุณ — ทำเล งบประมาณ หรือไลฟ์สไตล์ แล้วฉันจะแนะนำที่ดีที่สุดให้', aiPh:'พิมพ์ข้อความ…', aiListen:'กำลังฟัง…', aiPre:'พบ ', aiSuf:' รายการสำหรับคุณ', aiNone:'ไม่พบบ้านที่ตรงเงื่อนไข ลองเปลี่ยนเงื่อนไขดูนะคะ',
+        aiName:'AI Concierge', aiSub:'บอกสิ่งที่คุณกำลังมองหา', aiGreet:'สวัสดีค่ะ บอกเกี่ยวกับบ้านในฝันของคุณ — ทำเล งบประมาณ หรือไลฟ์สไตล์ แล้วฉันจะแนะนำที่ดีที่สุดให้', aiPh:'พิมพ์ข้อความ…', aiListen:'กำลังฟัง…', aiPre:'พบ ', aiSuf:' รายการสำหรับคุณ', aiNone:'ไม่พบบ้านที่ตรงเงื่อนไข ลองเปลี่ยนเงื่อนไขดูนะคะ', searchNoneText:'ไม่พบทรัพย์ที่ตรงกับคำค้น ลองคำอื่นดูนะคะ', msgOnline:'ออนไลน์', msgGreet:'ขอบคุณที่สนใจ “{name}” ที่ปรึกษาของคุณยินดีให้บริการค่ะ', msgAuto:'ขอบคุณสำหรับข้อความ เราจะตรวจสอบและให้ที่ปรึกษาติดต่อกลับโดยเร็วค่ะ',
         sellTitle:'ขาย / ประเมินราคา', sellSub:'กรอกข้อมูลทรัพย์ แล้วที่ปรึกษาจะประเมินให้', sellDone:'รับคำขอแล้ว ที่ปรึกษาจะติดต่อกลับโดยเร็ว', sellSubmitL:'ขอประเมินราคา', fType:'ประเภท', fLoc:'ทำเล', fLayout:'แปลน', fSize:'ขนาด', fPrice:'ราคาที่ต้องการ', fName:'ชื่อ', fContact:'ติดต่อ (อีเมล / โทร)', fNote:'หมายเหตุ', rentTitle:'เช่า', perMonth:'/ เดือน' },
     };
   }
@@ -946,7 +1013,7 @@ class Component extends DCLogic {
   };
   onDetail = () => this.setState({ detailOpen:true });
   onClose  = () => this.setState({ detailOpen:false });
-  setTab = (t) => this.setState({ tab:t, detailOpen:false, langOpen:false, menuOpen:false, aiOpen:false, aiListening:false });
+  setTab = (t) => this.setState({ tab:t, detailOpen:false, langOpen:false, menuOpen:false, aiOpen:false, aiListening:false, msgOpen:false, msgThreadId:null });
 
   priceVal(p){
     if(p.indexOf('$')>=0){ return (parseFloat(p.replace(/[^0-9.]/g,''))||0)*155; }
@@ -988,6 +1055,43 @@ class Component extends DCLogic {
   onAiInput = (e) => this.setState({ aiInput:e.target.value });
   sendAi = () => this.pushAndAnswer(this.state.aiInput);
   askChip = (text) => this.pushAndAnswer(text);
+
+  // ---- search ----
+  onSearch = (e) => this.setState({ searchQuery:e.target.value });
+  clearSearch = () => this.setState({ searchQuery:'' });
+  searchHits(q){
+    const s=(q||'').trim().toLowerCase();
+    if(!s) return this.DATA;
+    const toks=s.split(/\s+/).filter(Boolean);
+    return this.DATA.filter(c=>{
+      const hay=(c.name+' '+c.area+' '+c.areaUp+' '+c.layout+' '+(c.tags||[]).join(' ')).toLowerCase();
+      return toks.every(t=>hay.indexOf(t)>=0);
+    });
+  }
+
+  // ---- advisor chat (per-property thread) ----
+  seedThread(id){
+    const T=this.I18N[this.state.lang]; const p=this.byId(id); const th=this.THREADS.find(t=>t.id===id);
+    const out=[{ role:'agent', text:(T.msgGreet||'').replace('{name}', p?p.name:'') }];
+    if(th && th.last) out.push({ role:'agent', text:th.last });
+    return out;
+  }
+  openThread = (id) => {
+    const convos={...this.state.msgConvos};
+    if(!convos[id]) convos[id]=this.seedThread(id);
+    this.setState({ tab:'messages', msgOpen:true, msgThreadId:id, msgInput:'', aiOpen:false, detailOpen:false, langOpen:false, menuOpen:false, msgConvos:convos });
+  };
+  closeThread = () => this.setState({ msgOpen:false, msgThreadId:null });
+  onMsgInput = (e) => this.setState({ msgInput:e.target.value });
+  sendMsg = () => {
+    const txt=(this.state.msgInput||'').trim(); if(!txt) return;
+    const id=this.state.msgThreadId; const T=this.I18N[this.state.lang];
+    const convos={...this.state.msgConvos};
+    convos[id]=[...(convos[id]||[]), { role:'user', text:txt }];
+    this.setState({ msgConvos:convos, msgInput:'' });
+    clearTimeout(this._msgT);
+    this._msgT=setTimeout(()=>{ this.setState(s=>{ const c={...s.msgConvos}; c[id]=[...(c[id]||[]), { role:'agent', text:T.msgAuto }]; return { msgConvos:c }; }); }, 750);
+  };
   startVoice = () => {
     if(this.state.aiListening) return;
     this.setState({ aiListening:true });
@@ -1033,7 +1137,7 @@ class Component extends DCLogic {
       saveFillDark: isSaved ? accent : 'none',
       t:{ saved:T.saved, searchTitle:T.searchTitle, searchPh:T.searchPh, popular:T.popular, msgTitle:T.msgTitle, msgFooter:T.msgFooter,
         favTitle:T.favTitle, favSaved:T.favSaved, favViewed:T.favViewed, favReco:T.favReco, favRecoSub:T.favRecoSub, emptyText:T.emptyText, emptyBtn:T.emptyBtn,
-        profTitle:T.profTitle, statSaved:T.statSaved, statViewed:T.statViewed, statInq:T.statInq, logout:T.logout, refPrice:T.refPrice, reserve:T.reserve },
+        profTitle:T.profTitle, statSaved:T.statSaved, statViewed:T.statViewed, statInq:T.statInq, logout:T.logout, refPrice:T.refPrice, reserve:T.reserve, searchNoneText:T.searchNoneText },
       // tabs
       isHome:tab==='home', isSearch:tab==='search', isMsg:tab==='messages', isFav:tab==='favorites', isMe:tab==='profile',
       cHome:tab==='home'?ACT:INACT, cSearch:tab==='search'?ACT:INACT, cMsg:tab==='messages'?ACT:INACT, cFav:tab==='favorites'?ACT:INACT, cMe:tab==='profile'?ACT:INACT,
@@ -1047,7 +1151,7 @@ class Component extends DCLogic {
       rentTitle:T.rentTitle,
       rentList:this.DATA.map(c=>{ const p=this.present(c); p.rent='¥'+Math.round(this.priceVal(c.price)*0.003/1e4).toLocaleString()+'万 '+T.perMonth; return p; }),
       // AI concierge
-      aiOpen:this.state.aiOpen, aiListShown:!this.state.aiOpen, aiListening:this.state.aiListening, aiInput:this.state.aiInput,
+      aiOpen:this.state.aiOpen, aiListShown:!this.state.aiOpen && !this.state.msgOpen, aiListening:this.state.aiListening, aiInput:this.state.aiInput,
       aiName:T.aiName, aiSub:T.aiSub, aiPh:T.aiPh, aiListen:T.aiListen,
       aiChips:(this.AICHIPS[lang]||this.AICHIPS.ja).map(c=>({ label:c, pick:()=>this.askChip(c) })),
       aiMsgs:this.state.aiMsgs.map(m=>({ isAi:m.role==='ai', isUser:m.role==='user', text:m.text, hasRecos:!!(m.recos&&m.recos.length), recos:(m.recos||[]).map(id=>this.present(this.byId(id))) })),
@@ -1069,9 +1173,17 @@ class Component extends DCLogic {
       cardRef:this.cardRef, peek1Ref:this.peek1Ref, peek2Ref:this.peek2Ref, saveRef:this.saveRef,
       onDown:this.onDown, onMove:this.onMove, onUp:this.onUp, onSkip:this.onSkip, onPrev:this.onPrev, onSaveTap:this.onSaveTap, onDetail:this.onDetail, onClose:this.onClose,
       // search
-      searchList:this.DATA.map(c=>this.present(c)), popular:this.POPULAR, listLabel:`${T.listLabel} · ${this.DATA.length}${T.count}`,
+      searchQuery:this.state.searchQuery, hasQuery:!!this.state.searchQuery, onSearch:this.onSearch, clearSearch:this.clearSearch,
+      searchList:this.searchHits(this.state.searchQuery).map(c=>this.present(c)),
+      searchEmpty:this.searchHits(this.state.searchQuery).length===0,
+      popular:this.POPULAR.map(p=>{ const on=this.state.searchQuery===p; return { label:p, pick:()=>this.setState({ searchQuery:p }), fg:on?'#fff':'#141414', bg:on?'#141414':'#fff', bd:on?'#141414':'rgba(20,20,20,.16)' }; }),
+      listLabel:`${T.listLabel} · ${this.searchHits(this.state.searchQuery).length}${T.count}`,
       // messages
-      threads:this.THREADS.map(t=>{ const p=this.byId(t.id); return { name:p.name, last:t.last, time:t.time, unread:t.unread, brand:!p.img, bg:this.cardBg(p), open:()=>this.jumpTo(t.id) }; }),
+      threads:this.THREADS.map(t=>{ const p=this.byId(t.id); return { name:p.name, last:t.last, time:t.time, unread:t.unread, brand:!p.img, bg:this.cardBg(p), open:()=>this.openThread(t.id) }; }),
+      msgOpen:this.state.msgOpen, msgInput:this.state.msgInput, onMsgInput:this.onMsgInput, sendMsg:this.sendMsg, closeThread:this.closeThread,
+      msgThread:(()=>{ const id=this.state.msgThreadId; const p=id?this.byId(id):null; if(!p) return { agent:'', name:'', areaUp:'', price:'', online:T.msgOnline, ph:T.aiPh, brand:true, bg:this.cardBg(null), msgs:[], open:()=>{} };
+        const convo=(this.state.msgConvos[id]||[]).map(m=>({ isAgent:m.role==='agent', isUser:m.role==='user', text:m.text }));
+        return { agent:p.agent, name:p.name, areaUp:p.areaUp, price:p.price, online:T.msgOnline, ph:T.aiPh, brand:!p.img, bg:this.cardBg(p), msgs:convo, open:()=>this.jumpTo(id) }; })(),
       // favorites
       savedList:savedData.map(c=>this.present(c)), savedEmpty:savedCount===0, savedHas:savedCount>0, savedLabel:`${savedCount}${T.count}`,
       viewedList:this.VIEWED.map(id=>this.present(this.byId(id))), recoList:this.RECO.map(id=>this.present(this.byId(id))),

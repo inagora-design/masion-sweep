@@ -374,14 +374,8 @@ def main():
             lines.append("      { id:%s, last:%s, time:%s, unread:%s }," % (
                 esc(tid), esc(msgs[k]), esc(times[k]), unread[k]))
         lines.append("    ];")
-        # POPULAR: real JP area names present in the data
-        pops = []
-        for L in listings:
-            c = L["area"]
-            for key in CITY:
-                if key in c and key not in pops:
-                    pops.append(key)
-        pops = pops[:6] or ["東京", "神奈川", "京都", "大阪", "軽井沢", "沖縄"]
+        # POPULAR: fixed aspirational hot-search keywords (clickable search chips)
+        pops = ["軽井沢", "ニセコ", "葉山", "東京都 港区", "ハワイ"]
         lines.append("    this.POPULAR = [" + ",".join(esc(p) for p in pops) + "];")
         return "\n".join(lines) + "\n    "
 
