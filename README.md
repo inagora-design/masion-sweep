@@ -32,14 +32,25 @@ python3 -m http.server 8099
 #   http://127.0.0.1:8099/sweep%20sotheby's.dc.html
 ```
 
-## Notes
+## Listings data (live crawl)
 
-- Listings without a usable photo intentionally fall back to the designed **"List Sotheby's /
-  LUXURY ESTATES"** brand‑gradient card.
-- Four source photos (`748248011r`, `748248012r`, `748248013r`, `754471078r`) could not be
-  retrieved in full from the design project (the import API caps file content at 256 KiB and these
-  originals exceed it), so their listings use the brand‑gradient fallback. All other photos are
-  complete; a few oversized ones were re‑encoded to fit.
+The listings are real properties from **List Sotheby's International Realty
+Japan** (https://list-sir.jp/buy/), pulled by `tools/crawl-listings.py`.
+
+The `/buy/` page loads its grid from a JSON endpoint
+(`GET /api/apiHandller.php?...`); the crawler calls it directly, keeps listings
+that have real exterior photos, downloads those photos into `images/` (and
+560px thumbnails into `min/`), maps each record into the app's data shape
+(`id, name, area, areaUp, price, layout, facts, tags, summary, agent…`), and
+rewrites the `this.DATA = [...]` block (plus the deck/threads/popular arrays)
+in both `.dc.html` builds.
+
+```bash
+WANT=18 python3 tools/crawl-listings.py    # refresh listings (needs Pillow)
+```
+
+Raw downloads are cached under `tools/.imgcache/` (git‑ignored) so re‑runs don't
+re‑hit the network. Photos carry List Sotheby's own subtle watermark.
 
 ## Run with Node
 
