@@ -1,0 +1,814 @@
+{
+  "source": "https://list-sir.jp/buy/  (List Sotheby's International Realty Japan)",
+  "generatedBy": "masion-sweep/tools/crawl-listings.py",
+  "note": "Real listings crawled from List Sotheby's. Photos carry their watermark.",
+  "imageBase": {
+    "full": "images/",
+    "thumb": "min/"
+  },
+  "count": 18,
+  "schemaVersion": 1,
+  "listings": [
+    {
+      "id": "sir-4018734",
+      "name": "パークハウス六本木",
+      "area": "東京都港区六本木４丁目",
+      "areaUp": "MINATO · TOKYO",
+      "price": "2億9,990万円",
+      "layout": "2LDK ・ 84.74㎡",
+      "img": "images/sir-4018734-1.jpg",
+      "img2": "images/sir-4018734-2.jpg",
+      "gallery": [
+        "images/sir-4018734-1.jpg",
+        "images/sir-4018734-2.jpg",
+        "images/sir-4018734-3.jpg",
+        "images/sir-4018734-4.jpg",
+        "images/sir-4018734-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4018734-1.jpg",
+        "min/sir-4018734-2.jpg",
+        "min/sir-4018734-3.jpg",
+        "min/sir-4018734-4.jpg",
+        "min/sir-4018734-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "84.74㎡"
+        ],
+        [
+          "所在階",
+          "3階"
+        ]
+      ],
+      "tags": [
+        "六本木駅 徒歩7分",
+        "中古",
+        "8階建"
+      ],
+      "summary": "麻布三河台の高台に佇む高級レジデンス。「六本木」駅徒歩7分の好立地×東京ミッドタウン・六本木ヒルズ徒歩圏内。",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-4018903",
+      "name": "クラッシィタワー新宿御苑",
+      "area": "東京都新宿区四谷４丁目",
+      "areaUp": "SHINJUKU · TOKYO",
+      "price": "3億1,000万円",
+      "layout": "2LDK ・ 79.98㎡",
+      "img": "images/sir-4018903-1.jpg",
+      "img2": "images/sir-4018903-2.jpg",
+      "gallery": [
+        "images/sir-4018903-1.jpg",
+        "images/sir-4018903-2.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4018903-1.jpg",
+        "min/sir-4018903-2.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "79.98㎡"
+        ],
+        [
+          "所在階",
+          "15階"
+        ]
+      ],
+      "tags": [
+        "新宿御苑前駅 徒歩4分",
+        "中古",
+        "35階建"
+      ],
+      "summary": "2024年11月築地上35階建、280邸の制震タワーレジデンス。",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常2時間以内に返信"
+    },
+    {
+      "id": "sir-4018718",
+      "name": "WORLD TOWER RESIDENCE",
+      "area": "東京都港区浜松町２丁目",
+      "areaUp": "MINATO · TOKYO",
+      "price": "2億300万円",
+      "layout": "1LDK ・ 44.14㎡",
+      "img": "images/sir-4018718-1.jpg",
+      "img2": "images/sir-4018718-2.jpg",
+      "gallery": [
+        "images/sir-4018718-1.jpg",
+        "images/sir-4018718-2.jpg",
+        "images/sir-4018718-3.jpg",
+        "images/sir-4018718-4.jpg",
+        "images/sir-4018718-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4018718-1.jpg",
+        "min/sir-4018718-2.jpg",
+        "min/sir-4018718-3.jpg",
+        "min/sir-4018718-4.jpg",
+        "min/sir-4018718-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "44.14㎡"
+        ],
+        [
+          "所在階",
+          "22階"
+        ]
+      ],
+      "tags": [
+        "浜松町駅 徒歩2分",
+        "中古",
+        "46階建"
+      ],
+      "summary": "ガラスを多用した壁面と、直線的なデザインが印象的な建物外観です。",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-3878446",
+      "name": "ドゥフォーレ高輪",
+      "area": "東京都港区高輪２丁目",
+      "areaUp": "MINATO · TOKYO",
+      "price": "1億9,800万円",
+      "layout": "3LDK ・ 78.56㎡",
+      "img": "images/sir-3878446-1.jpg",
+      "img2": "images/sir-3878446-2.jpg",
+      "gallery": [
+        "images/sir-3878446-1.jpg",
+        "images/sir-3878446-2.jpg",
+        "images/sir-3878446-3.jpg",
+        "images/sir-3878446-4.jpg",
+        "images/sir-3878446-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3878446-1.jpg",
+        "min/sir-3878446-2.jpg",
+        "min/sir-3878446-3.jpg",
+        "min/sir-3878446-4.jpg",
+        "min/sir-3878446-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "78.56㎡"
+        ],
+        [
+          "所在階",
+          "6階"
+        ]
+      ],
+      "tags": [
+        "泉岳寺駅 徒歩6分",
+        "中古",
+        "7階建"
+      ],
+      "summary": "約16.2帖のLDK。床暖房付きで快適にお過ごしいただけます。",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-4018774",
+      "name": "HIYORIオーシャンリゾート沖縄",
+      "area": "沖縄県国頭郡恩納村字仲泊",
+      "areaUp": "OKINAWA · JAPAN",
+      "price": "9,800万円",
+      "layout": "1LDK ・ 56.12㎡",
+      "img": "images/sir-4018774-1.jpg",
+      "img2": "images/sir-4018774-2.jpg",
+      "gallery": [
+        "images/sir-4018774-1.jpg",
+        "images/sir-4018774-2.jpg",
+        "images/sir-4018774-3.jpg",
+        "images/sir-4018774-4.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4018774-1.jpg",
+        "min/sir-4018774-2.jpg",
+        "min/sir-4018774-3.jpg",
+        "min/sir-4018774-4.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "56.12㎡"
+        ],
+        [
+          "所在階",
+          "7階"
+        ]
+      ],
+      "tags": [
+        "駅",
+        "中古",
+        "12階建"
+      ],
+      "summary": "恩納村の自然と調和したロケーションで、\r\n至福の時間を自由に過ごすことが可能です。",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常2時間以内に返信"
+    },
+    {
+      "id": "sir-4018660",
+      "name": "大田区池上一丁目土地",
+      "area": "東京都大田区池上１丁目",
+      "areaUp": "OTA · TOKYO",
+      "price": "6,300万円",
+      "layout": "84.46㎡",
+      "img": "images/sir-4018660-1.jpg",
+      "img2": "images/sir-4018660-2.jpg",
+      "gallery": [
+        "images/sir-4018660-1.jpg",
+        "images/sir-4018660-2.jpg",
+        "images/sir-4018660-3.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4018660-1.jpg",
+        "min/sir-4018660-2.jpg",
+        "min/sir-4018660-3.jpg"
+      ],
+      "facts": [
+        [
+          "土地面積",
+          "84.46㎡"
+        ]
+      ],
+      "tags": [
+        "西馬込駅 徒歩9分",
+        "中古"
+      ],
+      "summary": "下町の温かみや歴史を感じる穏やかな住環境。",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-3955853",
+      "name": "オープンレジデンシア新宿ザ・ハウス",
+      "area": "東京都渋谷区代々木２丁目",
+      "areaUp": "SHIBUYA · TOKYO",
+      "price": "9,998万円",
+      "layout": "1LDK ・ 36.12㎡",
+      "img": "images/sir-3955853-1.jpg",
+      "img2": "images/sir-3955853-2.jpg",
+      "gallery": [
+        "images/sir-3955853-1.jpg",
+        "images/sir-3955853-2.jpg",
+        "images/sir-3955853-3.jpg",
+        "images/sir-3955853-4.jpg",
+        "images/sir-3955853-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3955853-1.jpg",
+        "min/sir-3955853-2.jpg",
+        "min/sir-3955853-3.jpg",
+        "min/sir-3955853-4.jpg",
+        "min/sir-3955853-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "1LDK"
+        ],
+        [
+          "専有面積",
+          "36.12㎡"
+        ],
+        [
+          "所在階",
+          "6階"
+        ]
+      ],
+      "tags": [
+        "新宿駅 徒歩4分",
+        "中古",
+        "10階建"
+      ],
+      "summary": "「新宿」駅徒歩圏内に佇む新築レジデンス。",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-4018571",
+      "name": "オープンレジデンシア広尾ザ・ハウス　サウスコート",
+      "area": "東京都渋谷区広尾４丁目",
+      "areaUp": "SHIBUYA · TOKYO",
+      "price": "2億1,000万円",
+      "layout": "2LDK ・ 57.42㎡",
+      "img": "images/sir-4018571-1.jpg",
+      "img2": "images/sir-4018571-2.jpg",
+      "gallery": [
+        "images/sir-4018571-1.jpg",
+        "images/sir-4018571-2.jpg",
+        "images/sir-4018571-3.jpg",
+        "images/sir-4018571-4.jpg",
+        "images/sir-4018571-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4018571-1.jpg",
+        "min/sir-4018571-2.jpg",
+        "min/sir-4018571-3.jpg",
+        "min/sir-4018571-4.jpg",
+        "min/sir-4018571-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "57.42㎡"
+        ],
+        [
+          "所在階",
+          "3階"
+        ]
+      ],
+      "tags": [
+        "広尾駅 徒歩2分",
+        "中古",
+        "5階建"
+      ],
+      "summary": "広尾4丁目エリアに佇む、洗練された低層レジデンス。「広尾」駅徒歩2分という日々の利便性とステータスを兼ね備えたロケーションです。",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常2時間以内に返信"
+    },
+    {
+      "id": "sir-3985625",
+      "name": "STORYLINE瀬長島",
+      "area": "沖縄県豊見城市字瀬長",
+      "areaUp": "OKINAWA · JAPAN",
+      "price": "8,700万円",
+      "layout": "55.24㎡",
+      "img": "images/sir-3985625-1.jpg",
+      "img2": "images/sir-3985625-2.jpg",
+      "gallery": [
+        "images/sir-3985625-1.jpg",
+        "images/sir-3985625-2.jpg",
+        "images/sir-3985625-3.jpg",
+        "images/sir-3985625-4.jpg",
+        "images/sir-3985625-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3985625-1.jpg",
+        "min/sir-3985625-2.jpg",
+        "min/sir-3985625-3.jpg",
+        "min/sir-3985625-4.jpg",
+        "min/sir-3985625-5.jpg"
+      ],
+      "facts": [
+        [
+          "専有面積",
+          "55.24㎡"
+        ],
+        [
+          "所在階",
+          "6階"
+        ]
+      ],
+      "tags": [
+        "駅",
+        "中古",
+        "8階建"
+      ],
+      "summary": "マイアミのようなリゾート体験が満喫できるリゾートホテル。",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-4007534",
+      "name": "パークコート浜離宮ザ・タワー",
+      "area": "東京都港区浜松町１丁目",
+      "areaUp": "MINATO · TOKYO",
+      "price": "3億8,800万円",
+      "layout": "2LDK ・ 71.59㎡",
+      "img": "images/sir-4007534-1.jpg",
+      "img2": "images/sir-4007534-2.jpg",
+      "gallery": [
+        "images/sir-4007534-1.jpg",
+        "images/sir-4007534-2.jpg",
+        "images/sir-4007534-3.jpg",
+        "images/sir-4007534-4.jpg",
+        "images/sir-4007534-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4007534-1.jpg",
+        "min/sir-4007534-2.jpg",
+        "min/sir-4007534-3.jpg",
+        "min/sir-4007534-4.jpg",
+        "min/sir-4007534-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "71.59㎡"
+        ],
+        [
+          "所在階",
+          "14階"
+        ]
+      ],
+      "tags": [
+        "浜松町駅 徒歩5分",
+        "中古",
+        "37階建"
+      ],
+      "summary": "三井不動産レジデンシャル旧分譲。ハイクラスな設備サービスが充実したタワーレジデンス。",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-4013489",
+      "name": "プラウド大阪城",
+      "area": "大阪府大阪市都島区片町１丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "3億1,800万円",
+      "layout": "3LDK ・ 105.93㎡",
+      "img": "images/sir-4013489-1.jpg",
+      "img2": "images/sir-4013489-2.jpg",
+      "gallery": [
+        "images/sir-4013489-1.jpg",
+        "images/sir-4013489-2.jpg",
+        "images/sir-4013489-3.jpg",
+        "images/sir-4013489-4.jpg",
+        "images/sir-4013489-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4013489-1.jpg",
+        "min/sir-4013489-2.jpg",
+        "min/sir-4013489-3.jpg",
+        "min/sir-4013489-4.jpg",
+        "min/sir-4013489-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "105.93㎡"
+        ],
+        [
+          "所在階",
+          "4階"
+        ]
+      ],
+      "tags": [
+        "大阪城北詰駅 徒歩6分",
+        "新築",
+        "12階建"
+      ],
+      "summary": "リビングの大きなピクチャーウインドウの真正面に、威風堂々たる「大阪城天守閣」が鎮座します。南東向きの窓から差し込む陽光が、歴史ある風景を照らします。四季の移ろいを絵画のように楽しめる贅沢な特等席です。",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常2時間以内に返信"
+    },
+    {
+      "id": "sir-4016264",
+      "name": "プラウド大阪城",
+      "area": "大阪府大阪市都島区片町１丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "2億8,500万円",
+      "layout": "2LDK ・ 98.08㎡",
+      "img": "images/sir-4016264-1.jpg",
+      "img2": "images/sir-4016264-2.jpg",
+      "gallery": [
+        "images/sir-4016264-1.jpg",
+        "images/sir-4016264-2.jpg",
+        "images/sir-4016264-3.jpg",
+        "images/sir-4016264-4.jpg",
+        "images/sir-4016264-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4016264-1.jpg",
+        "min/sir-4016264-2.jpg",
+        "min/sir-4016264-3.jpg",
+        "min/sir-4016264-4.jpg",
+        "min/sir-4016264-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "98.08㎡"
+        ],
+        [
+          "所在階",
+          "5階"
+        ]
+      ],
+      "tags": [
+        "大阪城北詰駅 徒歩6分",
+        "新築",
+        "12階建"
+      ],
+      "summary": "リビングの大きなピクチャーウインドウの真正面に、威風堂々たる「大阪城天守閣」が鎮座します。南東向きの窓から差し込む陽光が、歴史ある風景を照らします。四季の移ろいを絵画のように楽しめる贅沢な特等席です。",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-3494364",
+      "name": "シエリアタワー大阪堀江",
+      "area": "大阪府大阪市西区南堀江３丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "1億2,500万円",
+      "layout": "3LDK ・ 76.9㎡",
+      "img": "images/sir-3494364-1.jpg",
+      "img2": "images/sir-3494364-1.jpg",
+      "gallery": [
+        "images/sir-3494364-1.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3494364-1.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "76.9㎡"
+        ],
+        [
+          "所在階",
+          "21階"
+        ]
+      ],
+      "tags": [
+        "西長堀駅 徒歩4分",
+        "中古",
+        "46階建"
+      ],
+      "summary": "モダンで洗練されたデザインのタワーマンションです。",
+      "agent": "浦田 美和",
+      "agentTitle": "インターナショナル アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-4014235",
+      "name": "プラウド大阪城",
+      "area": "大阪府大阪市都島区片町１丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "2億9,000万円",
+      "layout": "2LDK ・ 98.08㎡",
+      "img": "images/sir-4014235-1.jpg",
+      "img2": "images/sir-4014235-2.jpg",
+      "gallery": [
+        "images/sir-4014235-1.jpg",
+        "images/sir-4014235-2.jpg",
+        "images/sir-4014235-3.jpg",
+        "images/sir-4014235-4.jpg",
+        "images/sir-4014235-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-4014235-1.jpg",
+        "min/sir-4014235-2.jpg",
+        "min/sir-4014235-3.jpg",
+        "min/sir-4014235-4.jpg",
+        "min/sir-4014235-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "98.08㎡"
+        ],
+        [
+          "所在階",
+          "6階"
+        ]
+      ],
+      "tags": [
+        "大阪城北詰駅 徒歩6分",
+        "新築",
+        "12階建"
+      ],
+      "summary": "リビングの大きなピクチャーウインドウの真正面に、威風堂々たる「大阪城天守閣」が鎮座します。南東向きの窓から差し込む陽光が、歴史ある風景を照らします。四季の移ろいを絵画のように楽しめる贅沢な特等席です。",
+      "agent": "志水 銀太",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常2時間以内に返信"
+    },
+    {
+      "id": "sir-3984277",
+      "name": "ブランズタワー梅田ノース",
+      "area": "大阪府大阪市北区豊崎３丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "1億1,680万円",
+      "layout": "2LDK ・ 58.39㎡",
+      "img": "images/sir-3984277-1.jpg",
+      "img2": "images/sir-3984277-2.jpg",
+      "gallery": [
+        "images/sir-3984277-1.jpg",
+        "images/sir-3984277-2.jpg",
+        "images/sir-3984277-3.jpg",
+        "images/sir-3984277-4.jpg",
+        "images/sir-3984277-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3984277-1.jpg",
+        "min/sir-3984277-2.jpg",
+        "min/sir-3984277-3.jpg",
+        "min/sir-3984277-4.jpg",
+        "min/sir-3984277-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "58.39㎡"
+        ],
+        [
+          "所在階",
+          "19階"
+        ]
+      ],
+      "tags": [
+        "中津駅 徒歩1分",
+        "中古",
+        "50階建"
+      ],
+      "summary": "大阪の都心に佇む50階建ての高層タワーレジデンス。",
+      "agent": "安井 弥月",
+      "agentTitle": "リゾート プロパティ アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-3955825",
+      "name": "シティタワー大阪本町 2706号室",
+      "area": "大阪府大阪市中央区安土町２丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "2億880万円",
+      "layout": "3LDK ・ 84.36㎡",
+      "img": "images/sir-3955825-1.jpg",
+      "img2": "images/sir-3955825-2.jpg",
+      "gallery": [
+        "images/sir-3955825-1.jpg",
+        "images/sir-3955825-2.jpg",
+        "images/sir-3955825-3.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3955825-1.jpg",
+        "min/sir-3955825-2.jpg",
+        "min/sir-3955825-3.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "専有面積",
+          "84.36㎡"
+        ],
+        [
+          "所在階",
+          "27階"
+        ]
+      ],
+      "tags": [
+        "堺筋本町駅 徒歩3分",
+        "中古",
+        "48階建"
+      ],
+      "summary": "総戸数855邸、48階建の超高層免震タワーレジデンス。",
+      "agent": "宮本 渉",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    },
+    {
+      "id": "sir-3955765",
+      "name": "ザ・ファインタワー梅田豊崎",
+      "area": "大阪府大阪市北区豊崎３丁目",
+      "areaUp": "OSAKA · JAPAN",
+      "price": "8,190万円",
+      "layout": "2LDK ・ 70.03㎡",
+      "img": "images/sir-3955765-1.jpg",
+      "img2": "images/sir-3955765-1.jpg",
+      "gallery": [
+        "images/sir-3955765-1.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3955765-1.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "2LDK"
+        ],
+        [
+          "専有面積",
+          "70.03㎡"
+        ],
+        [
+          "所在階",
+          "10階"
+        ]
+      ],
+      "tags": [
+        "中津駅 徒歩1分",
+        "中古",
+        "45階建"
+      ],
+      "summary": "大阪メトロ御堂筋線「中津」駅徒歩1分の好立地。",
+      "agent": "大嶋 諒太",
+      "agentTitle": "プロパティ アドバイザー",
+      "agentReply": "通常2時間以内に返信"
+    },
+    {
+      "id": "sir-3632831",
+      "name": "町田市能ヶ谷4丁目戸建",
+      "area": "東京都町田市能ヶ谷４丁目",
+      "areaUp": "TOKYO · JAPAN",
+      "price": "2億5,200万円",
+      "layout": "3LDK ・ 125.59㎡",
+      "img": "images/sir-3632831-1.jpg",
+      "img2": "images/sir-3632831-2.jpg",
+      "gallery": [
+        "images/sir-3632831-1.jpg",
+        "images/sir-3632831-2.jpg",
+        "images/sir-3632831-3.jpg",
+        "images/sir-3632831-4.jpg",
+        "images/sir-3632831-5.jpg"
+      ],
+      "thumbs": [
+        "min/sir-3632831-1.jpg",
+        "min/sir-3632831-2.jpg",
+        "min/sir-3632831-3.jpg",
+        "min/sir-3632831-4.jpg",
+        "min/sir-3632831-5.jpg"
+      ],
+      "facts": [
+        [
+          "間取り",
+          "3LDK"
+        ],
+        [
+          "建物面積",
+          "125.59㎡"
+        ],
+        [
+          "築年月",
+          "2021年11月"
+        ]
+      ],
+      "tags": [
+        "鶴川駅 徒歩10分",
+        "中古",
+        "2階建"
+      ],
+      "summary": "庭園の趣とともに静かに佇む、木の温もりと格調を纏った邸宅。\r\n町田の穏やかな住環境に調和する、伝統美を宿した邸宅。",
+      "agent": "髙野 友紀子",
+      "agentTitle": "インターナショナル アドバイザー",
+      "agentReply": "通常1時間以内に返信"
+    }
+  ]
+}

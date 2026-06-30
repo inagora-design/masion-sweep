@@ -22,6 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
 API = "https://list-sir.jp/api/apiHandller.php"
 WANT = int(os.environ.get("WANT", "18"))   # number of listings to publish
+GALLERY_MAX = int(os.environ.get("GALLERY", "5"))  # photos per listing (gallery)
 MAX_PAGES = 8
 
 PREF = {
@@ -210,7 +211,7 @@ def build_listing(item, idx):
         "price": pretty_price(v), "layout": layout,
         "facts": facts, "tags": tags, "summary": summary,
         "agent": agent, "agentTitle": atitle, "agentReply": areply,
-        "_photos": photos[:2],
+        "_photos": photos[:GALLERY_MAX],
     }
 
 
@@ -228,6 +229,52 @@ def process_image(src, dst, maxw, q):
     except Exception as e:
         print("  ! image error", dst, e)
         return False
+
+
+def write_dataset(listings):
+    """Write the canonical dataset to data/listings.json.
+
+    This is the portable, app-agnostic representation other projects consume.
+    Image paths are repo-relative (`images/<file>` full-res, `min/<file>`
+    thumbnail — same basename). Internal scratch keys are stripped.
+    """
+    out = []
+    for L in listings:
+        gallery = list(L.get("gallery") or [])
+        out.append({
+            "id": L["id"],
+            "name": L["name"],
+            "area": L["area"],
+            "areaUp": L["areaUp"],
+            "price": L["price"],
+            "layout": L["layout"],
+            "img": L["img"],
+            "img2": L["img2"],
+            "gallery": gallery,                              # full-res, images/<file>
+            "thumbs": [g.replace("images/", "min/") for g in gallery],
+            "facts": L["facts"],
+            "tags": L["tags"],
+            "summary": L["summary"],
+            "agent": L["agent"],
+            "agentTitle": L["agentTitle"],
+            "agentReply": L["agentReply"],
+        })
+    doc = {
+        "source": "https://list-sir.jp/buy/  (List Sotheby's International Realty Japan)",
+        "generatedBy": "masion-sweep/tools/crawl-listings.py",
+        "note": "Real listings crawled from List Sotheby's. Photos carry their watermark.",
+        "imageBase": {"full": "images/", "thumb": "min/"},
+        "count": len(out),
+        "schemaVersion": 1,
+        "listings": out,
+    }
+    ddir = os.path.join(ROOT, "data")
+    os.makedirs(ddir, exist_ok=True)
+    path = os.path.join(ddir, "listings.json")
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(doc, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print(f"  wrote data/listings.json ({len(out)} listings)")
 
 
 def main():
@@ -276,11 +323,16 @@ def main():
                 process_image(raw, os.path.join(ROOT, "min", rel), 560, 80)
                 locs.append(rel)
             time.sleep(0.2)
+        L["gallery"] = [f"images/{x}" for x in locs]
         L["img"] = f"images/{locs[0]}" if locs else None
         L["img2"] = f"images/{locs[1]}" if len(locs) > 1 else (f"images/{locs[0]}" if locs else None)
         print(f"  {L['id']:<18} {len(locs)} photo(s)  {L['name'][:24]}")
     listings = [L for L in listings if L["img"]]
     print(f"{len(listings)} listings have downloaded photos.")
+
+    # ---- emit canonical machine-readable dataset (data/listings.json) ----
+    # This is the source of truth other apps (e.g. ../masion-feed) consume.
+    write_dataset(listings)
 
     # ---- emit JS ----
     def esc(s):
@@ -291,15 +343,18 @@ def main():
         for L in listings:
             img = ("null" if not L["img"] else esc(L["img"].replace("images/", prefix)))
             img2 = ("null" if not L["img2"] else esc(L["img2"].replace("images/", prefix)))
+            gallery = "[" + ",".join(esc(g.replace("images/", prefix)) for g in L.get("gallery", [])) + "]"
             facts = "[" + ",".join("[" + esc(a) + "," + esc(b) + "]" for a, b in L["facts"]) + "]"
             tags = "[" + ",".join(esc(t) for t in L["tags"]) + "]"
             lines.append(
                 "      { id:%s, name:%s, area:%s, areaUp:%s,\n"
                 "        price:%s, layout:%s, img:%s, img2:%s,\n"
+                "        gallery:%s,\n"
                 "        facts:%s,\n        tags:%s,\n        summary:%s,\n"
                 "        agent:%s, agentTitle:%s, agentReply:%s }," % (
                     esc(L["id"]), esc(L["name"]), esc(L["area"]), esc(L["areaUp"]),
                     esc(L["price"]), esc(L["layout"]), img, img2,
+                    gallery,
                     facts, tags, esc(L["summary"]),
                     esc(L["agent"]), esc(L["agentTitle"]), esc(L["agentReply"])))
         lines.append("    ];")

@@ -46,11 +46,27 @@ rewrites the `this.DATA = [...]` block (plus the deck/threads/popular arrays)
 in both `.dc.html` builds.
 
 ```bash
-WANT=18 python3 tools/crawl-listings.py    # refresh listings (needs Pillow)
+WANT=18 GALLERY=5 python3 tools/crawl-listings.py   # refresh listings (needs Pillow)
 ```
 
-Raw downloads are cached under `tools/.imgcache/` (git‑ignored) so re‑runs don't
-re‑hit the network. Photos carry List Sotheby's own subtle watermark.
+`WANT` sets how many listings to publish; `GALLERY` sets how many photos per
+listing (exterior + interior, floor‑plans and shared facility shots excluded).
+Each property's full photo set powers a **swipeable gallery** in the detail
+sheet (the `gallery` array on each record). Raw downloads are cached under
+`tools/.imgcache/` (git‑ignored) so re‑runs don't re‑hit the network. Photos
+carry List Sotheby's own subtle watermark.
+
+## Shared dataset (`data/listings.json`)
+
+The crawler also writes a canonical, app‑agnostic dataset to
+**`data/listings.json`** — the single source of truth other apps in this
+workspace consume (e.g. `../masion-feed`). See **[`data/README.md`](data/README.md)**
+for the full schema and the three ways to consume it. To vendor a
+self‑contained copy into a sibling repo:
+
+```bash
+python3 tools/share-data.py ../masion-feed   # copies listings.json + photos
+```
 
 ## Run with Node
 
