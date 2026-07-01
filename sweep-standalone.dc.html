@@ -937,7 +937,7 @@ class Component extends DCLogic {
     ja:{ askAria:'LISAに相談', searchTitle:'物件を探す', searchHint:'目的地・タイプ・ご予算から', searchPlaceholder:'エリア・物件名で検索',
       popularAreas:'人気エリア', featuredKicker:'CURATED SELECTION', featured:'注目の邸宅', viewAll:'すべて', collections:'タイプから探す',
       resultsWord:'件の物件', price:'価格', reset:'リセット', noResultsTitle:'物件が見つかりませんでした', noResultsSub:'条件を変更してお試しください。',
-      messages:'トーク', ariaSub:'List Sotheby\'s AI Concierge', favorites:'お気に入り', noFavTitle:'まだお気に入りがありません', noFavSub:'気になる邸宅の♡をタップすると、ここに保存されます。', browseHomes:'物件を見る',
+      messages:'トーク', ariaSub:'物件提案AIコンシェルジュ', favorites:'お気に入り', noFavTitle:'まだお気に入りがありません', noFavSub:'気になる邸宅の♡をタップすると、ここに保存されます。', browseHomes:'物件を見る',
       overview:'概要', amenities:'設備・特徴', askingPrice:'参考価格', viewing:'内覧予約', askThis:'LISAに聞く', privateAdvisor:'プライベートアドバイザー',
       inputPlaceholder:'メッセージを入力…', language:'表示言語', booked:'内覧リクエストを送信しました', favAdded:'お気に入りに追加しました' },
     en:{ askAria:'Ask LISA', searchTitle:'Find a residence', searchHint:'By destination, type or budget', searchPlaceholder:'Search area or name',
@@ -1408,7 +1408,7 @@ class Component extends DCLogic {
     const favCurrent=favSections[st.favTab]||savedList;
     const favTabDefs=[
       ['reco', this.L({ja:'提案物件',en:'Proposed',zh:'推荐房源',th:'แนะนำ'})],
-      ['saved', this.L({ja:'保存した物件',en:'Saved',zh:'保存的',th:'บันทึก'})],
+      ['saved', this.L({ja:'保存物件',en:'Saved',zh:'保存的',th:'บันทึก'})],
     ];
     const favTabs=favTabDefs.map(([k,label])=>({ label:label, set:()=>this.setFavTab(k),
       style:'cursor:pointer;flex:1;text-align:center;font-size:13px;padding:9px 0;border-radius:10px;transition:.2s;'+(st.favTab===k?'background:#1b1916;color:#fff;font-weight:600;':'color:#6a6358;') }));
@@ -1417,10 +1417,10 @@ class Component extends DCLogic {
     // ---------- profile ----------
     const meName=this.L({ja:'佐藤 様',en:'A. Sato',zh:'佐藤先生',th:'คุณซาโต้'});
     const requirements=[
-      {label:this.L({ja:'ご希望エリア',en:'Preferred area',zh:'意向区域',th:'พื้นที่'}),value:this.L(rm.label)},
-      {label:this.L({ja:'ご予算',en:'Budget',zh:'预算',th:'งบประมาณ'}),value:'¥1.5億 – ¥3億'},
-      {label:this.L({ja:'建物種別',en:'Building type',zh:'建筑类型',th:'ประเภทอาคาร'}),value:this.L({ja:'マンション・一戸建て',en:'Condo · House',zh:'公寓 · 独栋',th:'คอนโด · บ้าน'})},
-      {label:this.L({ja:'間取りタイプ',en:'Layout',zh:'户型',th:'ผังห้อง'}),value:'2LDK 〜 4LDK'},
+      {label:this.L({ja:'希望エリア',en:'Area',zh:'意向区域',th:'พื้นที่'}),value:this.L({ja:'日本全域',en:'Japan (nationwide)',zh:'日本全域',th:'ทั่วญี่ปุ่น'})},
+      {label:this.L({ja:'予算',en:'Budget',zh:'预算',th:'งบประมาณ'}),value:this.L({ja:'1.5億円 〜 3億円',en:'¥150M – ¥300M',zh:'1.5亿 〜 3亿日元',th:'150–300 ล้านเยน'})},
+      {label:this.L({ja:'物件種別',en:'Property type',zh:'物业类型',th:'ประเภท'}),value:this.L({ja:'マンション・戸建て',en:'Condo · House',zh:'公寓 · 独栋',th:'คอนโด · บ้าน'})},
+      {label:this.L({ja:'間取り',en:'Layout',zh:'户型',th:'ผังห้อง'}),value:this.L({ja:'2LDK 〜 4LDK',en:'2–4 Bedrooms',zh:'2–4 居室',th:'2–4 ห้องนอน'})},
     ];
     const ccyDefs=[{code:'USD',name:this.L({ja:'米ドル',en:'US Dollar',zh:'美元',th:'ดอลลาร์'})},{code:'JPY',name:this.L({ja:'日本円',en:'Japanese Yen',zh:'日元',th:'เยน'})},{code:'HKD',name:this.L({ja:'香港ドル',en:'HK Dollar',zh:'港币',th:'ดอลลาร์ฮ่องกง'})},{code:'SGD',name:this.L({ja:'シンガポールドル',en:'SG Dollar',zh:'新加坡元',th:'ดอลลาร์สิงคโปร์'})},{code:'THB',name:this.L({ja:'タイバーツ',en:'Thai Baht',zh:'泰铢',th:'บาท'})}];
     const perUsd={USD:1,JPY:155.2,HKD:7.82,SGD:1.34,THB:36.4};
